@@ -1,0 +1,1 @@
+/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir
