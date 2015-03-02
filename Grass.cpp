@@ -16,6 +16,8 @@
 #include <glm/gtx/vector_angle.hpp>
 #include "Grass.h"
 
+#define M_PI 3.14159265358979323846
+
 using glm::vec3;
 
 void Grass::init_model(int level) {

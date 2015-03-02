@@ -7,6 +7,8 @@
 #include "Island.h"
 #include <glm/gtx/vector_angle.hpp>
 
+#define M_PI 3.14159265358979323846
+
 using glm::vec3;
 void Island::init_model(int level) {
 	/* the following if statements are needed to avoid regenerating the buffers

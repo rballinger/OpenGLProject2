@@ -2,6 +2,8 @@
 #include <cmath>
 #include "Wheel.h"
 
+#define M_PI 3.14159265358979323846
+
 using glm::vec3;
 
 /* Calculates list of vertices, later used to build vertex buffer */
