@@ -86,19 +86,6 @@ void Cylinder::build(float topRad, float botRad, float height) {
     /* close the last arc of the tri-fan */
     index.push_back (0);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     /* copy the two CPU arrays to GPU */
 
     /* select the buffer */
