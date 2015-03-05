@@ -22,8 +22,10 @@ if (APPLE)
   find_library(IOKIT_LIBRARY IOKit REQUIRED)
   find_library(COREVID_LIBRARY CoreVideo REQUIRED)
 endif (APPLE)
-
-set(SOURCE_FILES main.cpp Sphere.cpp UFO.cpp Wheel.cpp Ground.cpp StreetLamp.cpp Light.cpp Island.cpp Grass.cpp)
+include_directories("./Shapes")
+set(SOURCE_FILES animation.cc
+       Wheel.cc Wheel.h Arm.h Arm.cpp SwingFrame.cpp StreetLight.cpp StreetLight.h 
+        ../Shapes/Sphere.cpp ../Shapes/Cylinder.cpp ../Shapes/Torus.cpp)
 add_executable(sample ${SOURCE_FILES})
   target_link_libraries (sample ${GLFW3_LIBRARY} ${OPENGL_LIBRARIES} ${COCOA_LIBRARY}
      ${COREVID_LIBRARY} ${IOKIT_LIBRARY} ${GLEW_LIBRARY})

@@ -115,221 +115,197 @@ sample/fast:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/build
 .PHONY : sample/fast
 
-Grass.o: Grass.cpp.o
-.PHONY : Grass.o
+Arm.o: Arm.cpp.o
+.PHONY : Arm.o
 
 # target to build an object file
-Grass.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Grass.cpp.o
-.PHONY : Grass.cpp.o
+Arm.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Arm.cpp.o
+.PHONY : Arm.cpp.o
 
-Grass.i: Grass.cpp.i
-.PHONY : Grass.i
+Arm.i: Arm.cpp.i
+.PHONY : Arm.i
 
 # target to preprocess a source file
-Grass.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Grass.cpp.i
-.PHONY : Grass.cpp.i
+Arm.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Arm.cpp.i
+.PHONY : Arm.cpp.i
 
-Grass.s: Grass.cpp.s
-.PHONY : Grass.s
+Arm.s: Arm.cpp.s
+.PHONY : Arm.s
 
 # target to generate assembly for a file
-Grass.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Grass.cpp.s
-.PHONY : Grass.cpp.s
+Arm.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Arm.cpp.s
+.PHONY : Arm.cpp.s
 
-Ground.o: Ground.cpp.o
-.PHONY : Ground.o
+Shapes/Cylinder.o: Shapes/Cylinder.cpp.o
+.PHONY : Shapes/Cylinder.o
 
 # target to build an object file
-Ground.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Ground.cpp.o
-.PHONY : Ground.cpp.o
+Shapes/Cylinder.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o
+.PHONY : Shapes/Cylinder.cpp.o
 
-Ground.i: Ground.cpp.i
-.PHONY : Ground.i
+Shapes/Cylinder.i: Shapes/Cylinder.cpp.i
+.PHONY : Shapes/Cylinder.i
 
 # target to preprocess a source file
-Ground.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Ground.cpp.i
-.PHONY : Ground.cpp.i
+Shapes/Cylinder.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Cylinder.cpp.i
+.PHONY : Shapes/Cylinder.cpp.i
 
-Ground.s: Ground.cpp.s
-.PHONY : Ground.s
+Shapes/Cylinder.s: Shapes/Cylinder.cpp.s
+.PHONY : Shapes/Cylinder.s
 
 # target to generate assembly for a file
-Ground.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Ground.cpp.s
-.PHONY : Ground.cpp.s
+Shapes/Cylinder.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Cylinder.cpp.s
+.PHONY : Shapes/Cylinder.cpp.s
 
-Island.o: Island.cpp.o
-.PHONY : Island.o
+Shapes/Sphere.o: Shapes/Sphere.cpp.o
+.PHONY : Shapes/Sphere.o
 
 # target to build an object file
-Island.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Island.cpp.o
-.PHONY : Island.cpp.o
+Shapes/Sphere.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Sphere.cpp.o
+.PHONY : Shapes/Sphere.cpp.o
 
-Island.i: Island.cpp.i
-.PHONY : Island.i
+Shapes/Sphere.i: Shapes/Sphere.cpp.i
+.PHONY : Shapes/Sphere.i
 
 # target to preprocess a source file
-Island.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Island.cpp.i
-.PHONY : Island.cpp.i
+Shapes/Sphere.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Sphere.cpp.i
+.PHONY : Shapes/Sphere.cpp.i
 
-Island.s: Island.cpp.s
-.PHONY : Island.s
+Shapes/Sphere.s: Shapes/Sphere.cpp.s
+.PHONY : Shapes/Sphere.s
 
 # target to generate assembly for a file
-Island.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Island.cpp.s
-.PHONY : Island.cpp.s
+Shapes/Sphere.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Sphere.cpp.s
+.PHONY : Shapes/Sphere.cpp.s
 
-Light.o: Light.cpp.o
-.PHONY : Light.o
+Shapes/Torus.o: Shapes/Torus.cpp.o
+.PHONY : Shapes/Torus.o
 
 # target to build an object file
-Light.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Light.cpp.o
-.PHONY : Light.cpp.o
+Shapes/Torus.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Torus.cpp.o
+.PHONY : Shapes/Torus.cpp.o
 
-Light.i: Light.cpp.i
-.PHONY : Light.i
+Shapes/Torus.i: Shapes/Torus.cpp.i
+.PHONY : Shapes/Torus.i
 
 # target to preprocess a source file
-Light.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Light.cpp.i
-.PHONY : Light.cpp.i
+Shapes/Torus.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Torus.cpp.i
+.PHONY : Shapes/Torus.cpp.i
 
-Light.s: Light.cpp.s
-.PHONY : Light.s
+Shapes/Torus.s: Shapes/Torus.cpp.s
+.PHONY : Shapes/Torus.s
 
 # target to generate assembly for a file
-Light.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Light.cpp.s
-.PHONY : Light.cpp.s
+Shapes/Torus.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Torus.cpp.s
+.PHONY : Shapes/Torus.cpp.s
 
-Sphere.o: Sphere.cpp.o
-.PHONY : Sphere.o
+StreetLight.o: StreetLight.cpp.o
+.PHONY : StreetLight.o
 
 # target to build an object file
-Sphere.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Sphere.cpp.o
-.PHONY : Sphere.cpp.o
+StreetLight.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/StreetLight.cpp.o
+.PHONY : StreetLight.cpp.o
 
-Sphere.i: Sphere.cpp.i
-.PHONY : Sphere.i
+StreetLight.i: StreetLight.cpp.i
+.PHONY : StreetLight.i
 
 # target to preprocess a source file
-Sphere.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Sphere.cpp.i
-.PHONY : Sphere.cpp.i
+StreetLight.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/StreetLight.cpp.i
+.PHONY : StreetLight.cpp.i
 
-Sphere.s: Sphere.cpp.s
-.PHONY : Sphere.s
+StreetLight.s: StreetLight.cpp.s
+.PHONY : StreetLight.s
 
 # target to generate assembly for a file
-Sphere.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Sphere.cpp.s
-.PHONY : Sphere.cpp.s
+StreetLight.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/StreetLight.cpp.s
+.PHONY : StreetLight.cpp.s
 
-StreetLamp.o: StreetLamp.cpp.o
-.PHONY : StreetLamp.o
+SwingFrame.o: SwingFrame.cpp.o
+.PHONY : SwingFrame.o
 
 # target to build an object file
-StreetLamp.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/StreetLamp.cpp.o
-.PHONY : StreetLamp.cpp.o
+SwingFrame.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.o
+.PHONY : SwingFrame.cpp.o
 
-StreetLamp.i: StreetLamp.cpp.i
-.PHONY : StreetLamp.i
-
-# target to preprocess a source file
-StreetLamp.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/StreetLamp.cpp.i
-.PHONY : StreetLamp.cpp.i
-
-StreetLamp.s: StreetLamp.cpp.s
-.PHONY : StreetLamp.s
-
-# target to generate assembly for a file
-StreetLamp.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/StreetLamp.cpp.s
-.PHONY : StreetLamp.cpp.s
-
-UFO.o: UFO.cpp.o
-.PHONY : UFO.o
-
-# target to build an object file
-UFO.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.o
-.PHONY : UFO.cpp.o
-
-UFO.i: UFO.cpp.i
-.PHONY : UFO.i
+SwingFrame.i: SwingFrame.cpp.i
+.PHONY : SwingFrame.i
 
 # target to preprocess a source file
-UFO.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.i
-.PHONY : UFO.cpp.i
+SwingFrame.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.i
+.PHONY : SwingFrame.cpp.i
 
-UFO.s: UFO.cpp.s
-.PHONY : UFO.s
+SwingFrame.s: SwingFrame.cpp.s
+.PHONY : SwingFrame.s
 
 # target to generate assembly for a file
-UFO.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.s
-.PHONY : UFO.cpp.s
+SwingFrame.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.s
+.PHONY : SwingFrame.cpp.s
 
-Wheel.o: Wheel.cpp.o
+Wheel.o: Wheel.cc.o
 .PHONY : Wheel.o
 
 # target to build an object file
-Wheel.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cpp.o
-.PHONY : Wheel.cpp.o
+Wheel.cc.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cc.o
+.PHONY : Wheel.cc.o
 
-Wheel.i: Wheel.cpp.i
+Wheel.i: Wheel.cc.i
 .PHONY : Wheel.i
 
 # target to preprocess a source file
-Wheel.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cpp.i
-.PHONY : Wheel.cpp.i
+Wheel.cc.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cc.i
+.PHONY : Wheel.cc.i
 
-Wheel.s: Wheel.cpp.s
+Wheel.s: Wheel.cc.s
 .PHONY : Wheel.s
 
 # target to generate assembly for a file
-Wheel.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cpp.s
-.PHONY : Wheel.cpp.s
+Wheel.cc.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cc.s
+.PHONY : Wheel.cc.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+animation.o: animation.cc.o
+.PHONY : animation.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/main.cpp.o
-.PHONY : main.cpp.o
+animation.cc.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/animation.cc.o
+.PHONY : animation.cc.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+animation.i: animation.cc.i
+.PHONY : animation.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/main.cpp.i
-.PHONY : main.cpp.i
+animation.cc.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/animation.cc.i
+.PHONY : animation.cc.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+animation.s: animation.cc.s
+.PHONY : animation.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/main.cpp.s
-.PHONY : main.cpp.s
+animation.cc.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/animation.cc.s
+.PHONY : animation.cc.s
 
 # Help Target
 help:
@@ -340,33 +316,30 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... sample"
-	@echo "... Grass.o"
-	@echo "... Grass.i"
-	@echo "... Grass.s"
-	@echo "... Ground.o"
-	@echo "... Ground.i"
-	@echo "... Ground.s"
-	@echo "... Island.o"
-	@echo "... Island.i"
-	@echo "... Island.s"
-	@echo "... Light.o"
-	@echo "... Light.i"
-	@echo "... Light.s"
-	@echo "... Sphere.o"
-	@echo "... Sphere.i"
-	@echo "... Sphere.s"
-	@echo "... StreetLamp.o"
-	@echo "... StreetLamp.i"
-	@echo "... StreetLamp.s"
-	@echo "... UFO.o"
-	@echo "... UFO.i"
-	@echo "... UFO.s"
+	@echo "... Arm.o"
+	@echo "... Arm.i"
+	@echo "... Arm.s"
+	@echo "... Shapes/Cylinder.o"
+	@echo "... Shapes/Cylinder.i"
+	@echo "... Shapes/Cylinder.s"
+	@echo "... Shapes/Sphere.o"
+	@echo "... Shapes/Sphere.i"
+	@echo "... Shapes/Sphere.s"
+	@echo "... Shapes/Torus.o"
+	@echo "... Shapes/Torus.i"
+	@echo "... Shapes/Torus.s"
+	@echo "... StreetLight.o"
+	@echo "... StreetLight.i"
+	@echo "... StreetLight.s"
+	@echo "... SwingFrame.o"
+	@echo "... SwingFrame.i"
+	@echo "... SwingFrame.s"
 	@echo "... Wheel.o"
 	@echo "... Wheel.i"
 	@echo "... Wheel.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... animation.o"
+	@echo "... animation.i"
+	@echo "... animation.s"
 .PHONY : help
 
 
