@@ -87,6 +87,18 @@ void Cylinder::build(float topRad, float botRad, float height) {
     index.push_back (0);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
     /* copy the two CPU arrays to GPU */
 
     /* select the buffer */
@@ -125,6 +137,13 @@ void Cylinder::render() const {
     glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, i_buf);
 
     int N = 2*N_POINTS + 2;
+
+    glDrawElements (GL_QUAD_STRIP, 2*N_POINTS + 2, GL_UNSIGNED_SHORT, 0);
+    glDrawElements (GL_TRIANGLE_FAN, N_POINTS + 2, GL_UNSIGNED_SHORT,
+            (void *) (sizeof(GLushort) * N));
+
+    N = 2*N_POINTS + 2;
+    glFrontFace(GL_CW);
     glDrawElements (GL_QUAD_STRIP, 2*N_POINTS + 2, GL_UNSIGNED_SHORT, 0);
     glDrawElements (GL_TRIANGLE_FAN, N_POINTS + 2, GL_UNSIGNED_SHORT,
             (void *) (sizeof(GLushort) * N));
@@ -132,5 +151,7 @@ void Cylinder::render() const {
     /* deselect the buffs */
     glBindBuffer (GL_ARRAY_BUFFER, 0);
     glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, 0);
+
+    glFrontFace(GL_CCW);
     glPopAttrib();
 }
