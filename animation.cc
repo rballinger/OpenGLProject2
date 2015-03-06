@@ -34,11 +34,12 @@ Sphere sphere, light;
 StreetLight streetLight;
 Sphere lamp;
 Island island;
-UFO ufo;
+UFO *ufo;
 
 glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
 glm::mat4 tire_cf;
+glm::mat4 ufo_cf;
 glm::mat4 swing_arm_cf, frame_cf;
 glm::mat4 camera_cf, light0_cf, ufo_light_cf;
 glm::mat4 *active;
@@ -67,7 +68,7 @@ void reshapeCallback (GLFWwindow *win, int w, int h)
 
     /* switch back to Model View matrix mode */
     glMatrixMode (GL_MODELVIEW);
-    camera_cf = glm::lookAt(glm::vec3(75,70,40), glm::vec3(0,0,0), glm::vec3(0,0,1));
+    camera_cf = glm::lookAt(glm::vec3(150,140,80), glm::vec3(0,0,0), glm::vec3(0,0,1));
 }
 
 /*================================================================*
@@ -88,7 +89,7 @@ void updateCoordFrames()
     if (is_anim_running) {
         delta = (current - last_timestamp);
         wheel_angle = WHEEL_SPEED * delta;
-        wheel_cf *= glm::rotate(glm::radians(wheel_angle), glm::vec3{0.0f, 0.0f, 1.0f});
+        ufo_cf *= glm::rotate(glm::radians(wheel_angle), glm::vec3{0.0f, 0.0f, 1.0f});
 
         /* use the pendulum equation to calculate its angle */
         swing_time += delta * 3;
@@ -219,26 +220,6 @@ void displayCallback (GLFWwindow *win)
     /* the curly bracket pairs below are only for readability */
     glPushMatrix();
     {
-        ufo.render();
-
-        // Render light-1 as an emmisive object
-        if (glIsEnabled(GL_LIGHT1))
-            //glMaterialfv(GL_FRONT, GL_EMISSION, light1_color);
-
-        glPushMatrix();
-        glMultMatrixf(glm::value_ptr(ufo_light_cf));
-        //glTranslatef(0.0f,-100.0 + -46.0f,29.0f);
-        glTranslatef(0.0f,0.0f,26.0f);
-        //light.render(2.0f, 2.0f, 2.0f);
-        glPopMatrix();
-
-        glMaterialfv(GL_FRONT, GL_EMISSION, black_color);
-    }
-    glPopMatrix();
-
-    /* the curly bracket pairs below are only for readability */
-    glPushMatrix();
-    {
         glMultMatrixf(glm::value_ptr(lamp_cf));
 
         /* Render light-0 as an emmisive object */
@@ -283,6 +264,15 @@ void displayCallback (GLFWwindow *win)
     }
     glPopMatrix();
 
+    /* the curly bracket pairs below are only for readability */
+    glPushMatrix();
+    {
+    	glMultMatrixf(glm::value_ptr(ufo_cf));
+        ufo->render();
+    }
+    glPopMatrix();
+
+
     glPushMatrix();
     glTranslatef(0.0,0.0,15.0);
     glRotatef (90, 0, 1, 0);
@@ -296,7 +286,8 @@ void myModelInit ()
 {
     sphere.build(35, 40);
 
-    ufo.build(0.0, 0.0,100.0 );
+    ufo = new UFO();
+    ufo->build(0.0, 0.0,100.0);
     light.build(35, 40);
     island.build();
 
@@ -314,13 +305,13 @@ void myModelInit ()
     tire_cf = glm::translate(glm::vec3{0.0f, 0.0f, 10.0f});
     tire_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
 
+    ufo_cf = glm::translate(glm::vec3{0.0f, 0.0f, 20.0f});
+    //ufo_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
+
     streetLight.build();
     lamp.build(35, 40);
     frame_cf = glm::translate(glm::vec3{0, 0 , 25});
     active = &camera_cf;
-
-    ufo_light_cf = glm::translate(glm::vec3{0, -10, 18});
-    ufo_light_cf = ufo_light_cf * glm::rotate (glm::radians(-90.0f), glm::vec3{1,0,0});
 
     light0_cf = glm::translate(glm::vec3{-450, -30, 106});
 
