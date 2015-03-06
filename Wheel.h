@@ -17,6 +17,7 @@ class Wheel {
       GLfloat radius;
       GLfloat tire_thickness;
       GLUquadric *spoke;
+      GLUquadric *curb;
       GLint list_id;
       Torus t;
 };

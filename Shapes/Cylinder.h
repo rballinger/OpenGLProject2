@@ -7,14 +7,14 @@ using namespace std;
 
 class Cylinder {
 private:
-    const int N_POINTS = 60;
     GLuint v_buf, i_buf, n_buf;
     vector<float> vertices, normals;
     vector<GLushort> index;
 
 public:
     ~Cylinder();
-    void build(float topRad = 0.8f, float botRad = 0.8f, float height = 1.5);
+    int N_POINTS;
+    void build(float topRad = 0.8f, float botRad = 0.8f, float height = 1.5, int faces=30);
     void render() const;
 };
 #endif

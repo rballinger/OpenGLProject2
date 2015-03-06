@@ -19,20 +19,28 @@
 #include "Cylinder.h"
 #include "Wheel.h"
 #include "Sphere.h"
+#include "Island.h"
+#include "UFO.h"
+#include "Tire.h"
+
 using namespace std;
 void displayCallback(GLFWwindow*);
 
 /* define global variables here */
 Wheel *wheel;
 Arm* swingarm;
-Sphere sphere;
+Tire* tire;
+Sphere sphere, light;
 StreetLight streetLight;
 Sphere lamp;
+Island island;
+UFO ufo;
 
 glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
+glm::mat4 tire_cf;
 glm::mat4 swing_arm_cf, frame_cf;
-glm::mat4 camera_cf, light0_cf;
+glm::mat4 camera_cf, light0_cf, ufo_light_cf;
 glm::mat4 *active;
 
 const float INIT_SWING_ANGLE = 35.0f; /* degrees */
@@ -41,6 +49,7 @@ bool is_anim_running = true;
 
 /* light source setting */
 GLfloat light0_color[] = {1.0, 1.0, 1.0, 1.0};   /* color */
+GLfloat light1_color[] = {0.0, 3.0, 0.0, 1.0};   /* green color */
 GLfloat black_color[] = {0.0, 0.0, 0.0, 1.0};   /* color */
 
 /*--------------------------------*
@@ -117,6 +126,13 @@ void myGLInit ()
     glLightfv (GL_LIGHT0, GL_DIFFUSE, light0_color);
     glLightfv (GL_LIGHT0, GL_SPECULAR, light0_color);
 
+    // ufo light
+    /*glEnable (GL_LIGHT1);
+    glLightfv (GL_LIGHT1, GL_AMBIENT, light1_color);
+    glLightfv (GL_LIGHT1, GL_DIFFUSE, light1_color);
+    glLightfv (GL_LIGHT1, GL_SPECULAR, light1_color);
+    glLightf (GL_LIGHT1, GL_SPOT_CUTOFF, 700);
+*/
     // street lamp light
     glEnable (GL_LIGHT2);
     glLightfv (GL_LIGHT2, GL_AMBIENT, light0_color);
@@ -192,6 +208,34 @@ void displayCallback (GLFWwindow *win)
     }
     glPopMatrix();
 
+    /// light for UFO
+
+    /* recall that the last column of a CF is the origin of the CF */
+    glLightfv (GL_LIGHT1, GL_POSITION, glm::value_ptr(glm::column(ufo_light_cf, 3)));
+
+    /* we use the Z-axis of the light CF as the spotlight direction */
+    glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, glm::value_ptr(glm::column(ufo_light_cf, 3)));
+
+    /* the curly bracket pairs below are only for readability */
+    glPushMatrix();
+    {
+        ufo.render();
+
+        // Render light-1 as an emmisive object
+        if (glIsEnabled(GL_LIGHT1))
+            //glMaterialfv(GL_FRONT, GL_EMISSION, light1_color);
+
+        glPushMatrix();
+        glMultMatrixf(glm::value_ptr(ufo_light_cf));
+        //glTranslatef(0.0f,-100.0 + -46.0f,29.0f);
+        glTranslatef(0.0f,0.0f,26.0f);
+        //light.render(2.0f, 2.0f, 2.0f);
+        glPopMatrix();
+
+        glMaterialfv(GL_FRONT, GL_EMISSION, black_color);
+    }
+    glPopMatrix();
+
     /* the curly bracket pairs below are only for readability */
     glPushMatrix();
     {
@@ -222,6 +266,7 @@ void displayCallback (GLFWwindow *win)
     {
         glMultMatrixf(glm::value_ptr(frame_cf));
         streetLight.render();
+        island.render();
         glPushMatrix();
         {
             glMultMatrixf(glm::value_ptr(swing_arm_cf));
@@ -237,6 +282,12 @@ void displayCallback (GLFWwindow *win)
         glPopMatrix();
     }
     glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0.0,0.0,15.0);
+    glRotatef (90, 0, 1, 0);
+    tire->render();
+    glPopMatrix();
     /* to make smooth transition between frame */
     glfwSwapBuffers(win);
 }
@@ -244,6 +295,13 @@ void displayCallback (GLFWwindow *win)
 void myModelInit ()
 {
     sphere.build(35, 40);
+
+    ufo.build(0.0, 0.0,100.0 );
+    light.build(35, 40);
+    island.build();
+
+    tire = new Tire;
+    tire->build();
 
     swingarm = new Arm;
     swingarm->build();
@@ -253,12 +311,18 @@ void myModelInit ()
     wheel_cf = glm::translate(glm::vec3{0.0f, 0.0f, -swingarm->length()});
     wheel_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
 
+    tire_cf = glm::translate(glm::vec3{0.0f, 0.0f, 10.0f});
+    tire_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
+
     streetLight.build();
     lamp.build(35, 40);
     frame_cf = glm::translate(glm::vec3{0, 0 , 25});
     active = &camera_cf;
 
-    light0_cf = glm::translate(glm::vec3{-25, 8, 50});
+    ufo_light_cf = glm::translate(glm::vec3{0, -10, 18});
+    ufo_light_cf = ufo_light_cf * glm::rotate (glm::radians(-90.0f), glm::vec3{1,0,0});
+
+    light0_cf = glm::translate(glm::vec3{-450, -30, 106});
 
     lamp_cf = glm::translate(glm::vec3{0, 0, 10});
 }
@@ -299,16 +363,21 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             case GLFW_KEY_ESCAPE:
                 exit(0);
             case GLFW_KEY_0:
-                active = &light0_cf;
+                //active = &light0_cf;
                 if (glIsEnabled(GL_LIGHT0))
                     glDisable(GL_LIGHT0);
                 else
                     glEnable(GL_LIGHT0);
                 break;
             case GLFW_KEY_1:
+                //active = &ufo_light_cf;
+                if (glIsEnabled(GL_LIGHT1))
+                    glDisable(GL_LIGHT1);
+                else
+                    glEnable(GL_LIGHT1);
                 break;
             case GLFW_KEY_2:
-                active = &lamp_cf;
+                //active = &lamp_cf;
                 if (glIsEnabled(GL_LIGHT2))
                     glDisable(GL_LIGHT2);
                 else

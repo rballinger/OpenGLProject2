@@ -139,6 +139,30 @@ Arm.cpp.s:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Arm.cpp.s
 .PHONY : Arm.cpp.s
 
+Island.o: Island.cpp.o
+.PHONY : Island.o
+
+# target to build an object file
+Island.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Island.cpp.o
+.PHONY : Island.cpp.o
+
+Island.i: Island.cpp.i
+.PHONY : Island.i
+
+# target to preprocess a source file
+Island.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Island.cpp.i
+.PHONY : Island.cpp.i
+
+Island.s: Island.cpp.s
+.PHONY : Island.s
+
+# target to generate assembly for a file
+Island.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Island.cpp.s
+.PHONY : Island.cpp.s
+
 Shapes/Cylinder.o: Shapes/Cylinder.cpp.o
 .PHONY : Shapes/Cylinder.o
 
@@ -259,6 +283,54 @@ SwingFrame.cpp.s:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.s
 .PHONY : SwingFrame.cpp.s
 
+Tire.o: Tire.cpp.o
+.PHONY : Tire.o
+
+# target to build an object file
+Tire.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Tire.cpp.o
+.PHONY : Tire.cpp.o
+
+Tire.i: Tire.cpp.i
+.PHONY : Tire.i
+
+# target to preprocess a source file
+Tire.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Tire.cpp.i
+.PHONY : Tire.cpp.i
+
+Tire.s: Tire.cpp.s
+.PHONY : Tire.s
+
+# target to generate assembly for a file
+Tire.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Tire.cpp.s
+.PHONY : Tire.cpp.s
+
+UFO.o: UFO.cpp.o
+.PHONY : UFO.o
+
+# target to build an object file
+UFO.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.o
+.PHONY : UFO.cpp.o
+
+UFO.i: UFO.cpp.i
+.PHONY : UFO.i
+
+# target to preprocess a source file
+UFO.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.i
+.PHONY : UFO.cpp.i
+
+UFO.s: UFO.cpp.s
+.PHONY : UFO.s
+
+# target to generate assembly for a file
+UFO.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.s
+.PHONY : UFO.cpp.s
+
 Wheel.o: Wheel.cc.o
 .PHONY : Wheel.o
 
@@ -319,6 +391,9 @@ help:
 	@echo "... Arm.o"
 	@echo "... Arm.i"
 	@echo "... Arm.s"
+	@echo "... Island.o"
+	@echo "... Island.i"
+	@echo "... Island.s"
 	@echo "... Shapes/Cylinder.o"
 	@echo "... Shapes/Cylinder.i"
 	@echo "... Shapes/Cylinder.s"
@@ -334,6 +409,12 @@ help:
 	@echo "... SwingFrame.o"
 	@echo "... SwingFrame.i"
 	@echo "... SwingFrame.s"
+	@echo "... Tire.o"
+	@echo "... Tire.i"
+	@echo "... Tire.s"
+	@echo "... UFO.o"
+	@echo "... UFO.i"
+	@echo "... UFO.s"
 	@echo "... Wheel.o"
 	@echo "... Wheel.i"
 	@echo "... Wheel.s"

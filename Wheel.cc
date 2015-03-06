@@ -14,6 +14,7 @@ void Wheel::build ()
     static float CHROME_SPECULAR[] = {0.774597, 0.774597, 0.774597, 1.000000};
     /* black rubber */
     spoke = gluNewQuadric();
+    curb = gluNewQuadric();
 
     t.build (radius, tire_thickness, 30, 15);
     list_id = glGenLists(1);
@@ -35,6 +36,7 @@ void Wheel::build ()
         gluCylinder(spoke, 0.75 * tire_thickness, 0.75 * tire_thickness, radius, 10, 3);
         glPopMatrix();
     }
+
     /* make the hub */
     glPushMatrix();
     glTranslatef (0, 0, -tire_thickness/2);

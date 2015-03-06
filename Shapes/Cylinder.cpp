@@ -9,8 +9,11 @@ Cylinder::~Cylinder() {
     glDeleteBuffers(1, &n_buf);
 }
 
-void Cylinder::build(float topRad, float botRad, float height) {
-    glGenBuffers (1, &v_buf);
+void Cylinder::build(float topRad, float botRad, float height, int faces) {
+
+	N_POINTS = faces*2;
+
+	glGenBuffers (1, &v_buf);
     glGenBuffers (1, &i_buf);
     glGenBuffers (1, &n_buf);
     float delta = 2 * M_PI / N_POINTS;
