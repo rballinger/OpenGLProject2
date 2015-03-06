@@ -24,20 +24,6 @@ vector
 GL/glew.h
 -
 
-/home/dan/workspace/367_p2_LightAndMovement/Arm.cpp
-Cylinder.h
-/home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
-Arm.h
-/home/dan/workspace/367_p2_LightAndMovement/Arm.h
-
-/home/dan/workspace/367_p2_LightAndMovement/Arm.h
-iostream
--
-GL/glew.h
--
-Cylinder.h
-/home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
-
 /home/dan/workspace/367_p2_LightAndMovement/Island.cpp
 Island.h
 /home/dan/workspace/367_p2_LightAndMovement/Island.h
@@ -205,8 +191,6 @@ glm/gtc/type_ptr.hpp
 -
 glm/gtx/io.hpp
 -
-Arm.h
-/home/dan/workspace/367_p2_LightAndMovement/Arm.h
 StreetLight.h
 /home/dan/workspace/367_p2_LightAndMovement/StreetLight.h
 Cylinder.h

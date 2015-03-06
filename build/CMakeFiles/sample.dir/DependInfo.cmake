@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dan/workspace/367_p2_LightAndMovement/Arm.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Arm.cpp.o"
   "/home/dan/workspace/367_p2_LightAndMovement/Island.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Island.cpp.o"
   "/home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o"
   "/home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Shapes/Sphere.cpp.o"

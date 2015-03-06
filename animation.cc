@@ -14,7 +14,6 @@
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/io.hpp>
-#include "Arm.h"
 #include "StreetLight.h"
 #include "Cylinder.h"
 #include "Wheel.h"
@@ -28,7 +27,6 @@ void displayCallback(GLFWwindow*);
 
 /* define global variables here */
 Wheel *wheel;
-Arm* swingarm;
 Tire* tire;
 Sphere sphere, light;
 StreetLight streetLight;
@@ -40,9 +38,13 @@ glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
 glm::mat4 tire_cf;
 glm::mat4 ufo_cf;
-glm::mat4 swing_arm_cf, frame_cf;
+glm::mat4 frame_cf;
 glm::mat4 camera_cf, light0_cf, ufo_light_cf;
 glm::mat4 *active;
+
+float x_prev = 0.0;
+float y_prev = 0.0;
+float ellipse_angle = 0.0;
 
 const float INIT_SWING_ANGLE = 35.0f; /* degrees */
 const float GRAVITY = 9.8;   /* m/sec^2 */
@@ -68,7 +70,7 @@ void reshapeCallback (GLFWwindow *win, int w, int h)
 
     /* switch back to Model View matrix mode */
     glMatrixMode (GL_MODELVIEW);
-    camera_cf = glm::lookAt(glm::vec3(150,140,80), glm::vec3(0,0,0), glm::vec3(0,0,1));
+    camera_cf = glm::lookAt(glm::vec3(150,490,80), glm::vec3(0,0,0), glm::vec3(0,0,1));
 }
 
 /*================================================================*
@@ -79,24 +81,41 @@ void updateCoordFrames()
     static double last_timestamp = 0;
     static float swing_time = 0;
     static float swing_angle = 0;
-    static float wheel_angle = 0;
+    static float ufo_angle = 0;
     static int deg = 0;
-    const float WHEEL_SPEED = 72; /* in degrees per second */
+    const float UFO_SPEED = 144; /* in degrees per second */
     float delta, current;
 
+    static float majAxis = 180.0;
+    static float minorAxis = 60.0;
 
+    // ellipse x = a cos t
+    // 		   y = b sin t
     current = glfwGetTime();
     if (is_anim_running) {
         delta = (current - last_timestamp);
-        wheel_angle = WHEEL_SPEED * delta;
-        ufo_cf *= glm::rotate(glm::radians(wheel_angle), glm::vec3{0.0f, 0.0f, 1.0f});
+        ufo_angle = UFO_SPEED * delta;
+        //ufo_cf *= glm::rotate(glm::radians(ufo_angle), glm::vec3{0.0f, 0.0f, 1.0f});
 
+        float x = majAxis*cos(ellipse_angle);
+        float y = minorAxis*sin(ellipse_angle);
+
+        if(ellipse_angle == 0.0){
+        	x = y = 0;
+        }
+        ellipse_angle += 0.03;
+
+        cout << current*UFO_SPEED << " (" << x - x_prev<< ", " << y - y_prev<< ")" << endl;
+        ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{x - x_prev,0.0,0.0});
+        ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,y - y_prev,0.0});
+
+        x_prev = x;
+        y_prev = y;
         /* use the pendulum equation to calculate its angle */
-        swing_time += delta * 3;
-        float angle = INIT_SWING_ANGLE *
-                cos(swing_time * sqrt(GRAVITY / swingarm->length()));
+        /*swing_time += delta * 3;
+        float angle = INIT_SWING_ANGLE * cos(swing_time * sqrt(GRAVITY / swingarm->length()));
         swing_arm_cf *= glm::rotate(glm::radians(angle - swing_angle), glm::vec3{0.0f, 1.0f, 0.0f});
-        swing_angle = angle;
+        swing_angle = angle;*/
     }
     last_timestamp = current;
 }
@@ -248,19 +267,6 @@ void displayCallback (GLFWwindow *win)
         glMultMatrixf(glm::value_ptr(frame_cf));
         streetLight.render();
         island.render();
-        glPushMatrix();
-        {
-            glMultMatrixf(glm::value_ptr(swing_arm_cf));
-            swingarm->render();
-            glPushMatrix();
-            {
-                glMultMatrixf(glm::value_ptr(wheel_cf));
-                wheel->render();
-            }
-            glPopMatrix();
-
-        }
-        glPopMatrix();
     }
     glPopMatrix();
 
@@ -293,14 +299,6 @@ void myModelInit ()
 
     tire = new Tire;
     tire->build();
-
-    swingarm = new Arm;
-    swingarm->build();
-
-    wheel = new Wheel();
-    wheel->build();
-    wheel_cf = glm::translate(glm::vec3{0.0f, 0.0f, -swingarm->length()});
-    wheel_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
 
     tire_cf = glm::translate(glm::vec3{0.0f, 0.0f, 10.0f});
     tire_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
@@ -382,6 +380,12 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                 break;
             case GLFW_KEY_F:
                 active = &frame_cf;
+                break;
+            case GLFW_KEY_I:  // move camera in
+            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,1.0,0.0});
+                break;
+            case GLFW_KEY_O:  // move camera out
+            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,-1.0,0.0});
                 break;
             case GLFW_KEY_X:
                 *active *= glm::translate(glm::vec3{-1, 0, 0});

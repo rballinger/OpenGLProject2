@@ -115,30 +115,6 @@ sample/fast:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/build
 .PHONY : sample/fast
 
-Arm.o: Arm.cpp.o
-.PHONY : Arm.o
-
-# target to build an object file
-Arm.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Arm.cpp.o
-.PHONY : Arm.cpp.o
-
-Arm.i: Arm.cpp.i
-.PHONY : Arm.i
-
-# target to preprocess a source file
-Arm.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Arm.cpp.i
-.PHONY : Arm.cpp.i
-
-Arm.s: Arm.cpp.s
-.PHONY : Arm.s
-
-# target to generate assembly for a file
-Arm.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Arm.cpp.s
-.PHONY : Arm.cpp.s
-
 Island.o: Island.cpp.o
 .PHONY : Island.o
 
@@ -388,9 +364,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... sample"
-	@echo "... Arm.o"
-	@echo "... Arm.i"
-	@echo "... Arm.s"
 	@echo "... Island.o"
 	@echo "... Island.i"
 	@echo "... Island.s"
