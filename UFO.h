@@ -22,7 +22,7 @@ class UFO {
       /* default size is unit box */
       UFO();
       ~UFO();
-      void build(float,float,float);
+      void build(float,float,float,float);
       void render() const;
       GLfloat getDiskTopRadius() const { return diskTopRadius; }
       GLfloat getDiskBottomRadius() const { return diskBottomRadius; }

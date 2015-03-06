@@ -33,18 +33,33 @@ StreetLight streetLight;
 Sphere lamp;
 Island island;
 UFO *ufo;
+UFO *miniUFO1;
+UFO *miniUFO2;
+UFO *miniUFO3;
 
 glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
 glm::mat4 tire_cf;
-glm::mat4 ufo_cf;
+glm::mat4 ufo_cf, minUfo1_cf, minUfo2_cf, minUfo3_cf;
 glm::mat4 frame_cf;
 glm::mat4 camera_cf, light0_cf, ufo_light_cf;
 glm::mat4 *active;
 
 float x_prev = 0.0;
 float y_prev = 0.0;
+
+// mini ufos
+float min_x1_prev = 0.0;
+float min_y1_prev = 0.0;
+float min_x2_prev = 0.0;
+float min_y2_prev = 0.0;
+float min_x3_prev = 0.0;
+float min_y3_prev = 0.0;
+
 float ellipse_angle = 0.0;
+float min1_ellipse_angle = 0.0;
+float min2_ellipse_angle = 2.0;
+float min3_ellipse_angle = 0.0;
 
 const float INIT_SWING_ANGLE = 35.0f; /* degrees */
 const float GRAVITY = 9.8;   /* m/sec^2 */
@@ -70,7 +85,7 @@ void reshapeCallback (GLFWwindow *win, int w, int h)
 
     /* switch back to Model View matrix mode */
     glMatrixMode (GL_MODELVIEW);
-    camera_cf = glm::lookAt(glm::vec3(150,490,80), glm::vec3(0,0,0), glm::vec3(0,0,1));
+    camera_cf = glm::lookAt(glm::vec3(260,90,180), glm::vec3(0,0,0), glm::vec3(0,0,1));
 }
 
 /*================================================================*
@@ -89,28 +104,64 @@ void updateCoordFrames()
     static float majAxis = 180.0;
     static float minorAxis = 60.0;
 
+    static float min1_majAxis = 60.0;
+    static float min1_minorAxis = 19.0;
+
     // ellipse x = a cos t
     // 		   y = b sin t
     current = glfwGetTime();
     if (is_anim_running) {
-        delta = (current - last_timestamp);
-        ufo_angle = UFO_SPEED * delta;
+        //delta = (current - last_timestamp);
+        //ufo_angle = UFO_SPEED * delta;
         //ufo_cf *= glm::rotate(glm::radians(ufo_angle), glm::vec3{0.0f, 0.0f, 1.0f});
 
         float x = majAxis*cos(ellipse_angle);
         float y = minorAxis*sin(ellipse_angle);
 
         if(ellipse_angle == 0.0){
-        	x = y = 0;
+        	x = y = 0.0;
         }
         ellipse_angle += 0.03;
 
-        cout << current*UFO_SPEED << " (" << x - x_prev<< ", " << y - y_prev<< ")" << endl;
         ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{x - x_prev,0.0,0.0});
         ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,y - y_prev,0.0});
 
         x_prev = x;
         y_prev = y;
+
+        // min orbiting ufos handled here
+        // ONE
+        float min1_x = min1_majAxis*cos(min1_ellipse_angle);
+        float min1_y = min1_minorAxis*sin(min1_ellipse_angle);
+
+        if(min1_ellipse_angle == 0.0){
+        	min1_x = min1_y = 0.0;
+        }
+        min1_ellipse_angle += 0.03;
+
+        minUfo1_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,min1_x - min_x1_prev,0.0});
+        minUfo1_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,0.0, min1_y - min_y1_prev});
+
+        min_x1_prev = min1_x;
+        min_y1_prev = min1_y;
+
+        // TWO
+        float min2_x = min1_majAxis*cos(min2_ellipse_angle);
+        float min2_y = min1_minorAxis*sin(min2_ellipse_angle);
+
+        if(min2_ellipse_angle == 0){
+        	min2_ellipse_angle= 0;
+        }
+        min2_ellipse_angle += 0.03;
+
+    	minUfo2_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{min2_x - min_x2_prev, 0.0,0.0});
+    	minUfo2_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,0.0, min2_y - min_y2_prev});
+
+        min_x2_prev = min2_x;
+        min_y2_prev = min2_y;
+
+        // THREE
+
         /* use the pendulum equation to calculate its angle */
         /*swing_time += delta * 3;
         float angle = INIT_SWING_ANGLE * cos(swing_time * sqrt(GRAVITY / swingarm->length()));
@@ -255,13 +306,7 @@ void displayCallback (GLFWwindow *win)
     glPopMatrix();
 
 
-    /* The following nesting of push-pop pairs create an easy
-     * way to render different object w.r.t other coordinate
-     * frame.
-     *
-     * The swingarm is rendered w.r.t the swing base frame
-     * The wheel is rendered w.r.t the swing arm frame
-     */
+    /* render static objects: streetLight and island **/
     glPushMatrix();
     {
         glMultMatrixf(glm::value_ptr(frame_cf));
@@ -275,6 +320,25 @@ void displayCallback (GLFWwindow *win)
     {
     	glMultMatrixf(glm::value_ptr(ufo_cf));
         ufo->render();
+        glPushMatrix();
+        {
+        	glMultMatrixf(glm::value_ptr(minUfo1_cf));
+        	miniUFO1->render();
+        }
+        glPopMatrix();
+        glPushMatrix();
+        {
+
+        	glMultMatrixf(glm::value_ptr(minUfo2_cf));
+        	miniUFO2->render();
+        }
+        glPopMatrix();
+        /*glPushMatrix();
+        {
+        	glMultMatrixf(glm::value_ptr(minUfo3_cf));
+        	miniUFO3->render();
+        }
+        glPopMatrix();*/
     }
     glPopMatrix();
 
@@ -284,6 +348,7 @@ void displayCallback (GLFWwindow *win)
     glRotatef (90, 0, 1, 0);
     tire->render();
     glPopMatrix();
+
     /* to make smooth transition between frame */
     glfwSwapBuffers(win);
 }
@@ -293,7 +358,16 @@ void myModelInit ()
     sphere.build(35, 40);
 
     ufo = new UFO();
-    ufo->build(0.0, 0.0,100.0);
+    ufo->build(0.0, 0.0,100.0,1.0);
+    miniUFO1 = new UFO();
+    miniUFO1->build(0.0, 120.0,700.0,0.2);
+
+    miniUFO2 = new UFO();
+    miniUFO2->build(100.0, 120.0,790.0,0.2);
+
+	//miniUFO3 = new UFO();
+	//miniUFO3->build(-100.0, 120.0,700.0,0.2);
+
     light.build(35, 40);
     island.build();
 
@@ -304,7 +378,9 @@ void myModelInit ()
     tire_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
 
     ufo_cf = glm::translate(glm::vec3{0.0f, 0.0f, 20.0f});
-    //ufo_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
+    minUfo1_cf = glm::translate(glm::vec3{0.0f, 0.0f, 0.0f});
+    minUfo2_cf = glm::translate(glm::vec3{-25.0f, 20.0f, 0.0f});
+    //minUfo3_cf = glm::translate(glm::vec3{0.0f, 0.0f, 0.0f});
 
     streetLight.build();
     lamp.build(35, 40);
@@ -352,21 +428,18 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             case GLFW_KEY_ESCAPE:
                 exit(0);
             case GLFW_KEY_0:
-                //active = &light0_cf;
                 if (glIsEnabled(GL_LIGHT0))
                     glDisable(GL_LIGHT0);
                 else
                     glEnable(GL_LIGHT0);
                 break;
             case GLFW_KEY_1:
-                //active = &ufo_light_cf;
                 if (glIsEnabled(GL_LIGHT1))
                     glDisable(GL_LIGHT1);
                 else
                     glEnable(GL_LIGHT1);
                 break;
             case GLFW_KEY_2:
-                //active = &lamp_cf;
                 if (glIsEnabled(GL_LIGHT2))
                     glDisable(GL_LIGHT2);
                 else
@@ -382,10 +455,10 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                 active = &frame_cf;
                 break;
             case GLFW_KEY_I:  // move camera in
-            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,1.0,0.0});
+            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,5.0,0.0});
                 break;
             case GLFW_KEY_O:  // move camera out
-            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,-1.0,0.0});
+            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,-5.0,0.0});
                 break;
             case GLFW_KEY_X:
                 *active *= glm::translate(glm::vec3{-1, 0, 0});

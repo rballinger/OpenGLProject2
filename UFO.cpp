@@ -19,7 +19,7 @@ UFO::~UFO()
 
 }
 
-void UFO::build (float x, float y, float z)
+void UFO::build (float x, float y, float z, float scale)
 {
 	init_x = x;
 	init_y = y;
@@ -53,49 +53,55 @@ void UFO::build (float x, float y, float z)
     glNewList (list_id, GL_COMPILE);
 
     glPushMatrix();
-    glRotatef (90, 1, 0, 0);
+    glScalef(scale,scale,scale);
+    {
+		glPushMatrix();
+		{
+			glRotatef (90, 1, 0, 0);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT, CHROME_AMBIENT);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, CHROME_DIFFUSE);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, CHROME_SPECULAR);
-    glMaterialf(GL_FRONT, GL_SHININESS, 76.800003);
+			glMaterialfv(GL_FRONT, GL_AMBIENT, CHROME_AMBIENT);
+			glMaterialfv(GL_FRONT, GL_DIFFUSE, CHROME_DIFFUSE);
+			glMaterialfv(GL_FRONT, GL_SPECULAR, CHROME_SPECULAR);
+			glMaterialf(GL_FRONT, GL_SHININESS, 76.800003);
 
-    glPushMatrix();
-    glTranslatef(0.0 + init_x,42.5 + init_y,45.0  + init_z);
-    glRotatef (90, 1, 0, 0);
-    gluCylinder(topDisk, diskTopRadius, diskBottomRadius, 8, 24, 36);
-    glPopMatrix();
+			glPushMatrix();
+			glTranslatef(0.0 + init_x,42.5 + init_y,45.0  + init_z);
+			glRotatef (90, 1, 0, 0);
+			gluCylinder(topDisk, diskTopRadius, diskBottomRadius, 8, 24, 36);
+			glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(0.0 + init_x,24.0 + init_y,45.0  + init_z);
-    glRotatef (-90, 1, 0, 0);
-    gluCylinder(bottomDisk, diskTopRadius, diskBottomRadius, 8, 24, 36);
-    glPopMatrix();
+			glPushMatrix();
+			glTranslatef(0.0 + init_x,24.0 + init_y,45.0  + init_z);
+			glRotatef (-90, 1, 0, 0);
+			gluCylinder(bottomDisk, diskTopRadius, diskBottomRadius, 8, 24, 36);
+			glPopMatrix();
 
-    // change color
-    glMaterialfv(GL_FRONT, GL_AMBIENT, RIM_AMBIENT);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, RIM_DIFFUSE);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, RIM_SPECULAR);
-    glMaterialf(GL_FRONT, GL_SHININESS,  	12.800000);
+			// change color
+			glMaterialfv(GL_FRONT, GL_AMBIENT, RIM_AMBIENT);
+			glMaterialfv(GL_FRONT, GL_DIFFUSE, RIM_DIFFUSE);
+			glMaterialfv(GL_FRONT, GL_SPECULAR, RIM_SPECULAR);
+			glMaterialf(GL_FRONT, GL_SHININESS,  	12.800000);
 
-    glPushMatrix();
-    glTranslatef(0.0,31.5,45.0  + init_z);
-    glRotatef (-90, 1, 0, 0);
-    gluCylinder(midRim, diskBottomRadius, diskBottomRadius, 3, 24, 18.5);
-    glPopMatrix();
+			glPushMatrix();
+			glTranslatef(0.0 + init_x,31.5 + init_y,45.0  + init_z);
+			glRotatef (-90, 1, 0, 0);
+			gluCylinder(midRim, diskBottomRadius, diskBottomRadius, 3, 24, 18.5);
+			glPopMatrix();
 
-    // change color for cock pit
-    glMaterialfv(GL_FRONT, GL_AMBIENT, PIT_AMBIENT);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, PIT_DIFFUSE);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, PIT_SPECULAR);
-    glMaterialf(GL_FRONT, GL_SHININESS,  	11.264000);
+			// change color for cock pit
+			glMaterialfv(GL_FRONT, GL_AMBIENT, PIT_AMBIENT);
+			glMaterialfv(GL_FRONT, GL_DIFFUSE, PIT_DIFFUSE);
+			glMaterialfv(GL_FRONT, GL_SPECULAR, PIT_SPECULAR);
+			glMaterialf(GL_FRONT, GL_SHININESS,  	11.264000);
 
-    glPushMatrix();
-    glTranslatef(0.0,35,45.0  + init_z);
-    glScalef(1.5,0.8,1.5);
-    gluSphere(cockPit, sphereRadius, 24, 14);
-    glPopMatrix();
-
+			glPushMatrix();
+			glTranslatef(0.0 + init_x,35+ init_y,45.0  + init_z);
+			glScalef(1.5,0.8,1.5);
+			gluSphere(cockPit, sphereRadius, 24, 14);
+			glPopMatrix();
+		}
+		glPopMatrix();
+    }
     glPopMatrix();
     glEndList();
 };
