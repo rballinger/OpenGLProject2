@@ -9,7 +9,7 @@
 #define ISLAND_H_
 #include <GL/glew.h>
 
-/* Curb : cyclinder  + partial disk */
+/* Curb : cylinder  + partial disk */
 class Island {
    public:
       /* default size is unit box */

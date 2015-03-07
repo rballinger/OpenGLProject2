@@ -447,6 +447,7 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             case GLFW_KEY_ESCAPE:
                 exit(0);
             case GLFW_KEY_0:
+            	active = &light0_cf;
                 if (glIsEnabled(GL_LIGHT0))
                     glDisable(GL_LIGHT0);
                 else
@@ -459,6 +460,7 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                     glEnable(GL_LIGHT1);
                 break;
             case GLFW_KEY_2:
+            	active = &lamp_cf;
                 if (glIsEnabled(GL_LIGHT2))
                     glDisable(GL_LIGHT2);
                 else
