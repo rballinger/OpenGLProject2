@@ -395,33 +395,58 @@ void myModelInit ()
 void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods) {
     if (action == GLFW_RELEASE) return; /* ignore key release action */
 
+    // 6 degrees of freedom for camera frame
     if (mods == GLFW_MOD_SHIFT) {
         switch (key) {
+        	// x axis
             case GLFW_KEY_UP: /* tilt */
                 *active *= glm::rotate(glm::radians(-3.0f), glm::vec3{1.0f, 0.0f, 0.0f});
                 break;
             case GLFW_KEY_DOWN: /* tilt */
                 *active *= glm::rotate(glm::radians(+3.0f), glm::vec3{1.0f, 0.0f, 0.0f});
                 break;
+
+            // y axis
             case GLFW_KEY_LEFT: /* pan left */
                 *active *= glm::rotate(glm::radians(-3.0f), glm::vec3{0.0f, 1.0f, 0.0f});
                 break;
             case GLFW_KEY_RIGHT: /* pan right */
                 *active *= glm::rotate(glm::radians(+3.0f), glm::vec3{0.0f, 1.0f, 0.0f});
                 break;
+
+            // z axis
+            case GLFW_KEY_L: /* roll left */
+                *active *= glm::rotate(glm::radians(-3.0f), glm::vec3{0.0f, 0.0f, 1.0f});
+                break;
+            case GLFW_KEY_R: /* roll right */
+                *active *= glm::rotate(glm::radians(+3.0f), glm::vec3{0.0f, 0.0f, 1.0f});
+                break;
+
+            // positive directions
             case GLFW_KEY_X:
-                *active *= glm::translate(glm::vec3{1, 0, 0});
+                *active *= glm::translate(glm::vec3{5, 0, 0});
                 break;
             case GLFW_KEY_Y:
-                *active *= glm::translate(glm::vec3{0, 1, 0});
+                *active *= glm::translate(glm::vec3{0, 5, 0});
                 break;
             case GLFW_KEY_Z:
-                *active *= glm::translate(glm::vec3{0, 0, 1});
+                *active *= glm::translate(glm::vec3{0, 0, -5});
                 break;
+
+            // negative directions
+            case GLFW_KEY_I:
+                *active *= glm::translate(glm::vec3{-5, 0, 0});
+                break;
+            case GLFW_KEY_J:
+                *active *= glm::translate(glm::vec3{0, -5, 0});
+                break;
+            case GLFW_KEY_K:
+                *active *= glm::translate(glm::vec3{0, 0, 5});
+                break;
+
             default:
                 break;
         };
-
     }
     else {
         switch (key) {
@@ -453,12 +478,6 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                 break;
             case GLFW_KEY_F:
                 active = &frame_cf;
-                break;
-            case GLFW_KEY_I:  // move camera in
-            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,5.0,0.0});
-                break;
-            case GLFW_KEY_O:  // move camera out
-            	camera_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,-5.0,0.0});
                 break;
             case GLFW_KEY_X:
                 *active *= glm::translate(glm::vec3{-1, 0, 0});

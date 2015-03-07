@@ -1,0 +1,11 @@
+1. Build some basic geometric shapes using the normal buffer.
+
+2. Each object moving object can be changed by keyboard using 6 DOF.
+
+3. Timer? (may already be implemented)
+
+4. Keyboard control to adjust speed of moving objects.
+
+5. One light source must be a spot light.
+
+6. Keyboard controls to change light source position.
