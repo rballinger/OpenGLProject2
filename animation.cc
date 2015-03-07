@@ -55,6 +55,11 @@ float ellipse_angle = 0.0;
 float min1_ellipse_angle = 0.0;
 float min2_ellipse_angle = 2.0;
 
+// these are here to control the speed of ufos when selected
+float ellipse_angle_change = 0.03;
+float min1_ellipse_angle_change = 0.03;
+float min2_ellipse_angle_change = 0.03;
+
 const float INIT_SWING_ANGLE = 35.0f; /* degrees */
 const float GRAVITY = 9.8;   /* m/sec^2 */
 bool is_anim_running = true;
@@ -115,7 +120,8 @@ void updateCoordFrames()
         if(ellipse_angle == 0.0){
         	x = y = 0.0;
         }
-        ellipse_angle += 0.03;
+
+        ellipse_angle += ellipse_angle_change;
 
         ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{x - x_prev,0.0,0.0});
         ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,y - y_prev,0.0});
@@ -131,7 +137,8 @@ void updateCoordFrames()
         if(min1_ellipse_angle == 0.0){
         	min1_x = min1_y = 0.0;
         }
-        min1_ellipse_angle += 0.03;
+
+        min1_ellipse_angle += min1_ellipse_angle_change;
 
         minUfo1_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,min1_x - min_x1_prev,0.0});
         minUfo1_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,0.0, min1_y - min_y1_prev});
@@ -146,7 +153,8 @@ void updateCoordFrames()
         if(min2_ellipse_angle == 0){
         	min2_ellipse_angle= 0;
         }
-        min2_ellipse_angle += 0.03;
+
+        min2_ellipse_angle += min2_ellipse_angle_change;
 
     	minUfo2_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{min2_x - min_x2_prev, 0.0,0.0});
     	minUfo2_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,0.0, min2_y - min_y2_prev});
@@ -411,6 +419,24 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             case GLFW_KEY_K:
                 *active *= glm::translate(glm::vec3{0, 0, 5});
                 break;
+            case GLFW_KEY_0:
+            	if(*active == ufo_cf){  // mother-ship faster
+            		ellipse_angle_change += 0.01;
+            	}else if(*active == minUfo1_cf){		// mini ufo 1 faster
+            		min1_ellipse_angle_change += 0.01;
+            	}else if(*active == minUfo2_cf){		// mini ufo 2 faster
+            		min2_ellipse_angle_change += 0.01;
+            	}
+                break;
+            case GLFW_KEY_1:
+            	if(*active == ufo_cf){  // mother-ship slower
+            		ellipse_angle_change -= 0.01;
+            	}else if(*active == minUfo1_cf){		// mini ufo 1 slower
+            		min1_ellipse_angle_change -= 0.01;
+            	}else if(*active == minUfo2_cf){		// mini ufo 2 slower
+            		min2_ellipse_angle_change -= 0.01;
+            	}
+            	break;
 
             default:
                 break;
