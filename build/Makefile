@@ -235,30 +235,6 @@ StreetLight.cpp.s:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/StreetLight.cpp.s
 .PHONY : StreetLight.cpp.s
 
-SwingFrame.o: SwingFrame.cpp.o
-.PHONY : SwingFrame.o
-
-# target to build an object file
-SwingFrame.cpp.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.o
-.PHONY : SwingFrame.cpp.o
-
-SwingFrame.i: SwingFrame.cpp.i
-.PHONY : SwingFrame.i
-
-# target to preprocess a source file
-SwingFrame.cpp.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.i
-.PHONY : SwingFrame.cpp.i
-
-SwingFrame.s: SwingFrame.cpp.s
-.PHONY : SwingFrame.s
-
-# target to generate assembly for a file
-SwingFrame.cpp.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.s
-.PHONY : SwingFrame.cpp.s
-
 Tire.o: Tire.cpp.o
 .PHONY : Tire.o
 
@@ -306,30 +282,6 @@ UFO.s: UFO.cpp.s
 UFO.cpp.s:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.s
 .PHONY : UFO.cpp.s
-
-Wheel.o: Wheel.cc.o
-.PHONY : Wheel.o
-
-# target to build an object file
-Wheel.cc.o:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cc.o
-.PHONY : Wheel.cc.o
-
-Wheel.i: Wheel.cc.i
-.PHONY : Wheel.i
-
-# target to preprocess a source file
-Wheel.cc.i:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cc.i
-.PHONY : Wheel.cc.i
-
-Wheel.s: Wheel.cc.s
-.PHONY : Wheel.s
-
-# target to generate assembly for a file
-Wheel.cc.s:
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cc.s
-.PHONY : Wheel.cc.s
 
 animation.o: animation.cc.o
 .PHONY : animation.o
@@ -379,18 +331,12 @@ help:
 	@echo "... StreetLight.o"
 	@echo "... StreetLight.i"
 	@echo "... StreetLight.s"
-	@echo "... SwingFrame.o"
-	@echo "... SwingFrame.i"
-	@echo "... SwingFrame.s"
 	@echo "... Tire.o"
 	@echo "... Tire.i"
 	@echo "... Tire.s"
 	@echo "... UFO.o"
 	@echo "... UFO.i"
 	@echo "... UFO.s"
-	@echo "... Wheel.o"
-	@echo "... Wheel.i"
-	@echo "... Wheel.s"
 	@echo "... animation.o"
 	@echo "... animation.i"
 	@echo "... animation.s"

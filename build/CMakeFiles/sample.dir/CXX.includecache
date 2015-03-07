@@ -106,16 +106,6 @@ glm/gtc/type_ptr.hpp
 glm/gtx/io.hpp
 -
 
-/home/dan/workspace/367_p2_LightAndMovement/SwingFrame.cpp
-SwingFrame.h
-/home/dan/workspace/367_p2_LightAndMovement/SwingFrame.h
-
-/home/dan/workspace/367_p2_LightAndMovement/SwingFrame.h
-Cylinder.h
-/home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
-Torus.h
-/home/dan/workspace/367_p2_LightAndMovement/Torus.h
-
 /home/dan/workspace/367_p2_LightAndMovement/Tire.cpp
 Tire.h
 /home/dan/workspace/367_p2_LightAndMovement/Tire.h
@@ -160,16 +150,6 @@ glm/gtx/io.hpp
 Sphere.h
 /home/dan/workspace/367_p2_LightAndMovement/Sphere.h
 
-/home/dan/workspace/367_p2_LightAndMovement/Wheel.cc
-Wheel.h
-/home/dan/workspace/367_p2_LightAndMovement/Wheel.h
-
-/home/dan/workspace/367_p2_LightAndMovement/Wheel.h
-GL/glew.h
--
-Torus.h
-/home/dan/workspace/367_p2_LightAndMovement/Torus.h
-
 /home/dan/workspace/367_p2_LightAndMovement/animation.cc
 GL/glew.h
 -
@@ -195,8 +175,6 @@ StreetLight.h
 /home/dan/workspace/367_p2_LightAndMovement/StreetLight.h
 Cylinder.h
 /home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
-Wheel.h
-/home/dan/workspace/367_p2_LightAndMovement/Wheel.h
 Sphere.h
 /home/dan/workspace/367_p2_LightAndMovement/Sphere.h
 Island.h

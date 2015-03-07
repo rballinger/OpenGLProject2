@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sample.dir/animation.cc.o"
-  "CMakeFiles/sample.dir/Wheel.cc.o"
-  "CMakeFiles/sample.dir/SwingFrame.cpp.o"
   "CMakeFiles/sample.dir/StreetLight.cpp.o"
   "CMakeFiles/sample.dir/Island.cpp.o"
   "CMakeFiles/sample.dir/UFO.cpp.o"

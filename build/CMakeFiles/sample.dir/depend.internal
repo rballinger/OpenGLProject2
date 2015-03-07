@@ -19,11 +19,6 @@ CMakeFiles/sample.dir/StreetLight.cpp.o
  .././Shapes/Torus.h
  /home/dan/workspace/367_p2_LightAndMovement/StreetLight.cpp
  /home/dan/workspace/367_p2_LightAndMovement/StreetLight.h
-CMakeFiles/sample.dir/SwingFrame.cpp.o
- .././Shapes/Cylinder.h
- .././Shapes/Torus.h
- /home/dan/workspace/367_p2_LightAndMovement/SwingFrame.cpp
- /home/dan/workspace/367_p2_LightAndMovement/SwingFrame.h
 CMakeFiles/sample.dir/Tire.cpp.o
  .././Shapes/Cylinder.h
  .././Shapes/Torus.h
@@ -33,10 +28,6 @@ CMakeFiles/sample.dir/UFO.cpp.o
  .././Shapes/Sphere.h
  /home/dan/workspace/367_p2_LightAndMovement/UFO.cpp
  /home/dan/workspace/367_p2_LightAndMovement/UFO.h
-CMakeFiles/sample.dir/Wheel.cc.o
- .././Shapes/Torus.h
- /home/dan/workspace/367_p2_LightAndMovement/Wheel.cc
- /home/dan/workspace/367_p2_LightAndMovement/Wheel.h
 CMakeFiles/sample.dir/animation.cc.o
  .././Shapes/Cylinder.h
  .././Shapes/Sphere.h
@@ -45,5 +36,4 @@ CMakeFiles/sample.dir/animation.cc.o
  /home/dan/workspace/367_p2_LightAndMovement/StreetLight.h
  /home/dan/workspace/367_p2_LightAndMovement/Tire.h
  /home/dan/workspace/367_p2_LightAndMovement/UFO.h
- /home/dan/workspace/367_p2_LightAndMovement/Wheel.h
  /home/dan/workspace/367_p2_LightAndMovement/animation.cc

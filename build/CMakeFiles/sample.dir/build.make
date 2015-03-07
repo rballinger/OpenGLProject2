@@ -72,55 +72,9 @@ CMakeFiles/sample.dir/animation.cc.o.provides: CMakeFiles/sample.dir/animation.c
 
 CMakeFiles/sample.dir/animation.cc.o.provides.build: CMakeFiles/sample.dir/animation.cc.o
 
-CMakeFiles/sample.dir/Wheel.cc.o: CMakeFiles/sample.dir/flags.make
-CMakeFiles/sample.dir/Wheel.cc.o: ../Wheel.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Wheel.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Wheel.cc.o -c /home/dan/workspace/367_p2_LightAndMovement/Wheel.cc
-
-CMakeFiles/sample.dir/Wheel.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample.dir/Wheel.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/dan/workspace/367_p2_LightAndMovement/Wheel.cc > CMakeFiles/sample.dir/Wheel.cc.i
-
-CMakeFiles/sample.dir/Wheel.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample.dir/Wheel.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/dan/workspace/367_p2_LightAndMovement/Wheel.cc -o CMakeFiles/sample.dir/Wheel.cc.s
-
-CMakeFiles/sample.dir/Wheel.cc.o.requires:
-.PHONY : CMakeFiles/sample.dir/Wheel.cc.o.requires
-
-CMakeFiles/sample.dir/Wheel.cc.o.provides: CMakeFiles/sample.dir/Wheel.cc.o.requires
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Wheel.cc.o.provides.build
-.PHONY : CMakeFiles/sample.dir/Wheel.cc.o.provides
-
-CMakeFiles/sample.dir/Wheel.cc.o.provides.build: CMakeFiles/sample.dir/Wheel.cc.o
-
-CMakeFiles/sample.dir/SwingFrame.cpp.o: CMakeFiles/sample.dir/flags.make
-CMakeFiles/sample.dir/SwingFrame.cpp.o: ../SwingFrame.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/SwingFrame.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/SwingFrame.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/SwingFrame.cpp
-
-CMakeFiles/sample.dir/SwingFrame.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample.dir/SwingFrame.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/dan/workspace/367_p2_LightAndMovement/SwingFrame.cpp > CMakeFiles/sample.dir/SwingFrame.cpp.i
-
-CMakeFiles/sample.dir/SwingFrame.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample.dir/SwingFrame.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/dan/workspace/367_p2_LightAndMovement/SwingFrame.cpp -o CMakeFiles/sample.dir/SwingFrame.cpp.s
-
-CMakeFiles/sample.dir/SwingFrame.cpp.o.requires:
-.PHONY : CMakeFiles/sample.dir/SwingFrame.cpp.o.requires
-
-CMakeFiles/sample.dir/SwingFrame.cpp.o.provides: CMakeFiles/sample.dir/SwingFrame.cpp.o.requires
-	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/SwingFrame.cpp.o.provides.build
-.PHONY : CMakeFiles/sample.dir/SwingFrame.cpp.o.provides
-
-CMakeFiles/sample.dir/SwingFrame.cpp.o.provides.build: CMakeFiles/sample.dir/SwingFrame.cpp.o
-
 CMakeFiles/sample.dir/StreetLight.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/StreetLight.cpp.o: ../StreetLight.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/StreetLight.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/StreetLight.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/StreetLight.cpp
 
@@ -143,7 +97,7 @@ CMakeFiles/sample.dir/StreetLight.cpp.o.provides.build: CMakeFiles/sample.dir/St
 
 CMakeFiles/sample.dir/Island.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Island.cpp.o: ../Island.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Island.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Island.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Island.cpp
 
@@ -166,7 +120,7 @@ CMakeFiles/sample.dir/Island.cpp.o.provides.build: CMakeFiles/sample.dir/Island.
 
 CMakeFiles/sample.dir/UFO.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/UFO.cpp.o: ../UFO.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/UFO.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/UFO.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/UFO.cpp
 
@@ -189,7 +143,7 @@ CMakeFiles/sample.dir/UFO.cpp.o.provides.build: CMakeFiles/sample.dir/UFO.cpp.o
 
 CMakeFiles/sample.dir/Tire.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Tire.cpp.o: ../Tire.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Tire.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Tire.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Tire.cpp
 
@@ -212,7 +166,7 @@ CMakeFiles/sample.dir/Tire.cpp.o.provides.build: CMakeFiles/sample.dir/Tire.cpp.
 
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: ../Shapes/Sphere.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Sphere.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Sphere.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.cpp
 
@@ -235,7 +189,7 @@ CMakeFiles/sample.dir/Shapes/Sphere.cpp.o.provides.build: CMakeFiles/sample.dir/
 
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: ../Shapes/Cylinder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.cpp
 
@@ -258,7 +212,7 @@ CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o.provides.build: CMakeFiles/sample.di
 
 CMakeFiles/sample.dir/Shapes/Torus.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Torus.cpp.o: ../Shapes/Torus.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Torus.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Torus.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.cpp
 
@@ -282,8 +236,6 @@ CMakeFiles/sample.dir/Shapes/Torus.cpp.o.provides.build: CMakeFiles/sample.dir/S
 # Object files for target sample
 sample_OBJECTS = \
 "CMakeFiles/sample.dir/animation.cc.o" \
-"CMakeFiles/sample.dir/Wheel.cc.o" \
-"CMakeFiles/sample.dir/SwingFrame.cpp.o" \
 "CMakeFiles/sample.dir/StreetLight.cpp.o" \
 "CMakeFiles/sample.dir/Island.cpp.o" \
 "CMakeFiles/sample.dir/UFO.cpp.o" \
@@ -296,8 +248,6 @@ sample_OBJECTS = \
 sample_EXTERNAL_OBJECTS =
 
 sample: CMakeFiles/sample.dir/animation.cc.o
-sample: CMakeFiles/sample.dir/Wheel.cc.o
-sample: CMakeFiles/sample.dir/SwingFrame.cpp.o
 sample: CMakeFiles/sample.dir/StreetLight.cpp.o
 sample: CMakeFiles/sample.dir/Island.cpp.o
 sample: CMakeFiles/sample.dir/UFO.cpp.o
@@ -331,8 +281,6 @@ CMakeFiles/sample.dir/build: sample
 .PHONY : CMakeFiles/sample.dir/build
 
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/animation.cc.o.requires
-CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Wheel.cc.o.requires
-CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/SwingFrame.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/StreetLight.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Island.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/UFO.cpp.o.requires

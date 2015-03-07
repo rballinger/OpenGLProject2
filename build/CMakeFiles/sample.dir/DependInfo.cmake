@@ -9,10 +9,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Shapes/Sphere.cpp.o"
   "/home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Shapes/Torus.cpp.o"
   "/home/dan/workspace/367_p2_LightAndMovement/StreetLight.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/StreetLight.cpp.o"
-  "/home/dan/workspace/367_p2_LightAndMovement/SwingFrame.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/SwingFrame.cpp.o"
   "/home/dan/workspace/367_p2_LightAndMovement/Tire.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Tire.cpp.o"
   "/home/dan/workspace/367_p2_LightAndMovement/UFO.cpp" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/UFO.cpp.o"
-  "/home/dan/workspace/367_p2_LightAndMovement/Wheel.cc" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/Wheel.cc.o"
   "/home/dan/workspace/367_p2_LightAndMovement/animation.cc" "/home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles/sample.dir/animation.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

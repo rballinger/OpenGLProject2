@@ -19,11 +19,6 @@ CMakeFiles/sample.dir/StreetLight.cpp.o: .././Shapes/Torus.h
 CMakeFiles/sample.dir/StreetLight.cpp.o: ../StreetLight.cpp
 CMakeFiles/sample.dir/StreetLight.cpp.o: ../StreetLight.h
 
-CMakeFiles/sample.dir/SwingFrame.cpp.o: .././Shapes/Cylinder.h
-CMakeFiles/sample.dir/SwingFrame.cpp.o: .././Shapes/Torus.h
-CMakeFiles/sample.dir/SwingFrame.cpp.o: ../SwingFrame.cpp
-CMakeFiles/sample.dir/SwingFrame.cpp.o: ../SwingFrame.h
-
 CMakeFiles/sample.dir/Tire.cpp.o: .././Shapes/Cylinder.h
 CMakeFiles/sample.dir/Tire.cpp.o: .././Shapes/Torus.h
 CMakeFiles/sample.dir/Tire.cpp.o: ../Tire.cpp
@@ -33,10 +28,6 @@ CMakeFiles/sample.dir/UFO.cpp.o: .././Shapes/Sphere.h
 CMakeFiles/sample.dir/UFO.cpp.o: ../UFO.cpp
 CMakeFiles/sample.dir/UFO.cpp.o: ../UFO.h
 
-CMakeFiles/sample.dir/Wheel.cc.o: .././Shapes/Torus.h
-CMakeFiles/sample.dir/Wheel.cc.o: ../Wheel.cc
-CMakeFiles/sample.dir/Wheel.cc.o: ../Wheel.h
-
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Cylinder.h
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Sphere.h
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Torus.h
@@ -44,6 +35,5 @@ CMakeFiles/sample.dir/animation.cc.o: ../Island.h
 CMakeFiles/sample.dir/animation.cc.o: ../StreetLight.h
 CMakeFiles/sample.dir/animation.cc.o: ../Tire.h
 CMakeFiles/sample.dir/animation.cc.o: ../UFO.h
-CMakeFiles/sample.dir/animation.cc.o: ../Wheel.h
 CMakeFiles/sample.dir/animation.cc.o: ../animation.cc
 
