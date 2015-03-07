@@ -7,9 +7,15 @@
 
 #ifndef STREETLIGHT_H_
 #define STREETLIGHT_H_
+#ifdef WIN32 /* only because I'm using CodeBlocks on Windows */
+#include "Shapes/Cylinder.h"
+#include "Shapes/Torus.h"
+#include "Shapes/Sphere.h"
+#else
 #include "Cylinder.h"
 #include "Torus.h"
 #include "Sphere.h"
+#endif
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_access.hpp>

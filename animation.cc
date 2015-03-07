@@ -4,7 +4,17 @@
  * Hans Dulimarta
  * dulimar@cis.gvsu.edu
  */
+
+#ifdef WIN32    /* in windows I'm using the static library */
+#define GLEW_STATIC
 #include <GL/glew.h>
+#include "Shapes/Cylinder.h"    /* using C::B in windows, must be named with directory */
+#include "Shapes/Sphere.h"
+#else
+#include <GL/glew.h>
+#include "Cylinder.h"
+#include "Sphere.h"
+#endif
 #include <sys/time.h>
 #include <math.h>
 #include <iostream>
@@ -14,9 +24,9 @@
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/io.hpp>
+#include <cstdlib>
+#include <cstdio>
 #include "StreetLight.h"
-#include "Cylinder.h"
-#include "Sphere.h"
 #include "Island.h"
 #include "UFO.h"
 #include "Tire.h"
@@ -505,10 +515,10 @@ int main (int argc, char **argv)
     }
 
     srand (time(0));
-    
+
     myGLInit ();
     myModelInit ();
-    
+
     /* setup display callback function */
     glfwSetFramebufferSizeCallback(win, reshapeCallback);
     glfwSetWindowRefreshCallback(win, displayCallback);
@@ -522,5 +532,5 @@ int main (int argc, char **argv)
     }
     glfwDestroyWindow(win);
     glfwTerminate();
-    
+
 }

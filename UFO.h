@@ -14,7 +14,11 @@
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/io.hpp>
+#ifdef WIN32 /* only because I'm using CodeBlocks on Windows */
+#include "Shapes/Sphere.h"
+#else
 #include "Sphere.h"
+#endif
 
 /* UFO : cyclinder  + partial disk + sphere */
 class UFO {
