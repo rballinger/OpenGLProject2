@@ -13,8 +13,13 @@
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/io.hpp>
-#include "Torus.h"
+#ifdef WIN32 /* only because I'm using CodeBlocks on Windows */
+#include "Shapes/Cylinder.h"
+#include "Shapes/Torus.h"
+#else
 #include "Cylinder.h"
+#include "Torus.h"
+#endif
 #include <vector>
 
 using namespace std;

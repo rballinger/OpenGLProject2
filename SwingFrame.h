@@ -1,7 +1,10 @@
 #ifndef SWING_FRAME_H
 #define SWING_FRAME_H
-#include "Cylinder.h"
-#include "Torus.h"
+#ifdef WIN32
+#include "Shapes/Cylinder.h"
+#include "Shapes/Torus.h"
+#endif
+
 class SwingFrame {
 private:
     Cylinder pipe;

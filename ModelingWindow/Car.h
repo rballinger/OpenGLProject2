@@ -1,12 +1,12 @@
 /*
- * StreetLight.h
+ * Car.h
  *
- *  Created on: Mar 5, 2015
- *      Author: dan
+ *  Created on: Mar 7, 2015
+ *      Author: Ryan
  */
 
-#ifndef STREETLIGHT_H_
-#define STREETLIGHT_H_
+#ifndef CAR_H_
+#define CAR_H_
 #ifdef WIN32 /* only because I'm using CodeBlocks on Windows */
 #include "Shapes/Cylinder.h"
 #include "Shapes/Torus.h"
@@ -22,16 +22,21 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/io.hpp>
 
-class StreetLight {
+class Car {
 private:
-    Cylinder post;  // post of street light
-    Cylinder base;	// base of street light
-    Torus elbow;	// top curve of street light
-    Cylinder shade;	// shade of street light
-    Sphere lamp;	// the actual light bulb
+    GLuint v_buf, i_buf, n_buf;
+    vector<glm::vec3> vertices, normals;
+    vector<GLushort> index;
+    const float CHASSIS_LEN = 20,
+        CHASSIS_WIDTH = 10,
+        CHASSIS_HEIGHT = 5,
+        OFF_GROUND = 3,
+        SUBDIV = 10;
+    int chassis_top_count,
+        side_count;
 public:
+    ~Car();
     void build();
     void render() const;
-
 };
-#endif /* STREETLIGHT_H_ */
+#endif /* CAR_H_ */

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="OpenGLProject2" />
+		<Option makefile="CMakeLists" />
+		<Option execution_dir="../OpenGLProject2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/OpenGLProject2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Arm.cpp" />
+		<Unit filename="Arm.h" />
+		<Unit filename="Island.cpp" />
+		<Unit filename="Island.h" />
+		<Unit filename="Shapes/Cylinder.cpp" />
+		<Unit filename="Shapes/Cylinder.h" />
+		<Unit filename="Shapes/Sphere.cpp" />
+		<Unit filename="Shapes/Sphere.h" />
+		<Unit filename="Shapes/Torus.cpp" />
+		<Unit filename="Shapes/Torus.h" />
+		<Unit filename="StreetLight.cpp" />
+		<Unit filename="StreetLight.h" />
+		<Unit filename="SwingFrame.cpp" />
+		<Unit filename="SwingFrame.h" />
+		<Unit filename="Tire.cpp" />
+		<Unit filename="Tire.h" />
+		<Unit filename="UFO.cpp" />
+		<Unit filename="UFO.h" />
+		<Unit filename="Wheel.cc" />
+		<Unit filename="Wheel.h" />
+		<Unit filename="animation.cc" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

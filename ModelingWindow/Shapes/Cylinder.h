@@ -20,6 +20,6 @@ public:
     ~Cylinder();
     int N_POINTS;
     void build(float topRad = 0.8f, float botRad = 0.8f, float height = 1.5, int faces=30);
-    void render(bool showTop = true) const;
+    void render() const;
 };
 #endif

@@ -4,8 +4,11 @@
 //  Created by Hans Dulimarta on 02/18/13.
 //
 //
-
+#ifdef WIN32
+#include "Shapes/Cylinder.h"
+#else
 #include "Cylinder.h"
+#endif
 #include "Arm.h"
 const float LENGTH = 20.0;
 Arm::Arm()

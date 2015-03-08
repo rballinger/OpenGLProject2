@@ -1,0 +1,87 @@
+# depslib dependency file v1.0
+1425830343 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\main.cpp
+	<iostream>
+	<cmath>
+	<algorithm>
+	<GL/glew.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<glm/glm.hpp>
+	<glm/gtc/quaternion.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/vector_angle.hpp>
+	<glm/gtx/io.hpp>
+	<GLFW/glfw3.h>
+	"StreetLight.h"
+	"Car.h"
+	"Shapes/Sphere.h"
+
+1425773019 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\shapes\cylinder.cpp
+	"Cylinder.h"
+	<cmath>
+	<glm/vec3.hpp>
+	<glm/gtc/quaternion.hpp>
+
+1425775086 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\shapes\cylinder.h
+	<vector>
+	<GL/glew.h>
+	<GL/glew.h>
+
+1425775255 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\shapes\sphere.cpp
+	"Sphere.h"
+	<cmath>
+	<iostream>
+	<glm/vec3.hpp>
+	<glm/gtc/quaternion.hpp>
+
+1425775337 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\shapes\sphere.h
+	<vector>
+	<GL/glew.h>
+	<GL/glew.h>
+
+1425773019 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\shapes\torus.cpp
+	"Torus.h"
+	<cmath>
+	<iostream>
+	<glm/trigonometric.hpp>
+	<glm/gtc/quaternion.hpp>
+
+1425775302 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\shapes\torus.h
+	<vector>
+	<GL/glew.h>
+	<GL/glew.h>
+
+1425773019 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\streetlight.cpp
+	"StreetLight.h"
+
+1425774130 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\streetlight.h
+	"Shapes/Cylinder.h"
+	"Shapes/Torus.h"
+	"Shapes/Sphere.h"
+	"Cylinder.h"
+	"Torus.h"
+	"Sphere.h"
+	<glm/glm.hpp>
+	<glm/gtx/transform.hpp>
+	<glm/gtc/matrix_access.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/io.hpp>
+
+1425836399 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\car.cpp
+	<iostream>
+	"Car.h"
+
+1425836399 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\car.h
+	"Shapes/Cylinder.h"
+	"Shapes/Torus.h"
+	"Shapes/Sphere.h"
+	"Cylinder.h"
+	"Torus.h"
+	"Sphere.h"
+	<glm/glm.hpp>
+	<glm/gtx/transform.hpp>
+	<glm/gtc/matrix_access.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/io.hpp>
+

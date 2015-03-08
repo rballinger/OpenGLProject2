@@ -1,0 +1,144 @@
+# depslib dependency file v1.0
+1425775712 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\animation.cc
+	<GL/glew.h>
+	"Shapes/Cylinder.h"
+	"Shapes/Sphere.h"
+	<GL/glew.h>
+	"Cylinder.h"
+	"Sphere.h"
+	<sys/time.h>
+	<math.h>
+	<iostream>
+	<GLFW/glfw3.h>
+	<glm/glm.hpp>
+	<glm/gtx/transform.hpp>
+	<glm/gtc/matrix_access.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/io.hpp>
+	<cstdlib>
+	<cstdio>
+	"StreetLight.h"
+	"Island.h"
+	"UFO.h"
+	"Tire.h"
+
+1425770530 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\streetlight.h
+	"Shapes/Cylinder.h"
+	"Shapes/Torus.h"
+	"Shapes/Sphere.h"
+	"Cylinder.h"
+	"Torus.h"
+	"Sphere.h"
+	<glm/glm.hpp>
+	<glm/gtx/transform.hpp>
+	<glm/gtc/matrix_access.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/io.hpp>
+
+1425771486 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\cylinder.h
+	<vector>
+	<GL/glew.h>
+	<GL/glew.h>
+
+1425771702 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\torus.h
+	<vector>
+	<GL/glew.h>
+	<GL/glew.h>
+
+1425771737 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\sphere.h
+	<vector>
+	<GL/glew.h>
+	<GL/glew.h>
+
+1425769419 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\island.h
+	<GL/glew.h>
+
+1425770581 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\ufo.h
+	<GL/glew.h>
+	<glm/glm.hpp>
+	<glm/gtx/transform.hpp>
+	<glm/gtc/matrix_access.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/io.hpp>
+	"Shapes/Sphere.h"
+	"Sphere.h"
+
+1425770596 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\tire.h
+	<GL/glew.h>
+	<glm/glm.hpp>
+	<glm/gtx/transform.hpp>
+	<glm/gtc/matrix_access.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/io.hpp>
+	"Shapes/Cylinder.h"
+	"Shapes/Torus.h"
+	"Cylinder.h"
+	"Torus.h"
+	<vector>
+
+1425770846 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\arm.cpp
+	"Shapes/Cylinder.h"
+	"Cylinder.h"
+	"Arm.h"
+
+1425770950 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\arm.h
+	<iostream>
+	<GL/glew.h>
+	"Shapes/Cylinder.h"
+	<GL/glew.h>
+	"Cylinder.h"
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\island.cpp
+	"Island.h"
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\cylinder.cpp
+	"Cylinder.h"
+	<cmath>
+	<glm/vec3.hpp>
+	<glm/gtc/quaternion.hpp>
+
+1425771655 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\sphere.cpp
+	"Sphere.h"
+	<cmath>
+	<iostream>
+	<glm/vec3.hpp>
+	<glm/gtc/quaternion.hpp>
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\torus.cpp
+	"Torus.h"
+	<cmath>
+	<iostream>
+	<glm/trigonometric.hpp>
+	<glm/gtc/quaternion.hpp>
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\wheel.cc
+	"Wheel.h"
+
+1425769419 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\wheel.h
+	<GL/glew.h>
+	"Torus.h"
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\streetlight.cpp
+	"StreetLight.h"
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\swingframe.cpp
+	"SwingFrame.h"
+
+1425771088 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\swingframe.h
+	"Shapes/Cylinder.h"
+	"Shapes/Torus.h"
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\tire.cpp
+	"Tire.h"
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\ufo.cpp
+	"UFO.h"
+
+1425769419 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\wheel.cc
+	"Wheel.h"
+
+1425771235 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\wheel.h
+	<GL/glew.h>
+	"Shapes/Torus.h"
+	<GL/glew.h>
+

@@ -8,10 +8,15 @@
 
 #ifndef __Animation__Arm__
 #define __Animation__Arm__
-
 #include <iostream>
+#ifdef WIN32
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include "Shapes/Cylinder.h"
+#else
 #include <GL/glew.h>
 #include "Cylinder.h"
+#endif
 class Arm  {
 public:
     Arm();
