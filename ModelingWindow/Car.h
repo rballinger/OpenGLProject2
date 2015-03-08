@@ -24,10 +24,19 @@
 
 class Car {
 private:
-    Torus elbow;	// top curve of street light
+    GLuint v_buf, i_buf, n_buf;
+    vector<glm::vec3> vertices, normals;
+    vector<GLushort> index;
+    const float CHASSIS_LEN = 20,
+        CHASSIS_WIDTH = 10,
+        CHASSIS_HEIGHT = 5,
+        OFF_GROUND = 3,
+        SUBDIV = 10;
+    int chassis_top_count,
+        side_count;
 public:
+    ~Car();
     void build();
     void render() const;
-
 };
 #endif /* CAR_H_ */

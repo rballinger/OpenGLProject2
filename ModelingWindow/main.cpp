@@ -136,7 +136,8 @@ void win_refresh (GLFWwindow *win) {
 
     glPushMatrix();
     {
-        glTranslatef(0, 10.0, 0);
+        glRotatef(90.0f, 0, 0, 1.0f);
+        glTranslatef(20.0, 0, 0);
         car.render();
     }
     glPopMatrix();
@@ -356,7 +357,7 @@ int main() {
     printf ("GL Version is %s\n", version);
 
 
-    glfwSetWindowSize(win, 450, 300);
+    glfwSetWindowSize(win, 700 , 500);
     glfwSwapInterval(1);
     init_gl();
     make_model();
