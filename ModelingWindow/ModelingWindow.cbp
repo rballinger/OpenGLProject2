@@ -20,6 +20,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Car.cpp" />
+		<Unit filename="Car.h" />
+		<Unit filename="Shapes/Cylinder.cpp" />
+		<Unit filename="Shapes/Cylinder.h" />
+		<Unit filename="Shapes/Sphere.cpp" />
+		<Unit filename="Shapes/Sphere.h" />
+		<Unit filename="Shapes/Torus.cpp" />
+		<Unit filename="Shapes/Torus.h" />
+		<Unit filename="StreetLight.cpp" />
+		<Unit filename="StreetLight.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -20,6 +20,11 @@
 #undef GLFW_DLL
 #include <GLFW/glfw3.h>
 
+#include "StreetLight.h"
+#include "Car.h"
+
+#include "Shapes/Sphere.h"
+
 using namespace std;
 
 void init_model();
@@ -27,7 +32,15 @@ void win_refresh(GLFWwindow*);
 float arc_ball_rad_square;
 int screen_ctr_x, screen_ctr_y;
 
-glm::mat4 camera_cf; // {glm::translate(glm::mat4(1.0f), glm::vec3{0,0,-5})};
+Sphere lamp;
+Car car;
+StreetLight streetLight;
+glm::mat4 camera_cf, frame_cf, lamp_cf;
+glm::mat4 *active;
+
+GLfloat light0_color[] = {1.0, 1.0, 1.0, 1.0};   /* color */
+GLfloat black_color[] = {0.0, 0.0, 0.0, 1.0};   /* color */
+
 
 void err_function (int what, const char *msg) {
     cerr << what << " " << msg << endl;
@@ -53,64 +66,156 @@ void win_resize (GLFWwindow * win, int width, int height)
 
     /* near-plane(1) & far-plane(10) are always POSITIVE and they measure
      * the distances along the Z-axis in front of the camera */
-    gluPerspective(60.0, static_cast<float> (width)/ static_cast<float> (height), 1, 10);
+    gluPerspective(60.0, static_cast<float> (width)/ static_cast<float> (height), 1, 1000);
 }
 
 void win_refresh (GLFWwindow *win) {
-//    cout << __PRETTY_FUNCTION__ << endl;
-    glClearColor(0, 0, 0, 1);
+    glClearColor (0.6f, 1.0f, 1.0f, 1.0f); /* black background */
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode (GL_MODELVIEW);
-    glLoadIdentity();
-    /* place the camera using the camera coordinate frame */
-    glMultMatrixf (glm::value_ptr(camera_cf));
 
-    /* draw the axes */
-    glBegin(GL_LINES);
+    glLoadMatrixf(glm::value_ptr(camera_cf));
+
+    /* axes */
+    glBegin (GL_LINES);
     glColor3ub (255, 0, 0);
-    glVertex2i (0, 0);
-    glVertex2f (1, 0);
+    glVertex3i (0, 0, 0);
+    glVertex3i (5, 0, 0);
     glColor3ub (0, 255, 0);
-    glVertex2i (0, 0);
-    glVertex2f (0, 1);
+    glVertex3i (0, 0, 0);
+    glVertex3i (0, 5, 0);
     glColor3ub (0, 0, 255);
-    glVertex2i (0, 0);
-    glVertex3f (0, 0, 1);
+    glVertex3i (0, 0, 0);
+    glVertex3i (0, 0, 5);
     glEnd();
 
+    /* ground */
+    glEnable (GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glColor3ub (30, 30, 30);
 
+    glBegin (GL_QUADS);
+    const int GROUND_SIZE = 300;
+    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+    glVertex2i (GROUND_SIZE, GROUND_SIZE);
+    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+    glVertex2i (-GROUND_SIZE, GROUND_SIZE);
+    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+    glVertex2i (-GROUND_SIZE, -GROUND_SIZE);
+    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+    glVertex2i (GROUND_SIZE, -GROUND_SIZE);
+    glEnd();
+    glDisable (GL_COLOR_MATERIAL);
 
+    glTranslatef(0, -30.0f, 0);
+    /* render static objects: streetLight */
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(frame_cf));
+        streetLight.render();
+    }
+    glPopMatrix();
+
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(lamp_cf));
+
+        /* Render light-0 as an emmisive object */
+        if (glIsEnabled(GL_LIGHT2))
+            glMaterialfv(GL_FRONT, GL_EMISSION, light0_color);
+
+        glPushMatrix();
+        glTranslatef(0.0f,28.0f,22.0f);
+        lamp.render(2.0f, 2.0f, 2.0f);
+        glPopMatrix();
+
+        glMaterialfv(GL_FRONT, GL_EMISSION, black_color);
+    }
+    glPopMatrix();
+
+    glPushMatrix();
+    {
+        glTranslatef(0, 10.0, 0);
+        car.render();
+    }
+    glPopMatrix();
 
     /* must swap buffer at the end of render function */
     glfwSwapBuffers(win);
 }
 
-/* action: GLFW_PRESS, GLFW_RELEASE, or GLFW_REPEAT */
-void key_handler (GLFWwindow *win, int key, int scan_code, int action, int mods)
-{
-    cout << __FUNCTION__ << endl;
-    if (action != GLFW_PRESS) return;
+void key_handler (GLFWwindow *win, int key, int scan_code, int action, int mods) {
+    if (action == GLFW_RELEASE) return; /* ignore key release action */
+
+    // 6 degrees of freedom for camera frame
     if (mods == GLFW_MOD_SHIFT) {
-    }
+        switch (key) {
+        	// x axis
+            case GLFW_KEY_UP: /* tilt */
+                *active *= glm::rotate(glm::radians(-3.0f), glm::vec3{1.0f, 0.0f, 0.0f});
+                break;
+            case GLFW_KEY_DOWN: /* tilt */
+                *active *= glm::rotate(glm::radians(+3.0f), glm::vec3{1.0f, 0.0f, 0.0f});
+                break;
+
+            // y axis
+            case GLFW_KEY_LEFT: /* pan left */
+                *active *= glm::rotate(glm::radians(-3.0f), glm::vec3{0.0f, 1.0f, 0.0f});
+                break;
+            case GLFW_KEY_RIGHT: /* pan right */
+                *active *= glm::rotate(glm::radians(+3.0f), glm::vec3{0.0f, 1.0f, 0.0f});
+                break;
+
+            // z axis
+            case GLFW_KEY_L: /* roll left */
+                *active *= glm::rotate(glm::radians(-3.0f), glm::vec3{0.0f, 0.0f, 1.0f});
+                break;
+            case GLFW_KEY_R: /* roll right */
+                *active *= glm::rotate(glm::radians(+3.0f), glm::vec3{0.0f, 0.0f, 1.0f});
+                break;
+
+            // positive directions
+            case GLFW_KEY_X:
+                *active *= glm::translate(glm::vec3{5, 0, 0});
+                break;
+            case GLFW_KEY_Y:
+                *active *= glm::translate(glm::vec3{0, 5, 0});
+                break;
+            case GLFW_KEY_Z:
+                *active *= glm::translate(glm::vec3{0, 0, -5});
+                break;
+
+            // negative directions
+            case GLFW_KEY_I:
+                *active *= glm::translate(glm::vec3{-5, 0, 0});
+                break;
+            case GLFW_KEY_J:
+                *active *= glm::translate(glm::vec3{0, -5, 0});
+                break;
+            case GLFW_KEY_K:
+                *active *= glm::translate(glm::vec3{0, 0, 5});
+                break;
+            default:
+                break;
+        };
+    }	// controls movement of other objects
     else {
         switch (key) {
             case GLFW_KEY_ESCAPE:
-                glfwSetWindowShouldClose(win, true);
-                break;
-            case GLFW_KEY_0:
+                exit(0);
             case GLFW_KEY_1:
-            case GLFW_KEY_2:
-            case GLFW_KEY_3:
-            case GLFW_KEY_4:
-            case GLFW_KEY_5:
-            case GLFW_KEY_6:
-                /* rebuild the model at different level of detail */
-
+                if (glIsEnabled(GL_LIGHT2))
+                    glDisable(GL_LIGHT2);
+                else
+                    glEnable(GL_LIGHT2);
+                win_refresh(win);
+                break;
+            case GLFW_KEY_C:
+                active = &camera_cf;
                 break;
         }
     }
-    win_refresh(win);
 }
 
 /*
@@ -165,26 +270,50 @@ void cursor_handler (GLFWwindow *win, double xpos, double ypos) {
 
 void scroll_handler (GLFWwindow *win, double xscroll, double yscroll) {
     /* translate along the camera Z-axis */
-    glm::mat4 z_translate = glm::translate((float)yscroll * glm::vec3{0, 0, 1});
+    glm::mat4 z_translate = glm::translate((float)yscroll * glm::vec3{0, 0, 5});
     camera_cf =  z_translate * camera_cf;
     win_refresh(win);
-
 }
 
 void init_gl() {
+    glClearColor (0.6f, 1.0f, 1.0f, 1.0f); /* black background */
+
+    /* fill front-facing polygon */
+    glPolygonMode (GL_FRONT, GL_FILL);
+    /* draw outline of back-facing polygon */
+    glPolygonMode (GL_BACK, GL_LINE);
+
+    /* Enable depth test for hidden surface removal */
     glEnable (GL_DEPTH_TEST);
+
+    /* enable back-face culling */
+    glEnable (GL_CULL_FACE);
+    //glCullFace (GL_BACK);
+
+    /* Enable shading */
+    glEnable (GL_LIGHTING);
+    glEnable (GL_NORMALIZE); /* Tell OpenGL to renormalize normal vector
+                              after transformation */
+    // street lamp light
+    glEnable (GL_LIGHT2);
+    glLightfv (GL_LIGHT2, GL_AMBIENT, light0_color);
+    glLightfv (GL_LIGHT2, GL_DIFFUSE, light0_color);
+    glLightfv (GL_LIGHT2, GL_SPECULAR, light0_color);
+
     glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_COLOR_ARRAY);
-    glEnable(GL_CULL_FACE);
-    glLineWidth(3.0);
 
     /* place the camera at Z=+5 (notice that the sign is OPPOSITE!) */
-    camera_cf *= glm::translate(glm::vec3{0, 0, -5});
+    camera_cf *= glm::translate(glm::vec3{0, 0, -20});
+
+    lamp_cf = glm::translate(glm::vec3{0, 0, 10});
 }
 
 void make_model() {
-
-
+    streetLight.build();
+    lamp.build(35, 40);
+    car.build();
+    frame_cf = glm::translate(glm::vec3{0, 0 , 25});
+    active = &camera_cf;		// camera frame is initially active
 }
 
 int main() {
