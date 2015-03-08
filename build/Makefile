@@ -163,6 +163,30 @@ Shapes/Cylinder.cpp.s:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Cylinder.cpp.s
 .PHONY : Shapes/Cylinder.cpp.s
 
+Shapes/Fan.o: Shapes/Fan.cpp.o
+.PHONY : Shapes/Fan.o
+
+# target to build an object file
+Shapes/Fan.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Fan.cpp.o
+.PHONY : Shapes/Fan.cpp.o
+
+Shapes/Fan.i: Shapes/Fan.cpp.i
+.PHONY : Shapes/Fan.i
+
+# target to preprocess a source file
+Shapes/Fan.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Fan.cpp.i
+.PHONY : Shapes/Fan.cpp.i
+
+Shapes/Fan.s: Shapes/Fan.cpp.s
+.PHONY : Shapes/Fan.s
+
+# target to generate assembly for a file
+Shapes/Fan.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Fan.cpp.s
+.PHONY : Shapes/Fan.cpp.s
+
 Shapes/Sphere.o: Shapes/Sphere.cpp.o
 .PHONY : Shapes/Sphere.o
 
@@ -283,6 +307,54 @@ UFO.cpp.s:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/UFO.cpp.s
 .PHONY : UFO.cpp.s
 
+VaneSwivel.o: VaneSwivel.cpp.o
+.PHONY : VaneSwivel.o
+
+# target to build an object file
+VaneSwivel.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/VaneSwivel.cpp.o
+.PHONY : VaneSwivel.cpp.o
+
+VaneSwivel.i: VaneSwivel.cpp.i
+.PHONY : VaneSwivel.i
+
+# target to preprocess a source file
+VaneSwivel.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/VaneSwivel.cpp.i
+.PHONY : VaneSwivel.cpp.i
+
+VaneSwivel.s: VaneSwivel.cpp.s
+.PHONY : VaneSwivel.s
+
+# target to generate assembly for a file
+VaneSwivel.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/VaneSwivel.cpp.s
+.PHONY : VaneSwivel.cpp.s
+
+WeatherVaneBase.o: WeatherVaneBase.cpp.o
+.PHONY : WeatherVaneBase.o
+
+# target to build an object file
+WeatherVaneBase.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/WeatherVaneBase.cpp.o
+.PHONY : WeatherVaneBase.cpp.o
+
+WeatherVaneBase.i: WeatherVaneBase.cpp.i
+.PHONY : WeatherVaneBase.i
+
+# target to preprocess a source file
+WeatherVaneBase.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/WeatherVaneBase.cpp.i
+.PHONY : WeatherVaneBase.cpp.i
+
+WeatherVaneBase.s: WeatherVaneBase.cpp.s
+.PHONY : WeatherVaneBase.s
+
+# target to generate assembly for a file
+WeatherVaneBase.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/WeatherVaneBase.cpp.s
+.PHONY : WeatherVaneBase.cpp.s
+
 animation.o: animation.cc.o
 .PHONY : animation.o
 
@@ -322,6 +394,9 @@ help:
 	@echo "... Shapes/Cylinder.o"
 	@echo "... Shapes/Cylinder.i"
 	@echo "... Shapes/Cylinder.s"
+	@echo "... Shapes/Fan.o"
+	@echo "... Shapes/Fan.i"
+	@echo "... Shapes/Fan.s"
 	@echo "... Shapes/Sphere.o"
 	@echo "... Shapes/Sphere.i"
 	@echo "... Shapes/Sphere.s"
@@ -337,6 +412,12 @@ help:
 	@echo "... UFO.o"
 	@echo "... UFO.i"
 	@echo "... UFO.s"
+	@echo "... VaneSwivel.o"
+	@echo "... VaneSwivel.i"
+	@echo "... VaneSwivel.s"
+	@echo "... WeatherVaneBase.o"
+	@echo "... WeatherVaneBase.i"
+	@echo "... WeatherVaneBase.s"
 	@echo "... animation.o"
 	@echo "... animation.i"
 	@echo "... animation.s"

@@ -20,6 +20,10 @@
 #include "Island.h"
 #include "UFO.h"
 #include "Tire.h"
+#include "Fan.h"
+#include "WeatherVaneBase.h"
+#include "VaneSwivel.h"
+
 
 using namespace std;
 void displayCallback(GLFWwindow*);
@@ -33,11 +37,15 @@ Island island;
 UFO *ufo;
 UFO *miniUFO1;
 UFO *miniUFO2;
+Fan *fan;
+WeatherVaneBase vaneBase;
+VaneSwivel *swivel;
 
 glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
 glm::mat4 tire_cf;
 glm::mat4 ufo_cf, minUfo1_cf, minUfo2_cf;
+glm::mat4 vaneBase_cf, fan_cf, swivel_cf;
 glm::mat4 frame_cf;
 glm::mat4 camera_cf, light0_cf;
 glm::mat4 *active;
@@ -64,6 +72,9 @@ const float INIT_SWING_ANGLE = 35.0f; /* degrees */
 const float GRAVITY = 9.8;   /* m/sec^2 */
 bool is_anim_running = true;
 
+float SWIVEL_SPEED = 0;
+float d_swiv_speed = 0.95;
+
 /* light source setting */
 GLfloat light0_color[] = {1.0, 1.0, 1.0, 1.0};   /* color */
 GLfloat light1_color[] = {0.0, 3.0, 0.0, 1.0};   /* green color */
@@ -84,7 +95,10 @@ void reshapeCallback (GLFWwindow *win, int w, int h)
 
     /* switch back to Model View matrix mode */
     glMatrixMode (GL_MODELVIEW);
-    camera_cf = glm::lookAt(glm::vec3(260,90,180), glm::vec3(0,0,0), glm::vec3(0,0,1));
+    //camera_cf = glm::lookAt(glm::vec3(260,90,180), glm::vec3(0,0,0), glm::vec3(0,0,1));
+
+    camera_cf = glm::lookAt(glm::vec3(110,140,90), glm::vec3(0,0,0), glm::vec3(0,0,1));
+
 }
 
 /*================================================================*
@@ -93,12 +107,12 @@ void reshapeCallback (GLFWwindow *win, int w, int h)
 void updateCoordFrames()
 {
     static double last_timestamp = 0;
-    static float swing_time = 0;
-    static float swing_angle = 0;
-    static float ufo_angle = 0;
+    static float swivel_angle = 0;
+    static float fan_angle = 0;
     static int deg = 0;
-    const float UFO_SPEED = 144; /* in degrees per second */
-    float delta, current;
+    const float FAN_SPEED = 44; /* in degrees per second */
+    float delta, swivel_delta, current;
+
 
     static float majAxis = 180.0;
     static float minorAxis = 60.0;
@@ -110,9 +124,19 @@ void updateCoordFrames()
     // 		   y = b sin t
     current = glfwGetTime();
     if (is_anim_running) {
-        //delta = (current - last_timestamp);
-        //ufo_angle = UFO_SPEED * delta;
-        //ufo_cf *= glm::rotate(glm::radians(ufo_angle), glm::vec3{0.0f, 0.0f, 1.0f});
+        delta = (current - last_timestamp);
+        swivel_delta = (current - last_timestamp);
+        fan_angle = FAN_SPEED * delta;
+        fan_cf *= glm::rotate(glm::radians(fan_angle), glm::vec3{0.0f, 1.0f, 0.0f});
+
+        if(SWIVEL_SPEED >= 100 || SWIVEL_SPEED <= -100){
+        	d_swiv_speed *= -1.0;
+        }
+
+        SWIVEL_SPEED += d_swiv_speed;
+
+        swivel_angle = SWIVEL_SPEED * swivel_delta;
+        swivel_cf *= glm::rotate(glm::radians(swivel_angle),glm::vec3{0.0f, 0.0f, 1.0f});
 
         float x = majAxis*cos(ellipse_angle);
         float y = minorAxis*sin(ellipse_angle);
@@ -322,6 +346,30 @@ void displayCallback (GLFWwindow *win)
     glPopMatrix();
 
     glPushMatrix();
+    {
+    	glMultMatrixf(glm::value_ptr(vaneBase_cf));
+    	vaneBase.render();
+
+		glPushMatrix();
+		{
+	    	glMultMatrixf(glm::value_ptr(swivel_cf));
+			swivel->render();
+			glPushMatrix();
+			{
+		    	glMultMatrixf(glm::value_ptr(fan_cf));
+				fan->render();
+		    }
+		    glPopMatrix();
+		}
+		glPopMatrix();
+    }
+    glPopMatrix();
+
+
+
+
+
+    glPushMatrix();
     glTranslatef(0.0,0.0,15.0);
     glRotatef (90, 0, 1, 0);
     tire->render();
@@ -333,7 +381,15 @@ void displayCallback (GLFWwindow *win)
 
 void myModelInit ()
 {
-    sphere.build(35, 40);
+    sphere.build(35, 20);
+
+    fan = new Fan();
+    fan->build(1,20.0);
+
+    swivel = new VaneSwivel();
+    swivel->build();
+
+    vaneBase.build();
 
     ufo = new UFO();
     ufo->build(0.0, 0.0,100.0,1.0);
@@ -352,9 +408,14 @@ void myModelInit ()
     tire_cf = glm::translate(glm::vec3{0.0f, 0.0f, 10.0f});
     tire_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
 
-    ufo_cf = glm::translate(glm::vec3{0.0f, 0.0f, 20.0f});
+    ufo_cf = glm::translate(glm::vec3{0.0f, 70.0f, 50.0f});
     minUfo1_cf = glm::translate(glm::vec3{0.0f, 0.0f, 0.0f});
     minUfo2_cf = glm::translate(glm::vec3{-25.0f, 20.0f, 0.0f});
+
+    fan_cf = glm::translate(glm::vec3{0.0f, 19.0f, 0.0f});
+    fan_cf *= glm::rotate(glm::radians(5.0f), glm::vec3{1,0,0});
+    swivel_cf = glm::translate(glm::vec3{10.0f, 10.5f, 42.0f});
+    vaneBase_cf = glm::translate(glm::vec3{0.0f, -260.0f, 39.5f});
 
     streetLight.build();
 
@@ -441,7 +502,8 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             default:
                 break;
         };
-    }	// controls movement of other objects
+    }
+    // controls movement of other objects
     else {
         switch (key) {
             case GLFW_KEY_ESCAPE:

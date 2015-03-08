@@ -4,8 +4,5 @@
 
 3. Timer? (may already be implemented)
 
-4. Keyboard control to adjust speed of moving objects.
+4. One light source must be a spot light.
 
-5. One light source must be a spot light.
-
-6. Keyboard controls to change light source position.
