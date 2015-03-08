@@ -3,6 +3,8 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="OpenGLProject2" />
+		<Option makefile="CMakeLists" />
+		<Option execution_dir="../OpenGLProject2" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -20,7 +22,27 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="Arm.cpp" />
+		<Unit filename="Arm.h" />
+		<Unit filename="Island.cpp" />
+		<Unit filename="Island.h" />
+		<Unit filename="Shapes/Cylinder.cpp" />
+		<Unit filename="Shapes/Cylinder.h" />
+		<Unit filename="Shapes/Sphere.cpp" />
+		<Unit filename="Shapes/Sphere.h" />
+		<Unit filename="Shapes/Torus.cpp" />
+		<Unit filename="Shapes/Torus.h" />
+		<Unit filename="StreetLight.cpp" />
+		<Unit filename="StreetLight.h" />
+		<Unit filename="SwingFrame.cpp" />
+		<Unit filename="SwingFrame.h" />
+		<Unit filename="Tire.cpp" />
+		<Unit filename="Tire.h" />
+		<Unit filename="UFO.cpp" />
+		<Unit filename="UFO.h" />
+		<Unit filename="Wheel.cc" />
+		<Unit filename="Wheel.h" />
+		<Unit filename="animation.cc" />
 		<Extensions>
 			<code_completion />
 			<envvars />
