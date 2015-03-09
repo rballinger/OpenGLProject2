@@ -180,9 +180,33 @@ void Car::build() {
     tire_fl_cf = glm::translate(glm::vec3(CHASSIS_WIDTH, SECTION_LEN * 5, OFF_GROUND));
     tire_rr_cf = glm::translate(glm::vec3(0, SECTION_LEN * 34, OFF_GROUND));
     tire_rl_cf = glm::translate(glm::vec3(CHASSIS_WIDTH, SECTION_LEN * 34, OFF_GROUND));
+}
 
-    tire_list = glGenLists(1);
-    glNewList (tire_list, GL_COMPILE);
+void Car::render() const {
+
+    static float CHROME_AMBIENT[] = {0.250000, 0.250000, 0.250000, 1.000000};
+    static float CHROME_DIFFUSE[] = {0.400000, 0.400000, 0.400000, 1.000000};
+    static float CHROME_SPECULAR[] = {0.774597, 0.774597, 0.774597, 1.000000};
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT, CHROME_AMBIENT);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, CHROME_DIFFUSE);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, CHROME_SPECULAR);
+    glMaterialf(GL_FRONT, GL_SHININESS, 76.800003);
+
+    glPushAttrib(GL_ENABLE_BIT);
+    glDisableClientState(GL_COLOR_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glBindBuffer(GL_ARRAY_BUFFER, v_buf);
+    glVertexPointer(3, GL_FLOAT, 0, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, n_buf);
+    glNormalPointer(GL_FLOAT, 0, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, i_buf);
+
+    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, 0);
+    glFrontFace(GL_CW);
+    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count));
+    glDrawElements(GL_QUAD_STRIP, side_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count * 2));
+    glFrontFace(GL_CCW);
 
     glPushMatrix();
     {
@@ -217,37 +241,17 @@ void Car::build() {
     }
     glPopMatrix();
 
-    glEndList();
-}
-
-void Car::render() const {
-
-    static float CHROME_AMBIENT[] = {0.250000, 0.250000, 0.250000, 1.000000};
-    static float CHROME_DIFFUSE[] = {0.400000, 0.400000, 0.400000, 1.000000};
-    static float CHROME_SPECULAR[] = {0.774597, 0.774597, 0.774597, 1.000000};
-
-    glMaterialfv(GL_FRONT, GL_AMBIENT, CHROME_AMBIENT);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, CHROME_DIFFUSE);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, CHROME_SPECULAR);
-    glMaterialf(GL_FRONT, GL_SHININESS, 76.800003);
-
-    glPushAttrib(GL_ENABLE_BIT);
-    glDisableClientState(GL_COLOR_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
-    glBindBuffer(GL_ARRAY_BUFFER, v_buf);
-    glVertexPointer(3, GL_FLOAT, 0, 0);
-    glBindBuffer(GL_ARRAY_BUFFER, n_buf);
-    glNormalPointer(GL_FLOAT, 0, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, i_buf);
-
-    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, 0);
-    glFrontFace(GL_CW);
-    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count));
-    glDrawElements(GL_QUAD_STRIP, side_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count * 2));
-    glFrontFace(GL_CCW);
-
-    glCallList(tire_list);
-
     glPopAttrib();
 
+};
+
+/**
+ *  Rotates the wheels of the car in indicated direction.
+ *  dis : distance of car's translation and determines forward or backward rotation
+ */
+void Car::rotate_wheels(float dis) {
+    tire_fr_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
+    tire_fl_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
+    tire_rr_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
+    tire_rl_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
 };

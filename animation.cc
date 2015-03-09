@@ -56,7 +56,6 @@ VaneSwivel *swivel;
 
 glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
-//glm::mat4 tire_cf;
 glm::mat4 ufo_cf, minUfo1_cf, minUfo2_cf;
 glm::mat4 car_cf;
 glm::mat4 vaneBase_cf, fan_cf, swivel_cf;
@@ -570,14 +569,15 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                 if(*active == car_cf){
                     car_speed -= 0.1;
                     *active *= glm::translate(glm::vec3(0, car_speed, 0));
+                    // rotate tires forwards
+                    car.rotate_wheels(-car_speed);
                 }
                 break;
             case GLFW_KEY_S:
                 if(*active == car_cf){
                     car_speed += 0.1;
                     *active *= glm::translate(glm::vec3(0, car_speed, 0));
-                    // rotate tires
-
+                    car.rotate_wheels(-car_speed);
                 }
                 break;
             /* TODO */

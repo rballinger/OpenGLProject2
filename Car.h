@@ -8,6 +8,8 @@
 #ifndef CAR_H_
 #define CAR_H_
 #ifdef WIN32 /* only because I'm using CodeBlocks on Windows */
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include "Shapes/Cylinder.h"
 #include "Shapes/Torus.h"
 #include "Shapes/Sphere.h"
@@ -39,11 +41,10 @@ private:
         side_count;
     Tire *tire_fr, *tire_fl, *tire_rr, *tire_rl;
     glm::mat4 tire_fr_cf, tire_fl_cf, tire_rr_cf, tire_rl_cf;
-    GLint tire_list;
 public:
     ~Car();
     void build();
     void render() const;
-
+    void rotate_wheels(float dis);
 };
 #endif /* CAR_H_ */

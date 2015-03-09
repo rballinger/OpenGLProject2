@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1425925008 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\animation.cc
+1425927310 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\animation.cc
 	<GL/glew.h>
 	"Shapes/Cylinder.h"
 	"Shapes/Sphere.h"
@@ -146,7 +146,8 @@
 	"Shapes/Torus.h"
 	<GL/glew.h>
 
-1425925000 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.h
+1425929917 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.h
+	<GL/glew.h>
 	"Shapes/Cylinder.h"
 	"Shapes/Torus.h"
 	"Shapes/Sphere.h"
@@ -160,7 +161,7 @@
 	<glm/gtx/io.hpp>
 	"Tire.h"
 
-1425924688 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.cpp
+1425927196 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.cpp
 	<iostream>
 	"Car.h"
 
