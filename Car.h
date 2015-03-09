@@ -43,6 +43,7 @@ private:
 public:
     ~Car();
     void build();
-    void render(bool outline) const;
+    void render() const;
+
 };
 #endif /* CAR_H_ */

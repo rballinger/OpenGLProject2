@@ -220,12 +220,7 @@ void Car::build() {
     glEndList();
 }
 
-void Car::render(bool outline) const {
-    if(outline){
-        glPolygonMode(GL_FRONT, GL_LINE);
-    }else{
-        glPolygonMode(GL_FRONT, GL_FILL);
-    }
+void Car::render() const {
 
     static float CHROME_AMBIENT[] = {0.250000, 0.250000, 0.250000, 1.000000};
     static float CHROME_DIFFUSE[] = {0.400000, 0.400000, 0.400000, 1.000000};

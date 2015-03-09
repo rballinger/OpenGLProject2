@@ -383,18 +383,12 @@ void displayCallback (GLFWwindow *win)
 		glPopMatrix();
     }
     glPopMatrix();
-/*
-    glPushMatrix();
-    glTranslatef(0.0,0.0,15.0);
-    glRotatef (90, 0, 1, 0);
-    tire->render();
-    glPopMatrix();
-*/
+
     // place car
     glPushMatrix();
     {
         glMultMatrixf(glm::value_ptr(car_cf));
-        car.render(false);
+        car.render();
     }
     glPopMatrix();
 
@@ -424,12 +418,6 @@ void myModelInit ()
 
     light.build(35, 40);
     island.build();
-
-    //tire = new Tire;
-    //tire->build();
-
-    //tire_cf = glm::translate(glm::vec3{0.0f, 0.0f, 10.0f});
-    //tire_cf *= glm::rotate(glm::radians(90.0f), glm::vec3{1,0,0});
 
     ufo_cf = glm::translate(glm::vec3{0.0f, 70.0f, 50.0f});
     minUfo1_cf = glm::translate(glm::vec3{0.0f, 0.0f, 0.0f});
