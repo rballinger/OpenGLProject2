@@ -22,7 +22,7 @@
 
 #include "StreetLight.h"
 #include "Car.h"
-
+#include "Tire.h"
 #include "Shapes/Sphere.h"
 
 using namespace std;
@@ -32,10 +32,13 @@ void win_refresh(GLFWwindow*);
 float arc_ball_rad_square;
 int screen_ctr_x, screen_ctr_y;
 
+bool wireframe = true;
 Sphere lamp;
 Car car;
+Tire *tire_fr, *tire_fl, *tire_rr, *tire_rl;
 StreetLight streetLight;
-glm::mat4 camera_cf, frame_cf, lamp_cf;
+glm::mat4 camera_cf, frame_cf, lamp_cf,
+    car_cf, tire_fr_cf, tire_fl_cf, tire_rr_cf, tire_rl_cf;
 glm::mat4 *active;
 
 GLfloat light0_color[] = {1.0, 1.0, 1.0, 1.0};   /* color */
@@ -136,9 +139,45 @@ void win_refresh (GLFWwindow *win) {
 
     glPushMatrix();
     {
-        glRotatef(90.0f, 0, 0, 1.0f);
-        glTranslatef(20.0, 0, 0);
-        car.render();
+        // place car in cf
+        glMultMatrixf(glm::value_ptr(car_cf));
+        car.render(wireframe);
+        glPushMatrix();
+        {
+            glTranslatef(4.0f, -18.8f, -1.5f);
+            glMultMatrixf(glm::value_ptr(tire_fr_cf));
+            glRotatef(270, 0, 1.0f, 0);
+            glScalef(0.25f, 0.25f, 0.25f);
+            tire_fr->render();
+        }
+        glPopMatrix();
+        glPushMatrix();
+        {
+            glTranslatef(4.0f, -4.2f, -1.5f);
+            glMultMatrixf(glm::value_ptr(tire_fl_cf));
+            glRotatef(270, 0, 1.0f, 0);
+            glScalef(0.25f, 0.25f, 0.25f);
+            tire_fl->render();
+        }
+        glPopMatrix();
+        glPushMatrix();
+        {
+            glTranslatef(4.0f, -18.8f, -1.5f);
+            glMultMatrixf(glm::value_ptr(tire_fr_cf));
+            glRotatef(90, 0, 1.0f, 0);
+            glScalef(0.25f, 0.25f, 0.25f);
+            tire_rr->render();
+        }
+        glPopMatrix();
+        glPushMatrix();
+        {
+            glTranslatef(4.0f, -4.2f, -1.5f);
+            glMultMatrixf(glm::value_ptr(tire_fl_cf));
+            glRotatef(90, 0, 1.0f, 0);
+            glScalef(0.25f, 0.25f, 0.25f);
+            tire_rl->render();
+        }
+        glPopMatrix();
     }
     glPopMatrix();
 
@@ -203,6 +242,9 @@ void key_handler (GLFWwindow *win, int key, int scan_code, int action, int mods)
     }	// controls movement of other objects
     else {
         switch (key) {
+            case GLFW_KEY_W:
+                wireframe = !wireframe;
+                break;
             case GLFW_KEY_ESCAPE:
                 exit(0);
             case GLFW_KEY_1:
@@ -217,6 +259,7 @@ void key_handler (GLFWwindow *win, int key, int scan_code, int action, int mods)
                 break;
         }
     }
+    win_refresh(win);
 }
 
 /*
@@ -313,7 +356,20 @@ void make_model() {
     streetLight.build();
     lamp.build(35, 40);
     car.build();
+    tire_fr = new Tire();
+    tire_fl = new Tire();
+    tire_rr = new Tire();
+    tire_rl = new Tire();
+    tire_fr->build();
+    tire_fl->build();
+    tire_rr->build();
+    tire_rl->build();
     frame_cf = glm::translate(glm::vec3{0, 0 , 25});
+    car_cf = glm::translate(glm::vec3(0, 25, 1.5));
+    tire_fr_cf = glm::translate(glm::vec3(0, 25, 1.5));
+    tire_fl_cf = glm::translate(glm::vec3(0, 25, 1.5));
+    tire_rr_cf = glm::translate(glm::vec3(0, 25, 1.5));
+    tire_rl_cf = glm::translate(glm::vec3(0, 25, 1.5));
     active = &camera_cf;		// camera frame is initially active
 }
 

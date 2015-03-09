@@ -24,6 +24,8 @@
 		</Compiler>
 		<Unit filename="Arm.cpp" />
 		<Unit filename="Arm.h" />
+		<Unit filename="Car.cpp" />
+		<Unit filename="Car.h" />
 		<Unit filename="Island.cpp" />
 		<Unit filename="Island.h" />
 		<Unit filename="Shapes/Cylinder.cpp" />

@@ -30,6 +30,8 @@
 		<Unit filename="Shapes/Torus.h" />
 		<Unit filename="StreetLight.cpp" />
 		<Unit filename="StreetLight.h" />
+		<Unit filename="Tire.cpp" />
+		<Unit filename="Tire.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

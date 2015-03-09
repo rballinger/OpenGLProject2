@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1425830343 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\main.cpp
+1425876915 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\main.cpp
 	<iostream>
 	<cmath>
 	<algorithm>
@@ -15,6 +15,7 @@
 	<GLFW/glfw3.h>
 	"StreetLight.h"
 	"Car.h"
+	"Tire.h"
 	"Shapes/Sphere.h"
 
 1425773019 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\shapes\cylinder.cpp
@@ -68,11 +69,11 @@
 	<glm/gtc/type_ptr.hpp>
 	<glm/gtx/io.hpp>
 
-1425836399 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\car.cpp
+1425875107 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\car.cpp
 	<iostream>
 	"Car.h"
 
-1425836399 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\car.h
+1425874934 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\car.h
 	"Shapes/Cylinder.h"
 	"Shapes/Torus.h"
 	"Shapes/Sphere.h"
@@ -84,4 +85,20 @@
 	<glm/gtc/matrix_access.hpp>
 	<glm/gtc/type_ptr.hpp>
 	<glm/gtx/io.hpp>
+
+1425774196 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\tire.h
+	<GL/glew.h>
+	<glm/glm.hpp>
+	<glm/gtx/transform.hpp>
+	<glm/gtc/matrix_access.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<glm/gtx/io.hpp>
+	"Shapes/Cylinder.h"
+	"Shapes/Torus.h"
+	"Cylinder.h"
+	"Torus.h"
+	<vector>
+
+1425870656 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\modelingwindow\tire.cpp
+	"Tire.h"
 
