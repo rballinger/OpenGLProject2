@@ -2,7 +2,7 @@
  * Tire.cpp
  *
  *  Created on: Mar 6, 2015
- *      Author: dan
+ *      Author: dan and ryan
  */
 #include "Tire.h"
 const float WIDTH = 3.0;
@@ -68,20 +68,22 @@ void Tire::build ()
     glMaterialf(GL_FRONT, GL_SHININESS, 10);
 
     glPushMatrix();
-    glTranslatef(0.0,15.0,15.0);
     glRotatef (90, 1, 0, 0);
+    glTranslatef(0.0,0,-1.5);
+
     gluCylinder(rubber, rubberTopRadius, rubberBottomRadius, WIDTH, 24, 24);
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0.0,15.0,15.0);
     glRotatef (-90, 1, 0, 0);
+    glTranslatef(0.0,0,1.5);
     gluPartialDisk(outRubberWall, wallInnerRadius, wallOuterRadius, 24, 24, 0, 360);
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0.0,15.0 - WIDTH,15.0);
     glRotatef (90, 1, 0, 0);
+    glTranslatef(0.0,0,1.5);
+
     gluPartialDisk(inRubberWall, wallInnerRadius, wallOuterRadius, 24, 24, 0, 360);
     glPopMatrix();
 
@@ -103,17 +105,14 @@ void Tire::build ()
 
 void Tire::render() const {
     glPushMatrix();
-    glTranslatef(0.0,-15.0,13.5);
-    //glRotatef (90, 0, 1, 0);
     hub.render();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0.0,-15.0,0.0);
     float currAngle = 0;
     for(int i = 0; i < nuts.size(); i++){
         glPushMatrix();
-        glTranslatef(cos(currAngle)*(wallInnerRadius - 1.5),sin(currAngle)*(wallInnerRadius - 1.5),13.8);
+        glTranslatef(cos(currAngle)*(wallInnerRadius - 1.5),sin(currAngle)*(wallInnerRadius - 1.5),0.3);
     	nuts[i].render();
     	glPopMatrix();
     	currAngle += d_angle;

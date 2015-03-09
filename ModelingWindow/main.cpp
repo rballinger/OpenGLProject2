@@ -144,7 +144,7 @@ void win_refresh (GLFWwindow *win) {
         car.render(wireframe);
         glPushMatrix();
         {
-            glTranslatef(4.0f, -18.8f, -1.5f);
+            //glTranslatef(4.0f, -18.8f, -1.5f);
             glMultMatrixf(glm::value_ptr(tire_fr_cf));
             glRotatef(270, 0, 1.0f, 0);
             glScalef(0.25f, 0.25f, 0.25f);
@@ -153,7 +153,7 @@ void win_refresh (GLFWwindow *win) {
         glPopMatrix();
         glPushMatrix();
         {
-            glTranslatef(4.0f, -4.2f, -1.5f);
+            //glTranslatef(4.0f, -4.2f, -1.5f);
             glMultMatrixf(glm::value_ptr(tire_fl_cf));
             glRotatef(270, 0, 1.0f, 0);
             glScalef(0.25f, 0.25f, 0.25f);
@@ -162,7 +162,7 @@ void win_refresh (GLFWwindow *win) {
         glPopMatrix();
         glPushMatrix();
         {
-            glTranslatef(4.0f, -18.8f, -1.5f);
+            //glTranslatef(4.0f, -18.8f, -1.5f);
             glMultMatrixf(glm::value_ptr(tire_fr_cf));
             glRotatef(90, 0, 1.0f, 0);
             glScalef(0.25f, 0.25f, 0.25f);
@@ -171,7 +171,7 @@ void win_refresh (GLFWwindow *win) {
         glPopMatrix();
         glPushMatrix();
         {
-            glTranslatef(4.0f, -4.2f, -1.5f);
+            //glTranslatef(4.0f, -4.2f, -1.5f);
             glMultMatrixf(glm::value_ptr(tire_fl_cf));
             glRotatef(90, 0, 1.0f, 0);
             glScalef(0.25f, 0.25f, 0.25f);
@@ -367,9 +367,9 @@ void make_model() {
     frame_cf = glm::translate(glm::vec3{0, 0 , 25});
     car_cf = glm::translate(glm::vec3(0, 25, 1.5));
     tire_fr_cf = glm::translate(glm::vec3(0, 25, 1.5));
-    tire_fl_cf = glm::translate(glm::vec3(0, 25, 1.5));
-    tire_rr_cf = glm::translate(glm::vec3(0, 25, 1.5));
-    tire_rl_cf = glm::translate(glm::vec3(0, 25, 1.5));
+    tire_fl_cf = glm::translate(glm::vec3(0, 20, 1.5));
+    tire_rr_cf = glm::translate(glm::vec3(0, 15, 1.5));
+    tire_rl_cf = glm::translate(glm::vec3(0, 10, 1.5));
     active = &camera_cf;		// camera frame is initially active
 }
 
