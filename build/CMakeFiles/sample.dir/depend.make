@@ -7,6 +7,10 @@ CMakeFiles/sample.dir/Island.cpp.o: ../Island.h
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: ../Shapes/Cylinder.cpp
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: ../Shapes/Cylinder.h
 
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o: ../Shapes/Cylinder.h
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o: ../Shapes/Fan.cpp
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o: ../Shapes/Fan.h
+
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: ../Shapes/Sphere.cpp
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: ../Shapes/Sphere.h
 
@@ -28,12 +32,23 @@ CMakeFiles/sample.dir/UFO.cpp.o: .././Shapes/Sphere.h
 CMakeFiles/sample.dir/UFO.cpp.o: ../UFO.cpp
 CMakeFiles/sample.dir/UFO.cpp.o: ../UFO.h
 
+CMakeFiles/sample.dir/VaneSwivel.cpp.o: .././Shapes/Cylinder.h
+CMakeFiles/sample.dir/VaneSwivel.cpp.o: ../VaneSwivel.cpp
+CMakeFiles/sample.dir/VaneSwivel.cpp.o: ../VaneSwivel.h
+
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o: .././Shapes/Cylinder.h
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o: ../WeatherVaneBase.cpp
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o: ../WeatherVaneBase.h
+
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Cylinder.h
+CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Fan.h
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Sphere.h
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Torus.h
 CMakeFiles/sample.dir/animation.cc.o: ../Island.h
 CMakeFiles/sample.dir/animation.cc.o: ../StreetLight.h
 CMakeFiles/sample.dir/animation.cc.o: ../Tire.h
 CMakeFiles/sample.dir/animation.cc.o: ../UFO.h
+CMakeFiles/sample.dir/animation.cc.o: ../VaneSwivel.h
+CMakeFiles/sample.dir/animation.cc.o: ../WeatherVaneBase.h
 CMakeFiles/sample.dir/animation.cc.o: ../animation.cc
 

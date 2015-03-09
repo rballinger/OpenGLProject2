@@ -115,7 +115,7 @@ void Cylinder::build(float topRad, float botRad, float height, int faces) {
     glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void Cylinder::render() const {
+void Cylinder::render(bool showTop) const {
     /* select the buffs */
     glPushAttrib(GL_ENABLE_BIT);
     glDisableClientState(GL_COLOR_ARRAY);
@@ -129,15 +129,16 @@ void Cylinder::render() const {
     int N = 2*N_POINTS + 2;
 
     glDrawElements (GL_QUAD_STRIP, 2*N_POINTS + 2, GL_UNSIGNED_SHORT, 0);
-    glDrawElements (GL_TRIANGLE_FAN, N_POINTS + 2, GL_UNSIGNED_SHORT,
-            (void *) (sizeof(GLushort) * N));
+    if(showTop){
+    	glDrawElements (GL_TRIANGLE_FAN, N_POINTS + 2, GL_UNSIGNED_SHORT,(void *) (sizeof(GLushort) * N));
+    }
 
     N = 2*N_POINTS + 2;
     glFrontFace(GL_CW);
     glDrawElements (GL_QUAD_STRIP, 2*N_POINTS + 2, GL_UNSIGNED_SHORT, 0);
-    glDrawElements (GL_TRIANGLE_FAN, N_POINTS + 2, GL_UNSIGNED_SHORT,
-            (void *) (sizeof(GLushort) * N));
-
+    if(showTop){
+    	glDrawElements (GL_TRIANGLE_FAN, N_POINTS + 2, GL_UNSIGNED_SHORT,(void *) (sizeof(GLushort) * N));
+    }
     /* deselect the buffs */
     glBindBuffer (GL_ARRAY_BUFFER, 0);
     glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, 0);

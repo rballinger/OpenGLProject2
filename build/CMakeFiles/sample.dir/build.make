@@ -164,9 +164,55 @@ CMakeFiles/sample.dir/Tire.cpp.o.provides: CMakeFiles/sample.dir/Tire.cpp.o.requ
 
 CMakeFiles/sample.dir/Tire.cpp.o.provides.build: CMakeFiles/sample.dir/Tire.cpp.o
 
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o: CMakeFiles/sample.dir/flags.make
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o: ../WeatherVaneBase.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/WeatherVaneBase.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/WeatherVaneBase.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/WeatherVaneBase.cpp
+
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample.dir/WeatherVaneBase.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/dan/workspace/367_p2_LightAndMovement/WeatherVaneBase.cpp > CMakeFiles/sample.dir/WeatherVaneBase.cpp.i
+
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample.dir/WeatherVaneBase.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/dan/workspace/367_p2_LightAndMovement/WeatherVaneBase.cpp -o CMakeFiles/sample.dir/WeatherVaneBase.cpp.s
+
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.requires:
+.PHONY : CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.requires
+
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.provides: CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.requires
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.provides.build
+.PHONY : CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.provides
+
+CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.provides.build: CMakeFiles/sample.dir/WeatherVaneBase.cpp.o
+
+CMakeFiles/sample.dir/VaneSwivel.cpp.o: CMakeFiles/sample.dir/flags.make
+CMakeFiles/sample.dir/VaneSwivel.cpp.o: ../VaneSwivel.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/VaneSwivel.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/VaneSwivel.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/VaneSwivel.cpp
+
+CMakeFiles/sample.dir/VaneSwivel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample.dir/VaneSwivel.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/dan/workspace/367_p2_LightAndMovement/VaneSwivel.cpp > CMakeFiles/sample.dir/VaneSwivel.cpp.i
+
+CMakeFiles/sample.dir/VaneSwivel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample.dir/VaneSwivel.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/dan/workspace/367_p2_LightAndMovement/VaneSwivel.cpp -o CMakeFiles/sample.dir/VaneSwivel.cpp.s
+
+CMakeFiles/sample.dir/VaneSwivel.cpp.o.requires:
+.PHONY : CMakeFiles/sample.dir/VaneSwivel.cpp.o.requires
+
+CMakeFiles/sample.dir/VaneSwivel.cpp.o.provides: CMakeFiles/sample.dir/VaneSwivel.cpp.o.requires
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/VaneSwivel.cpp.o.provides.build
+.PHONY : CMakeFiles/sample.dir/VaneSwivel.cpp.o.provides
+
+CMakeFiles/sample.dir/VaneSwivel.cpp.o.provides.build: CMakeFiles/sample.dir/VaneSwivel.cpp.o
+
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: ../Shapes/Sphere.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Sphere.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Sphere.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.cpp
 
@@ -189,7 +235,7 @@ CMakeFiles/sample.dir/Shapes/Sphere.cpp.o.provides.build: CMakeFiles/sample.dir/
 
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: ../Shapes/Cylinder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.cpp
 
@@ -212,7 +258,7 @@ CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o.provides.build: CMakeFiles/sample.di
 
 CMakeFiles/sample.dir/Shapes/Torus.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Torus.cpp.o: ../Shapes/Torus.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Torus.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Torus.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.cpp
 
@@ -233,6 +279,29 @@ CMakeFiles/sample.dir/Shapes/Torus.cpp.o.provides: CMakeFiles/sample.dir/Shapes/
 
 CMakeFiles/sample.dir/Shapes/Torus.cpp.o.provides.build: CMakeFiles/sample.dir/Shapes/Torus.cpp.o
 
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o: CMakeFiles/sample.dir/flags.make
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o: ../Shapes/Fan.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Fan.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Fan.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.cpp
+
+CMakeFiles/sample.dir/Shapes/Fan.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample.dir/Shapes/Fan.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.cpp > CMakeFiles/sample.dir/Shapes/Fan.cpp.i
+
+CMakeFiles/sample.dir/Shapes/Fan.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample.dir/Shapes/Fan.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.cpp -o CMakeFiles/sample.dir/Shapes/Fan.cpp.s
+
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o.requires:
+.PHONY : CMakeFiles/sample.dir/Shapes/Fan.cpp.o.requires
+
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o.provides: CMakeFiles/sample.dir/Shapes/Fan.cpp.o.requires
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Shapes/Fan.cpp.o.provides.build
+.PHONY : CMakeFiles/sample.dir/Shapes/Fan.cpp.o.provides
+
+CMakeFiles/sample.dir/Shapes/Fan.cpp.o.provides.build: CMakeFiles/sample.dir/Shapes/Fan.cpp.o
+
 # Object files for target sample
 sample_OBJECTS = \
 "CMakeFiles/sample.dir/animation.cc.o" \
@@ -240,9 +309,12 @@ sample_OBJECTS = \
 "CMakeFiles/sample.dir/Island.cpp.o" \
 "CMakeFiles/sample.dir/UFO.cpp.o" \
 "CMakeFiles/sample.dir/Tire.cpp.o" \
+"CMakeFiles/sample.dir/WeatherVaneBase.cpp.o" \
+"CMakeFiles/sample.dir/VaneSwivel.cpp.o" \
 "CMakeFiles/sample.dir/Shapes/Sphere.cpp.o" \
 "CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o" \
-"CMakeFiles/sample.dir/Shapes/Torus.cpp.o"
+"CMakeFiles/sample.dir/Shapes/Torus.cpp.o" \
+"CMakeFiles/sample.dir/Shapes/Fan.cpp.o"
 
 # External object files for target sample
 sample_EXTERNAL_OBJECTS =
@@ -252,9 +324,12 @@ sample: CMakeFiles/sample.dir/StreetLight.cpp.o
 sample: CMakeFiles/sample.dir/Island.cpp.o
 sample: CMakeFiles/sample.dir/UFO.cpp.o
 sample: CMakeFiles/sample.dir/Tire.cpp.o
+sample: CMakeFiles/sample.dir/WeatherVaneBase.cpp.o
+sample: CMakeFiles/sample.dir/VaneSwivel.cpp.o
 sample: CMakeFiles/sample.dir/Shapes/Sphere.cpp.o
 sample: CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o
 sample: CMakeFiles/sample.dir/Shapes/Torus.cpp.o
+sample: CMakeFiles/sample.dir/Shapes/Fan.cpp.o
 sample: CMakeFiles/sample.dir/build.make
 sample: /usr/local/lib/libglfw3.a
 sample: /usr/lib/x86_64-linux-gnu/libGLU.so
@@ -285,9 +360,12 @@ CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/StreetLight.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Island.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/UFO.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Tire.cpp.o.requires
+CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.requires
+CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/VaneSwivel.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Shapes/Sphere.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Shapes/Torus.cpp.o.requires
+CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Shapes/Fan.cpp.o.requires
 .PHONY : CMakeFiles/sample.dir/requires
 
 CMakeFiles/sample.dir/clean:
