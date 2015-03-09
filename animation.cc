@@ -31,7 +31,6 @@
 #include "StreetLight.h"
 #include "Island.h"
 #include "UFO.h"
-#include "Tire.h"
 #include "Car.h"
 #include "WeatherVaneBase.h"
 #include "VaneSwivel.h"
@@ -50,7 +49,6 @@ UFO *miniUFO1;
 UFO *miniUFO2;
 
 Car car;
-Tire *tire_fr, *tire_fl, *tire_rr, *tire_rl;
 
 Fan *fan;
 WeatherVaneBase vaneBase;
@@ -60,7 +58,7 @@ glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
 //glm::mat4 tire_cf;
 glm::mat4 ufo_cf, minUfo1_cf, minUfo2_cf;
-glm::mat4 car_cf, tire_fr_cf, tire_fl_cf, tire_rr_cf, tire_rl_cf;
+glm::mat4 car_cf;
 glm::mat4 vaneBase_cf, fan_cf, swivel_cf;
 glm::mat4 frame_cf;
 glm::mat4 camera_cf, light0_cf;
@@ -392,47 +390,11 @@ void displayCallback (GLFWwindow *win)
     tire->render();
     glPopMatrix();
 */
-    // place car in cf
+    // place car
     glPushMatrix();
     {
         glMultMatrixf(glm::value_ptr(car_cf));
         car.render(false);
-        glPushMatrix();
-        {
-            glTranslatef(4.0f, -18.8f, -1.5f);
-            glMultMatrixf(glm::value_ptr(tire_fr_cf));
-            glRotatef(270, 0, 1.0f, 0);
-            glScalef(0.25f, 0.25f, 0.25f);
-            tire_fr->render();
-        }
-        glPopMatrix();
-        glPushMatrix();
-        {
-            glTranslatef(4.0f, -4.2f, -1.5f);
-            glMultMatrixf(glm::value_ptr(tire_fl_cf));
-            glRotatef(270, 0, 1.0f, 0);
-            glScalef(0.25f, 0.25f, 0.25f);
-            tire_fl->render();
-        }
-        glPopMatrix();
-        glPushMatrix();
-        {
-            glTranslatef(4.0f, -18.8f, -1.5f);
-            glMultMatrixf(glm::value_ptr(tire_fr_cf));
-            glRotatef(90, 0, 1.0f, 0);
-            glScalef(0.25f, 0.25f, 0.25f);
-            tire_rr->render();
-        }
-        glPopMatrix();
-        glPushMatrix();
-        {
-            glTranslatef(4.0f, -4.2f, -1.5f);
-            glMultMatrixf(glm::value_ptr(tire_fl_cf));
-            glRotatef(90, 0, 1.0f, 0);
-            glScalef(0.25f, 0.25f, 0.25f);
-            tire_rl->render();
-        }
-        glPopMatrix();
     }
     glPopMatrix();
 
@@ -483,19 +445,7 @@ void myModelInit ()
     lamp.build(35, 40);
 
     car.build();
-    tire_fr = new Tire();
-    tire_fl = new Tire();
-    tire_rr = new Tire();
-    tire_rl = new Tire();
-    tire_fr->build();
-    tire_fl->build();
-    tire_rr->build();
-    tire_rl->build();
-    car_cf = glm::translate(glm::vec3(20, 35, 1.5));
-    tire_fr_cf = glm::translate(glm::vec3(0, 25, 1.5));
-    tire_fl_cf = glm::translate(glm::vec3(0, 25, 1.5));
-    tire_rr_cf = glm::translate(glm::vec3(0, 25, 1.5));
-    tire_rl_cf = glm::translate(glm::vec3(0, 25, 1.5));
+    car_cf = glm::translate(glm::vec3(20, 35, 0));
 
     frame_cf = glm::translate(glm::vec3{0, 0 , 25});
     active = &camera_cf;		// camera frame is initially active
@@ -639,10 +589,7 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                     car_speed += 0.1;
                     *active *= glm::translate(glm::vec3(0, car_speed, 0));
                     // rotate tires
-                    tire_fr_cf = glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0}) * tire_fr_cf;
-                    tire_fl_cf *= glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0});
-                    tire_rr_cf *= glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0});
-                    tire_rl_cf *= glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0});
+
                 }
                 break;
             /* TODO */

@@ -168,6 +168,63 @@ void Car::build() {
         vec3 v = vertices[i];
         //cout << i << ": i(" << v.x << ", " << v.y << ", " << v.z << ")" << endl;
     }
+
+
+
+
+    // add tires to list for rendering
+
+    tire_fr = new Tire();
+    tire_fl = new Tire();
+    tire_rr = new Tire();
+    tire_rl = new Tire();
+    tire_fr->build();
+    tire_fl->build();
+    tire_rr->build();
+    tire_rl->build();
+
+    tire_fr_cf = glm::translate(glm::vec3(0, SECTION_LEN * 5, OFF_GROUND));
+    tire_fl_cf = glm::translate(glm::vec3(CHASSIS_WIDTH, SECTION_LEN * 5, OFF_GROUND));
+    tire_rr_cf = glm::translate(glm::vec3(0, SECTION_LEN * 34, OFF_GROUND));
+    tire_rl_cf = glm::translate(glm::vec3(CHASSIS_WIDTH, SECTION_LEN * 34, OFF_GROUND));
+
+    list_id = glGenLists(1);
+    glNewList (list_id, GL_COMPILE);
+
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(tire_fr_cf));
+        glRotatef(270, 0, 1.0f, 0);
+        glScalef(0.25f, 0.25f, 0.25f);
+        tire_fr->render();
+    }
+    glPopMatrix();
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(tire_fl_cf));
+        glRotatef(90, 0, 1.0f, 0);
+        glScalef(0.25f, 0.25f, 0.25f);
+        tire_fl->render();
+    }
+    glPopMatrix();
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(tire_rr_cf));
+        glRotatef(270, 0, 1.0f, 0);
+        glScalef(0.25f, 0.25f, 0.25f);
+        tire_fr->render();
+    }
+    glPopMatrix();
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(tire_rl_cf));
+        glRotatef(90, 0, 1.0f, 0);
+        glScalef(0.25f, 0.25f, 0.25f);
+        tire_fl->render();
+    }
+    glPopMatrix();
+
+    glEndList();
 }
 
 void Car::render(bool outline) const {
@@ -200,6 +257,8 @@ void Car::render(bool outline) const {
     glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count));
     glDrawElements(GL_QUAD_STRIP, side_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count * 2));
     glFrontFace(GL_CCW);
+
+    glCallList(list_id);
 
     glPopAttrib();
 

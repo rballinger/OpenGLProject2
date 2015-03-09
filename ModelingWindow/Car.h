@@ -21,6 +21,7 @@
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/io.hpp>
+#include "Tire.h"
 
 class Car {
 private:
@@ -30,12 +31,15 @@ private:
     const float CHASSIS_LEN = 20,
         CHASSIS_WIDTH = 8,
         CHASSIS_HEIGHT = 3,
-        OFF_GROUND = 0,
+        OFF_GROUND = 1.25,
         SUBDIV = 40,
         ROOF = 2,
         SECTION_LEN = CHASSIS_LEN / SUBDIV;
     int chassis_top_count,
         side_count;
+    Tire *tire_fr, *tire_fl, *tire_rr, *tire_rl;
+    glm::mat4 tire_fr_cf, tire_fl_cf, tire_rr_cf, tire_rl_cf;
+    GLint tire_list;
 public:
     ~Car();
     void build();
