@@ -91,6 +91,8 @@ bool is_anim_running = true;
 float SWIVEL_SPEED = 0;
 float d_swiv_speed = 0.95;
 
+float car_speed = 0;
+
 /* light source setting */
 GLfloat light0_color[] = {1.0, 1.0, 1.0, 1.0};   /* color */
 GLfloat light1_color[] = {0.0, 3.0, 0.0, 1.0};   /* green color */
@@ -207,6 +209,9 @@ void updateCoordFrames()
         float angle = INIT_SWING_ANGLE * cos(swing_time * sqrt(GRAVITY / swingarm->length()));
         swing_arm_cf *= glm::rotate(glm::radians(angle - swing_angle), glm::vec3{0.0f, 1.0f, 0.0f});
         swing_angle = angle;*/
+
+        // move car forward
+        //car_cf *= glm::translate(glm::vec3(0, -0.1f, 0));
     }
     last_timestamp = current;
 }
@@ -486,7 +491,7 @@ void myModelInit ()
     tire_fl->build();
     tire_rr->build();
     tire_rl->build();
-    car_cf = glm::translate(glm::vec3(15, 35, 1.5));
+    car_cf = glm::translate(glm::vec3(20, 35, 1.5));
     tire_fr_cf = glm::translate(glm::vec3(0, 25, 1.5));
     tire_fl_cf = glm::translate(glm::vec3(0, 25, 1.5));
     tire_rr_cf = glm::translate(glm::vec3(0, 25, 1.5));
@@ -501,7 +506,12 @@ void myModelInit ()
 }
 
 void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods) {
-    if (action == GLFW_RELEASE) return; /* ignore key release action */
+    if (action == GLFW_RELEASE){
+        // stop car instantly once forward or reverse key is released
+        if(key == GLFW_KEY_W || key == GLFW_KEY_S)
+            car_speed = 0;
+        return; /* ignore key release action */
+    }
 
     // 6 degrees of freedom for camera frame
     if (mods == GLFW_MOD_SHIFT) {
@@ -614,14 +624,29 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             case GLFW_KEY_O:
                 active = &minUfo2_cf;
                 break;
+            // car controls
             case GLFW_KEY_T:
                 active = &car_cf;
                 break;
+            case GLFW_KEY_W:
+                if(*active == car_cf){
+                    car_speed -= 0.1;
+                    *active *= glm::translate(glm::vec3(0, car_speed, 0));
+                }
+                break;
+            case GLFW_KEY_S:
+                if(*active == car_cf){
+                    car_speed += 0.1;
+                    *active *= glm::translate(glm::vec3(0, car_speed, 0));
+                    // rotate tires
+                    tire_fr_cf = glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0}) * tire_fr_cf;
+                    tire_fl_cf *= glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0});
+                    tire_rr_cf *= glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0});
+                    tire_rl_cf *= glm::rotate(car_speed / 1.25f, glm::vec3{1.0f, 0, 0});
+                }
+                break;
             /* TODO */
             // set active coordinate frames for new objects and lights
-            case GLFW_KEY_S:
-                active = &minUfo2_cf;
-                break;
         }
     }
 }
