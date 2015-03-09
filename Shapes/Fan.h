@@ -8,7 +8,12 @@
 #ifndef FAN_H_
 #define FAN_H_
 #include <vector>
+#ifdef WIN32
+#define GLEW_STATIC
 #include <GL/glew.h>
+#else
+#include <GL/glew.h>
+#endif
 using namespace std;
 #include "Cylinder.h"
 

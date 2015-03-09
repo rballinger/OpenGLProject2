@@ -7,7 +7,11 @@
 
 #ifndef WEATHERVANEBASE_H_
 #define WEATHERVANEBASE_H_
+#ifdef WIN32
+#include "Shapes/Cylinder.h"
+#else
 #include "Cylinder.h"
+#endif
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_access.hpp>

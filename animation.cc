@@ -10,10 +10,12 @@
 #include <GL/glew.h>
 #include "Shapes/Cylinder.h"    /* using C::B in windows, must be named with directory */
 #include "Shapes/Sphere.h"
+#include "Shapes/Fan.h"
 #else
 #include <GL/glew.h>
 #include "Cylinder.h"
 #include "Sphere.h"
+#include "Fan.h"
 #endif
 #include <sys/time.h>
 #include <math.h>
@@ -31,7 +33,6 @@
 #include "UFO.h"
 #include "Tire.h"
 #include "Car.h"
-#include "Fan.h"
 #include "WeatherVaneBase.h"
 #include "VaneSwivel.h"
 
@@ -359,7 +360,7 @@ void displayCallback (GLFWwindow *win)
         glPopMatrix();
     }
     glPopMatrix();
-/*
+
     glPushMatrix();
     {
     	glMultMatrixf(glm::value_ptr(vaneBase_cf));
@@ -379,7 +380,7 @@ void displayCallback (GLFWwindow *win)
 		glPopMatrix();
     }
     glPopMatrix();
-
+/*
     glPushMatrix();
     glTranslatef(0.0,0.0,15.0);
     glRotatef (90, 0, 1, 0);

@@ -30,6 +30,8 @@
 		<Unit filename="Island.h" />
 		<Unit filename="Shapes/Cylinder.cpp" />
 		<Unit filename="Shapes/Cylinder.h" />
+		<Unit filename="Shapes/Fan.cpp" />
+		<Unit filename="Shapes/Fan.h" />
 		<Unit filename="Shapes/Sphere.cpp" />
 		<Unit filename="Shapes/Sphere.h" />
 		<Unit filename="Shapes/Torus.cpp" />
@@ -42,6 +44,10 @@
 		<Unit filename="Tire.h" />
 		<Unit filename="UFO.cpp" />
 		<Unit filename="UFO.h" />
+		<Unit filename="VaneSwivel.cpp" />
+		<Unit filename="VaneSwivel.h" />
+		<Unit filename="WeatherVaneBase.cpp" />
+		<Unit filename="WeatherVaneBase.h" />
 		<Unit filename="Wheel.cc" />
 		<Unit filename="Wheel.h" />
 		<Unit filename="animation.cc" />

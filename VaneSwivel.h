@@ -8,9 +8,14 @@
 #ifndef VANESWIVEL_H_
 #define VANESWIVEL_H_
 #include <vector>
+#ifdef WIN32
+#define GLEW_STATIC
 #include <GL/glew.h>
-using namespace std;
+#include "Shapes/Cylinder.h"
+#else
 #include "Cylinder.h"
+#endif
+using namespace std;
 
 class VaneSwivel {
 private:
