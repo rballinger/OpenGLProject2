@@ -396,7 +396,6 @@ void displayCallback (GLFWwindow *win)
     }
     glPopMatrix();
 
-    tfan->render();
     /* to make smooth transition between frame */
     glfwSwapBuffers(win);
 }
@@ -407,9 +406,6 @@ void myModelInit ()
 
     fan = new Fan();
     fan->build(1,20.0);
-
-    tfan = new Fan();
-    tfan->build(1,20.0);
 
     swivel = new VaneSwivel();
     swivel->build();

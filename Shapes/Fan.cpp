@@ -41,6 +41,12 @@ void Fan::build (int numFans, float thickness) {
 
 	vector<float> smallEndPoints = {-2.0,-1.0, 0.0, 1.0, 2.0, 2.0, 1.0, 0.0, -1.0};
 	vector<float> largeEndPoints = {-4.0,-2.0, 0.0, 2.0, 4.0, 4.0, 2.0, 0.0, -2.0};
+	float smallStart = -2.0;
+	float smallEnd = -1.0;
+	float largeStart = -4.0;
+	float largeEnd = -2.0;
+
+
 
 	for(int i = 0; i < smallEndPoints.size(); i++){
 		if(i == 5){
