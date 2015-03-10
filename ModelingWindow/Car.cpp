@@ -9,6 +9,10 @@
 
 using glm::vec3;
 
+GLfloat headlight_color[] = {1.0, 1.0, 1.0, 0.2};
+GLfloat default_color[] = {0.0, 0.0, 0.0, 1.0};
+GLfloat undercar_color[] = {0.0, 1.0, 0.0, 1.0};
+
 Car::~Car() {
     glDeleteBuffers(1, &v_buf);
     glDeleteBuffers(1, &i_buf);
@@ -42,7 +46,7 @@ void Car::build() {
             section_h = CHASSIS_HEIGHT + OFF_GROUND;
         }
         if(i >= roof_start && i < roof_start + 4)
-            n1 = {0, 0.707f, 0.707f};
+            n1 = {0, -0.707, 0.707f};
         else{
             n1 = {0, 0, 1.0f};
         }
@@ -87,46 +91,45 @@ void Car::build() {
 
     // sides
     // -y side
-    n1 = {0, -1, 0};
+
+    //n1 = {0, -1, 0};
     for(int i = 0; i < vertices.size() / 2; i++){
         if(i % 2 == 0){
             index.push_back(i);
-            normals.push_back(n1);
+            //normals.push_back(n1);
             index.push_back(i + chassis_top_count);
-            normals.push_back(n1);
+            //normals.push_back(n1);
         }
     }
     // -x side
-    n1 = {-1, 0, 0};
+    //n1 = {-1, 0, 0};
     index.push_back(chassis_top_count - 2);
-    normals.push_back(n1);
+    //normals.push_back(n1);
     index.push_back((chassis_top_count * 2) - 2);
-    normals.push_back(n1);
+    //normals.push_back(n1);
     index.push_back(chassis_top_count - 1);
-    normals.push_back(n1);
+    //normals.push_back(n1);
     index.push_back((chassis_top_count * 2) - 1);
-    normals.push_back(n1);
+    //normals.push_back(n1);
     // +y side
-    n1 = {0, 1, 0};
+    //n1 = {0, 1, 0};
     for(int i = vertices.size() / 2 - 1; i >= 0; i--){
         if(i % 2 == 1){
             index.push_back(i);
-            normals.push_back(n1);
+            //normals.push_back(n1);
             index.push_back(i + chassis_top_count);
-            normals.push_back(n1);
+            //normals.push_back(n1);
         }
     }
     // +x side
-    n1 = {1, 0, 0};
+
+    //n1 = {1, 0, 0};
     index.push_back(0);
-    normals.push_back(n1);
+    //normals.push_back(n1);
     index.push_back(chassis_top_count);
-    normals.push_back(n1);
+    //normals.push_back(n1);
 
     side_count = index.size() - chassis_top_count * 2;
-
-
-
 
     glBindBuffer(GL_ARRAY_BUFFER, v_buf);
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float) * 3, NULL, GL_DYNAMIC_DRAW);
@@ -169,11 +172,7 @@ void Car::build() {
         //cout << i << ": i(" << v.x << ", " << v.y << ", " << v.z << ")" << endl;
     }
 
-
-
-
-    // add tires to list for rendering
-
+    // builds tires and frames
     tire_fr = new Tire();
     tire_fl = new Tire();
     tire_rr = new Tire();
@@ -188,8 +187,67 @@ void Car::build() {
     tire_rr_cf = glm::translate(glm::vec3(0, SECTION_LEN * 34, OFF_GROUND));
     tire_rl_cf = glm::translate(glm::vec3(CHASSIS_WIDTH, SECTION_LEN * 34, OFF_GROUND));
 
-    list_id = glGenLists(1);
-    glNewList (list_id, GL_COMPILE);
+    headlight_r_cf = glm::translate(glm::vec3(1.0f, 0.0f, OFF_GROUND + CHASSIS_HEIGHT - 1));
+    headlight_l_cf = glm::translate(glm::vec3(CHASSIS_WIDTH - 1, 0.0f, OFF_GROUND + CHASSIS_HEIGHT - 1));
+
+    glEnable (GL_LIGHTING);
+    glEnable (GL_NORMALIZE);
+    // headlights
+    glEnable (GL_LIGHT4);
+    glLightfv (GL_LIGHT4, GL_AMBIENT, headlight_color);
+    glLightfv (GL_LIGHT4, GL_DIFFUSE, headlight_color);
+    glLightfv (GL_LIGHT4, GL_SPECULAR, headlight_color);
+    glLightf (GL_LIGHT4, GL_SPOT_CUTOFF, 40);
+    glEnable (GL_LIGHT5);
+    glLightfv (GL_LIGHT5, GL_AMBIENT, headlight_color);
+    glLightfv (GL_LIGHT5, GL_DIFFUSE, headlight_color);
+    glLightfv (GL_LIGHT5, GL_SPECULAR, headlight_color);
+    glLightf (GL_LIGHT5, GL_SPOT_CUTOFF, 40);
+
+    headlight_r.build(10.0f, 10.0f);
+    headlight_l.build(10.0f, 10.0f);
+}
+
+void Car::render(bool wireframe) const {
+
+    if(wireframe){
+        glPolygonMode(GL_FRONT, GL_LINE);
+    }else{
+        glPolygonMode(GL_FRONT, GL_FILL);
+    }
+
+    // place headlights
+    glLightfv (GL_LIGHT4, GL_POSITION, glm::value_ptr(glm::column(headlight_r_cf, 3)));
+    glLightfv (GL_LIGHT5, GL_POSITION, glm::value_ptr(glm::column(headlight_l_cf, 3)));
+    glLightfv (GL_LIGHT4, GL_SPOT_DIRECTION, glm::value_ptr(glm::vec3(0, -1.0f, 0)));
+    glLightfv (GL_LIGHT5, GL_SPOT_DIRECTION, glm::value_ptr(glm::vec3(0, -1.0f, 0)));
+
+    static float CAR_AMBIENT[] = {0, 0, 1.0, 1.0};
+    static float CHROME_AMBIENT[] = {0.250000, 0.250000, 0.250000, 1.000000};
+    static float CHROME_DIFFUSE[] = {0.400000, 0.400000, 0.400000, 1.000000};
+    static float CHROME_SPECULAR[] = {0.774597, 0.774597, 0.774597, 1.000000};
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT, CAR_AMBIENT);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, CHROME_DIFFUSE);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, CHROME_SPECULAR);
+    glMaterialf(GL_FRONT, GL_SHININESS, 76.800003);
+
+    glPushAttrib(GL_ENABLE_BIT);
+    glDisableClientState(GL_COLOR_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glBindBuffer(GL_ARRAY_BUFFER, v_buf);
+    glVertexPointer(3, GL_FLOAT, 0, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, n_buf);
+    glNormalPointer(GL_FLOAT, 0, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, i_buf);
+
+    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, 0);
+    glFrontFace(GL_CW);
+    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count));
+    glDrawElements(GL_QUAD_STRIP, side_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count * 2));
+    glFrontFace(GL_CCW);
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT, CHROME_AMBIENT);
 
     glPushMatrix();
     {
@@ -224,42 +282,36 @@ void Car::build() {
     }
     glPopMatrix();
 
-    glEndList();
-}
-
-void Car::render(bool outline) const {
-    if(outline){
-        glPolygonMode(GL_FRONT, GL_LINE);
-    }else{
-        glPolygonMode(GL_FRONT, GL_FILL);
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(headlight_r_cf));
+        if (glIsEnabled(GL_LIGHT4))
+            glMaterialfv(GL_FRONT, GL_EMISSION, headlight_color);
+        headlight_l.render(0.5f, 0.5f, 0.5f);
+        glMaterialfv(GL_FRONT, GL_EMISSION, default_color);
     }
-
-    static float CHROME_AMBIENT[] = {0.250000, 0.250000, 0.250000, 1.000000};
-    static float CHROME_DIFFUSE[] = {0.400000, 0.400000, 0.400000, 1.000000};
-    static float CHROME_SPECULAR[] = {0.774597, 0.774597, 0.774597, 1.000000};
-
-    glMaterialfv(GL_FRONT, GL_AMBIENT, CHROME_AMBIENT);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, CHROME_DIFFUSE);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, CHROME_SPECULAR);
-    glMaterialf(GL_FRONT, GL_SHININESS, 76.800003);
-
-    glPushAttrib(GL_ENABLE_BIT);
-    glDisableClientState(GL_COLOR_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
-    glBindBuffer(GL_ARRAY_BUFFER, v_buf);
-    glVertexPointer(3, GL_FLOAT, 0, 0);
-    glBindBuffer(GL_ARRAY_BUFFER, n_buf);
-    glNormalPointer(GL_FLOAT, 0, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, i_buf);
-
-    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, 0);
-    glFrontFace(GL_CW);
-    glDrawElements(GL_QUAD_STRIP, chassis_top_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count));
-    glDrawElements(GL_QUAD_STRIP, side_count, GL_UNSIGNED_SHORT, (void *) (sizeof(GLushort) * chassis_top_count * 2));
-    glFrontFace(GL_CCW);
-
-    glCallList(list_id);
+    glPopMatrix();
+    glPushMatrix();
+    {
+        glMultMatrixf(glm::value_ptr(headlight_l_cf));
+        if (glIsEnabled(GL_LIGHT5))
+            glMaterialfv(GL_FRONT, GL_EMISSION, headlight_color);
+        headlight_r.render(0.5f, 0.5f, 0.5f);
+        glMaterialfv(GL_FRONT, GL_EMISSION, default_color);
+    }
+    glPopMatrix();
 
     glPopAttrib();
 
+};
+
+/**
+ *  Rotates the wheels of the car in indicated direction.
+ *  dis : distance of car's translation and determines forward or backward rotation
+ */
+void Car::rotate_wheels(float dis) {
+    tire_fr_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
+    tire_fl_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
+    tire_rr_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
+    tire_rl_cf *= glm::rotate(dis / 1.25f, glm::vec3{1.0f, 0, 0});
 };

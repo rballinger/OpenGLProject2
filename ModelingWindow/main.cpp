@@ -42,7 +42,6 @@ glm::mat4 *active;
 GLfloat light0_color[] = {1.0, 1.0, 1.0, 1.0};   /* color */
 GLfloat black_color[] = {0.0, 0.0, 0.0, 1.0};   /* color */
 
-
 void err_function (int what, const char *msg) {
     cerr << what << " " << msg << endl;
 }
@@ -71,7 +70,7 @@ void win_resize (GLFWwindow * win, int width, int height)
 }
 
 void win_refresh (GLFWwindow *win) {
-    glClearColor (0.6f, 1.0f, 1.0f, 1.0f); /* black background */
+    glClearColor (0.0f, 0.0f, 0.0f, 1.0f); /* black background */
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode (GL_MODELVIEW);
@@ -93,21 +92,30 @@ void win_refresh (GLFWwindow *win) {
 
     /* ground */
     glEnable (GL_COLOR_MATERIAL);
-    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glColor3ub (30, 30, 30);
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glColorMaterial(GL_FRONT, GL_SPECULAR);
 
-    glBegin (GL_QUADS);
-    const int GROUND_SIZE = 300;
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (GROUND_SIZE, GROUND_SIZE);
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (-GROUND_SIZE, GROUND_SIZE);
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (-GROUND_SIZE, -GROUND_SIZE);
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (GROUND_SIZE, -GROUND_SIZE);
-    glEnd();
+    const float GROUND_SIZE = 300.0;
+
+    glPushMatrix();
+    glTranslatef(-GROUND_SIZE / 2, -GROUND_SIZE / 2, 0);
+
+    for(float i = 0; i < GROUND_SIZE; i = i + 5){
+        glBegin (GL_TRIANGLE_STRIP);
+        for(float j = 0; j < GROUND_SIZE; j = j + 5){
+            glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+            glVertex2f (i, j);
+            glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+            glVertex2f (i + 5, j);
+        }
+        glEnd();
+    }
+    glPopMatrix();
     glDisable (GL_COLOR_MATERIAL);
+
+    glLightfv (GL_LIGHT2, GL_POSITION, glm::value_ptr(glm::column(lamp_cf, 3)));
+    glLightfv (GL_LIGHT2, GL_SPOT_DIRECTION, glm::value_ptr(glm::vec3(0, 0, -1.0f)));
 
     glTranslatef(0, -30.0f, 0);
     /* render static objects: streetLight */
@@ -215,8 +223,25 @@ void key_handler (GLFWwindow *win, int key, int scan_code, int action, int mods)
                     glEnable(GL_LIGHT2);
                 win_refresh(win);
                 break;
+            case GLFW_KEY_2:
+                if (glIsEnabled(GL_LIGHT4))
+                    glDisable(GL_LIGHT4);
+                else
+                    glEnable(GL_LIGHT4);
+                win_refresh(win);
+                break;
+            case GLFW_KEY_3:
+                if (glIsEnabled(GL_LIGHT5))
+                    glDisable(GL_LIGHT5);
+                else
+                    glEnable(GL_LIGHT5);
+                win_refresh(win);
+                break;
             case GLFW_KEY_C:
                 active = &camera_cf;
+                break;
+            case GLFW_KEY_T:
+                active = &car_cf;
                 break;
         }
     }
@@ -304,6 +329,7 @@ void init_gl() {
     glLightfv (GL_LIGHT2, GL_AMBIENT, light0_color);
     glLightfv (GL_LIGHT2, GL_DIFFUSE, light0_color);
     glLightfv (GL_LIGHT2, GL_SPECULAR, light0_color);
+    glLightf (GL_LIGHT2, GL_SPOT_CUTOFF, 80);
 
     glEnableClientState(GL_VERTEX_ARRAY);
 

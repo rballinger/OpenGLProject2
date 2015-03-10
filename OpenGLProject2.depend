@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1425927310 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\animation.cc
+1426024275 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\animation.cc
 	<GL/glew.h>
 	"Shapes/Cylinder.h"
 	"Shapes/Sphere.h"
@@ -92,7 +92,7 @@
 	<GL/glew.h>
 	"Cylinder.h"
 
-1425773019 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\island.cpp
+1426023358 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\island.cpp
 	"Island.h"
 
 1425877741 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\cylinder.cpp
@@ -146,8 +146,7 @@
 	"Shapes/Torus.h"
 	<GL/glew.h>
 
-1425929917 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.h
-	<GL/glew.h>
+1426023996 c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.h
 	"Shapes/Cylinder.h"
 	"Shapes/Torus.h"
 	"Shapes/Sphere.h"
@@ -161,7 +160,7 @@
 	<glm/gtx/io.hpp>
 	"Tire.h"
 
-1425927196 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.cpp
+1426023974 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\car.cpp
 	<iostream>
 	"Car.h"
 
@@ -196,7 +195,7 @@
 1425877741 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\weathervanebase.cpp
 	"WeatherVaneBase.h"
 
-1425878357 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\fan.cpp
+1426023358 source:c:\users\ryan\dropbox\gvsu\5th year\winter 2015\cis 367\projects\openglproject2\shapes\fan.cpp
 	"Fan.h"
 	<cmath>
 	<iostream>
