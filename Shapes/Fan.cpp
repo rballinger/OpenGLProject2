@@ -41,12 +41,22 @@ void Fan::build (int numFans, float thickness) {
 
 	vector<float> smallEndPoints = {-2.0,-1.0, 0.0, 1.0, 2.0, 2.0, 1.0, 0.0, -1.0};
 	vector<float> largeEndPoints = {-4.0,-2.0, 0.0, 2.0, 4.0, 4.0, 2.0, 0.0, -2.0};
-	float smallStart = -2.0;
-	float smallEnd = -1.0;
-	float largeStart = -4.0;
-	float largeEnd = -2.0;
 
+	int subDiv = 30;
 
+	glm::vec3 frontCornerOne = {-2.0, 0.0, 0.0};
+	glm::vec3 frontCornerTwo = {2.0, 0.0, 0.0};
+	glm::vec3 frontCornerThree = {1.0, 0.0, -1.0};
+	glm::vec3 frontCornerFour = {-2.0, 0.0, -1.0};
+
+	glm::vec3 backCornerOne = {-4.0, 30.0, 0.0};
+	glm::vec3 backCornerTwo = {4.0, 30.0, 0.0};
+	glm::vec3 backCornerThree = {2.0, 30.0, -1.0};
+	glm::vec3 backCornerFour = {-4.0, 30.0, -1.0};
+
+	for(int i = 0; i < subDiv; i++){
+
+	}
 
 	for(int i = 0; i < smallEndPoints.size(); i++){
 		if(i == 5){
