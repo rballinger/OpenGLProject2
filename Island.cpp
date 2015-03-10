@@ -38,7 +38,7 @@ void Island::build ()
     glMaterialfv(GL_FRONT, GL_AMBIENT, CHROME_AMBIENT);
     glMaterialfv(GL_FRONT, GL_DIFFUSE, CHROME_DIFFUSE);
     glMaterialfv(GL_FRONT, GL_SPECULAR, CHROME_SPECULAR);
-    glMaterialf(GL_FRONT, GL_SHININESS, 9.846150);
+    glMaterialf(GL_FRONT, GL_SHININESS,0.0);
 
     glPushMatrix();
     glTranslatef(0.0,-22.0,-12.0);

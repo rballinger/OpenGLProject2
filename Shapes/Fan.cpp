@@ -37,251 +37,167 @@ void Fan::build (int numFans, float thickness) {
 	float x = -POINTS/2;
 
 	int i = 0;
+	float depth = 0.0;
 
-	// 0
-	vertices.push_back(-2.0);
-	vertices.push_back(0.0);
-	vertices.push_back(0.0);
+	vector<float> smallEndPoints = {-2.0,-1.0, 0.0, 1.0, 2.0, 2.0, 1.0, 0.0, -1.0};
+	vector<float> largeEndPoints = {-4.0,-2.0, 0.0, 2.0, 4.0, 4.0, 2.0, 0.0, -2.0};
 
-	glm::vec3 norm = glm::normalize(glm::vec3{-2.0, 0.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
+	for(int i = 0; i < smallEndPoints.size(); i++){
+		if(i == 5){
+			depth = -1.0;
+		}
+		vertices.push_back(smallEndPoints[i]);
+		vertices.push_back(0.0);
+		vertices.push_back(depth);
+	}
+	depth = 0.0;
+	for(int i = 0; i < largeEndPoints.size(); i++){
+		if(i == 5){
+			depth = -1.0;
+		}
+		vertices.push_back(largeEndPoints[i]);
+		vertices.push_back(30.0);
+		vertices.push_back(depth);
+	}
 
-	// 1
-	vertices.push_back(-1.0);
-	vertices.push_back(0.0);
-	vertices.push_back(0.0);
+	int j = largeEndPoints.size();
+	for(i = 0; i < 8; i++){
+		indices.push_back(i);
+		indices.push_back(i + 1);
+		indices.push_back(j + 1);
+		indices.push_back(j);
+		j++;
 
-	norm = glm::normalize(glm::vec3{-1.0, 0.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
+	}
 
-	// 2
-	vertices.push_back(0.0);
-	vertices.push_back(0.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{0.0, 0.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 3
-	vertices.push_back(1.0);
-	vertices.push_back(0.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{1.0, 0.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 4
-	vertices.push_back(2.0);
-	vertices.push_back(0.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{2.0, 0.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 5
-	vertices.push_back(2.0);
-	vertices.push_back(0.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{2.0, 0.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 6
-	vertices.push_back(1.0);
-	vertices.push_back(0.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{1.0, 0.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 7
-	vertices.push_back(0.0);
-	vertices.push_back(0.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{0.0, 0.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 8
-	vertices.push_back(-1.0);
-	vertices.push_back(0.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{-1.0, 0.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 9
-	vertices.push_back(-2.0);
-	vertices.push_back(0.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{-2.0, 0.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 10
-	vertices.push_back(-4.0);
-	vertices.push_back(30.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{-4.0, 30.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 11
-	vertices.push_back(-2.0);
-	vertices.push_back(30.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{-2.0, 30.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 12
-	vertices.push_back(0.0);
-	vertices.push_back(30.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{0.0, 30.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 13
-	vertices.push_back(2.0);
-	vertices.push_back(30.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{2.0, 30.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 14
-	vertices.push_back(4.0);
-	vertices.push_back(30.0);
-	vertices.push_back(0.0);
-
-	norm = glm::normalize(glm::vec3{4.0, 30.0, 0.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 15
-	vertices.push_back(4.0);
-	vertices.push_back(30.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{4.0, 30.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 16
-	vertices.push_back(2.0);
-	vertices.push_back(30.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{2.0, 30.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 17
-	vertices.push_back(0.0);
-	vertices.push_back(30.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{0.0, 30.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	// 18
-	vertices.push_back(-1.0);
-	vertices.push_back(30.0);
-	vertices.push_back(-1.0);
-
-	norm = glm::normalize(glm::vec3{-2.0, 30.0, -1.0});
-	normals.push_back(norm.x);
-	normals.push_back(norm.y);
-	normals.push_back(norm.z);
-
-	indices.push_back(0);
-	indices.push_back(1);
-	indices.push_back(11);
-	indices.push_back(10);
-
-	indices.push_back(1);
-	indices.push_back(2);
-	indices.push_back(12);
-	indices.push_back(11);
-
-	indices.push_back(2);
-	indices.push_back(3);
-	indices.push_back(13);
-	indices.push_back(12);
-
-	indices.push_back(3);
-	indices.push_back(4);
-	indices.push_back(14);
-	indices.push_back(13);
-
-	indices.push_back(4);
-	indices.push_back(5);
-	indices.push_back(15);
-	indices.push_back(14);
-
-	indices.push_back(5);
-	indices.push_back(6);
-	indices.push_back(16);
-	indices.push_back(15);
-
-	indices.push_back(6);
-	indices.push_back(7);
-	indices.push_back(17);
-	indices.push_back(16);
-
-	indices.push_back(7);
 	indices.push_back(8);
-	indices.push_back(18);
+	indices.push_back(0);
+	indices.push_back(9);
 	indices.push_back(17);
 
 	indices.push_back(8);
-	indices.push_back(0);
-	indices.push_back(10);
-	indices.push_back(18);
-
-	indices.push_back(8);
 	indices.push_back(5);
 	indices.push_back(4);
 	indices.push_back(0);
 
-	indices.push_back(10);
+	indices.push_back(9);
+	indices.push_back(13);
 	indices.push_back(14);
-	indices.push_back(15);
-	indices.push_back(18);
+	indices.push_back(17);
+
+	// two normals for corner vertices of small end of fan blade
+	glm::vec3 smallFaceNorm = glm::normalize(glm::vec3{0.0,-1.0,0.0});
+
+	// two normals for corner vertices of large end of fan blade
+	glm::vec3 largeFaceNorm = glm::normalize(glm::vec3{0.0,1.0,0.0});
+
+	// two normals for corner vertices of large end of fan blade
+	glm::vec3 bottomFaceNorm = glm::normalize(glm::vec3{0.0,0.0,-1.0});
+
+	// two normals for corner vertices of large end of fan blade
+	glm::vec3 topFaceNorm = glm::normalize(glm::vec3{0.0,0.0,1.0});
+
+	// two normals for  vertices of slanted face of fan blade
+	glm::vec3 sloped1 = glm::vec3{largeEndPoints[17], 30.0, -1.0} - glm::vec3{largeEndPoints[8], 0.0, -1.0};
+	glm::vec3 sloped2 = glm::vec3{largeEndPoints[8], 0.0, -1.0} - glm::vec3{largeEndPoints[0], 0.0, 0.0};
+	glm::vec3 gradientFaceNorm = glm::normalize(glm::cross(sloped1, sloped2));
+
+	// two normals for vertices of face opposite of slanted face of fan blade
+	glm::vec3 opposite1 = glm::vec3{largeEndPoints[14], 30.0, -1.0} - glm::vec3{largeEndPoints[5], 0.0, -1.0};
+	glm::vec3 opposite2 = glm::vec3{largeEndPoints[13], 30.0, -1.0} - glm::vec3{largeEndPoints[14], 30.0, -1.0};
+	glm::vec3 oppositeFaceNorm = glm::normalize(glm::cross(opposite1, opposite2));
+
+	// add to normal buffer
+	// point 0
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 1
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 2
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 3
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 4
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 5
+    normals.push_back(bottomFaceNorm.x);
+    normals.push_back(bottomFaceNorm.y);
+    normals.push_back(bottomFaceNorm.z);
+
+	// point 6
+    normals.push_back(bottomFaceNorm.x);
+    normals.push_back(bottomFaceNorm.y);
+    normals.push_back(bottomFaceNorm.z);
+
+	// point 7
+    normals.push_back(bottomFaceNorm.x);
+    normals.push_back(bottomFaceNorm.y);
+    normals.push_back(bottomFaceNorm.z);
+
+	// point 8
+    normals.push_back(gradientFaceNorm.x);
+    normals.push_back(gradientFaceNorm.y);
+    normals.push_back(gradientFaceNorm.z);
+
+
+	// point 9
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 10
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 11
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 12
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 13
+    normals.push_back(topFaceNorm.x);
+    normals.push_back(topFaceNorm.y);
+    normals.push_back(topFaceNorm.z);
+
+	// point 14
+    normals.push_back(bottomFaceNorm.x);
+    normals.push_back(bottomFaceNorm.y);
+    normals.push_back(bottomFaceNorm.z);
+
+	// point 15
+    normals.push_back(bottomFaceNorm.x);
+    normals.push_back(bottomFaceNorm.y);
+    normals.push_back(bottomFaceNorm.z);
+
+	// point 16
+    normals.push_back(bottomFaceNorm.x);
+    normals.push_back(bottomFaceNorm.y);
+    normals.push_back(bottomFaceNorm.z);
+
+	// point 17
+    normals.push_back(gradientFaceNorm.x);
+    normals.push_back(gradientFaceNorm.y);
+    normals.push_back(gradientFaceNorm.z);
 
 
     glGenBuffers(1, &vertex_buffer);
@@ -367,7 +283,7 @@ void Fan::render() const {
     for(int i = 0; i < 12; i++){
 		glPushMatrix();
 		glRotatef(angle, 0,0,1);
-		//glRotatef(15, 0,1,0);
+		glRotatef(15, 0,1,0);
 		glTranslatef(0.0f,5.0f,0.0f);
 		glDrawElements (GL_QUADS, 44, GL_UNSIGNED_SHORT, 0);		// goes by point in space!!!
 		glPopMatrix();

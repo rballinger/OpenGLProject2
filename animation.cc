@@ -51,6 +51,7 @@ UFO *miniUFO2;
 Car car;
 
 Fan *fan;
+Fan *tfan;
 WeatherVaneBase vaneBase;
 VaneSwivel *swivel;
 
@@ -275,6 +276,7 @@ void displayCallback (GLFWwindow *win)
      */
     glEnable (GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glMaterialf(GL_FRONT, GL_SHININESS,100.0);
     glColor3ub (30, 30, 30);
 
     glBegin (GL_QUADS);
@@ -295,6 +297,9 @@ void displayCallback (GLFWwindow *win)
 
     /* place the light source in the scene. */
     glLightfv (GL_LIGHT2, GL_POSITION, glm::value_ptr(glm::column(lamp_cf, 3)));
+
+    /* we use the Z-axis of the light CF as the spotlight direction */
+    glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, glm::value_ptr(glm::column(lamp_cf, 2)));
 
     /* the curly bracket pairs below are only for readability */
     glPushMatrix();
@@ -391,6 +396,7 @@ void displayCallback (GLFWwindow *win)
     }
     glPopMatrix();
 
+    tfan->render();
     /* to make smooth transition between frame */
     glfwSwapBuffers(win);
 }
@@ -401,6 +407,9 @@ void myModelInit ()
 
     fan = new Fan();
     fan->build(1,20.0);
+
+    tfan = new Fan();
+    tfan->build(1,20.0);
 
     swivel = new VaneSwivel();
     swivel->build();

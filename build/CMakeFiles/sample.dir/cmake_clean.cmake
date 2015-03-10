@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/sample.dir/Tire.cpp.o"
   "CMakeFiles/sample.dir/WeatherVaneBase.cpp.o"
   "CMakeFiles/sample.dir/VaneSwivel.cpp.o"
+  "CMakeFiles/sample.dir/Car.cpp.o"
   "CMakeFiles/sample.dir/Shapes/Sphere.cpp.o"
   "CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o"
   "CMakeFiles/sample.dir/Shapes/Torus.cpp.o"

@@ -115,6 +115,30 @@ sample/fast:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/build
 .PHONY : sample/fast
 
+Car.o: Car.cpp.o
+.PHONY : Car.o
+
+# target to build an object file
+Car.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Car.cpp.o
+.PHONY : Car.cpp.o
+
+Car.i: Car.cpp.i
+.PHONY : Car.i
+
+# target to preprocess a source file
+Car.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Car.cpp.i
+.PHONY : Car.cpp.i
+
+Car.s: Car.cpp.s
+.PHONY : Car.s
+
+# target to generate assembly for a file
+Car.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Car.cpp.s
+.PHONY : Car.cpp.s
+
 Island.o: Island.cpp.o
 .PHONY : Island.o
 
@@ -388,6 +412,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... sample"
+	@echo "... Car.o"
+	@echo "... Car.i"
+	@echo "... Car.s"
 	@echo "... Island.o"
 	@echo "... Island.i"
 	@echo "... Island.s"

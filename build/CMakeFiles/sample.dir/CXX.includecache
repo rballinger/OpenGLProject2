@@ -11,9 +11,13 @@ vector
 -
 GL/glew.h
 -
+GL/glew.h
+-
 
 .././Shapes/Fan.h
 vector
+-
+GL/glew.h
 -
 GL/glew.h
 -
@@ -25,12 +29,50 @@ vector
 -
 GL/glew.h
 -
+GL/glew.h
+-
 
 .././Shapes/Torus.h
 vector
 -
 GL/glew.h
 -
+GL/glew.h
+-
+
+/home/dan/workspace/367_p2_LightAndMovement/Car.cpp
+iostream
+-
+Car.h
+/home/dan/workspace/367_p2_LightAndMovement/Car.h
+
+/home/dan/workspace/367_p2_LightAndMovement/Car.h
+GL/glew.h
+-
+Shapes/Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
+Shapes/Torus.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.h
+Shapes/Sphere.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.h
+Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
+Torus.h
+/home/dan/workspace/367_p2_LightAndMovement/Torus.h
+Sphere.h
+/home/dan/workspace/367_p2_LightAndMovement/Sphere.h
+glm/glm.hpp
+-
+glm/gtx/transform.hpp
+-
+glm/gtc/matrix_access.hpp
+-
+glm/gtc/type_ptr.hpp
+-
+glm/gtx/io.hpp
+-
+Tire.h
+/home/dan/workspace/367_p2_LightAndMovement/Tire.h
 
 /home/dan/workspace/367_p2_LightAndMovement/Island.cpp
 Island.h
@@ -55,6 +97,8 @@ vector
 -
 GL/glew.h
 -
+GL/glew.h
+-
 
 /home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.cpp
 Fan.h
@@ -70,6 +114,8 @@ glm/gtc/quaternion.hpp
 
 /home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.h
 vector
+-
+GL/glew.h
 -
 GL/glew.h
 -
@@ -93,6 +139,8 @@ vector
 -
 GL/glew.h
 -
+GL/glew.h
+-
 
 /home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.cpp
 Torus.h
@@ -111,12 +159,20 @@ vector
 -
 GL/glew.h
 -
+GL/glew.h
+-
 
 /home/dan/workspace/367_p2_LightAndMovement/StreetLight.cpp
 StreetLight.h
 /home/dan/workspace/367_p2_LightAndMovement/StreetLight.h
 
 /home/dan/workspace/367_p2_LightAndMovement/StreetLight.h
+Shapes/Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
+Shapes/Torus.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.h
+Shapes/Sphere.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.h
 Cylinder.h
 /home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
 Torus.h
@@ -151,10 +207,14 @@ glm/gtc/type_ptr.hpp
 -
 glm/gtx/io.hpp
 -
-Torus.h
-/home/dan/workspace/367_p2_LightAndMovement/Torus.h
+Shapes/Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
+Shapes/Torus.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.h
 Cylinder.h
 /home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
+Torus.h
+/home/dan/workspace/367_p2_LightAndMovement/Torus.h
 vector
 -
 
@@ -175,6 +235,8 @@ glm/gtc/type_ptr.hpp
 -
 glm/gtx/io.hpp
 -
+Shapes/Sphere.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.h
 Sphere.h
 /home/dan/workspace/367_p2_LightAndMovement/Sphere.h
 
@@ -195,6 +257,8 @@ vector
 -
 GL/glew.h
 -
+Shapes/Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
 Cylinder.h
 /home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
 
@@ -203,6 +267,8 @@ WeatherVaneBase.h
 /home/dan/workspace/367_p2_LightAndMovement/WeatherVaneBase.h
 
 /home/dan/workspace/367_p2_LightAndMovement/WeatherVaneBase.h
+Shapes/Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
 Cylinder.h
 /home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
 glm/glm.hpp
@@ -219,6 +285,20 @@ glm/gtx/io.hpp
 /home/dan/workspace/367_p2_LightAndMovement/animation.cc
 GL/glew.h
 -
+Shapes/Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
+Shapes/Sphere.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.h
+Shapes/Fan.h
+/home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.h
+GL/glew.h
+-
+Cylinder.h
+/home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
+Sphere.h
+/home/dan/workspace/367_p2_LightAndMovement/Sphere.h
+Fan.h
+/home/dan/workspace/367_p2_LightAndMovement/Fan.h
 sys/time.h
 -
 math.h
@@ -237,20 +317,18 @@ glm/gtc/type_ptr.hpp
 -
 glm/gtx/io.hpp
 -
+cstdlib
+-
+cstdio
+-
 StreetLight.h
 /home/dan/workspace/367_p2_LightAndMovement/StreetLight.h
-Cylinder.h
-/home/dan/workspace/367_p2_LightAndMovement/Cylinder.h
-Sphere.h
-/home/dan/workspace/367_p2_LightAndMovement/Sphere.h
 Island.h
 /home/dan/workspace/367_p2_LightAndMovement/Island.h
 UFO.h
 /home/dan/workspace/367_p2_LightAndMovement/UFO.h
-Tire.h
-/home/dan/workspace/367_p2_LightAndMovement/Tire.h
-Fan.h
-/home/dan/workspace/367_p2_LightAndMovement/Fan.h
+Car.h
+/home/dan/workspace/367_p2_LightAndMovement/Car.h
 WeatherVaneBase.h
 /home/dan/workspace/367_p2_LightAndMovement/WeatherVaneBase.h
 VaneSwivel.h

@@ -210,9 +210,32 @@ CMakeFiles/sample.dir/VaneSwivel.cpp.o.provides: CMakeFiles/sample.dir/VaneSwive
 
 CMakeFiles/sample.dir/VaneSwivel.cpp.o.provides.build: CMakeFiles/sample.dir/VaneSwivel.cpp.o
 
+CMakeFiles/sample.dir/Car.cpp.o: CMakeFiles/sample.dir/flags.make
+CMakeFiles/sample.dir/Car.cpp.o: ../Car.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Car.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Car.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Car.cpp
+
+CMakeFiles/sample.dir/Car.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sample.dir/Car.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/dan/workspace/367_p2_LightAndMovement/Car.cpp > CMakeFiles/sample.dir/Car.cpp.i
+
+CMakeFiles/sample.dir/Car.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sample.dir/Car.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/dan/workspace/367_p2_LightAndMovement/Car.cpp -o CMakeFiles/sample.dir/Car.cpp.s
+
+CMakeFiles/sample.dir/Car.cpp.o.requires:
+.PHONY : CMakeFiles/sample.dir/Car.cpp.o.requires
+
+CMakeFiles/sample.dir/Car.cpp.o.provides: CMakeFiles/sample.dir/Car.cpp.o.requires
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Car.cpp.o.provides.build
+.PHONY : CMakeFiles/sample.dir/Car.cpp.o.provides
+
+CMakeFiles/sample.dir/Car.cpp.o.provides.build: CMakeFiles/sample.dir/Car.cpp.o
+
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Sphere.cpp.o: ../Shapes/Sphere.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Sphere.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Sphere.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.cpp
 
@@ -235,7 +258,7 @@ CMakeFiles/sample.dir/Shapes/Sphere.cpp.o.provides.build: CMakeFiles/sample.dir/
 
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o: ../Shapes/Cylinder.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.cpp
 
@@ -258,7 +281,7 @@ CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o.provides.build: CMakeFiles/sample.di
 
 CMakeFiles/sample.dir/Shapes/Torus.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Torus.cpp.o: ../Shapes/Torus.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Torus.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Torus.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.cpp
 
@@ -281,7 +304,7 @@ CMakeFiles/sample.dir/Shapes/Torus.cpp.o.provides.build: CMakeFiles/sample.dir/S
 
 CMakeFiles/sample.dir/Shapes/Fan.cpp.o: CMakeFiles/sample.dir/flags.make
 CMakeFiles/sample.dir/Shapes/Fan.cpp.o: ../Shapes/Fan.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/dan/workspace/367_p2_LightAndMovement/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/sample.dir/Shapes/Fan.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/sample.dir/Shapes/Fan.cpp.o -c /home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.cpp
 
@@ -311,6 +334,7 @@ sample_OBJECTS = \
 "CMakeFiles/sample.dir/Tire.cpp.o" \
 "CMakeFiles/sample.dir/WeatherVaneBase.cpp.o" \
 "CMakeFiles/sample.dir/VaneSwivel.cpp.o" \
+"CMakeFiles/sample.dir/Car.cpp.o" \
 "CMakeFiles/sample.dir/Shapes/Sphere.cpp.o" \
 "CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o" \
 "CMakeFiles/sample.dir/Shapes/Torus.cpp.o" \
@@ -326,6 +350,7 @@ sample: CMakeFiles/sample.dir/UFO.cpp.o
 sample: CMakeFiles/sample.dir/Tire.cpp.o
 sample: CMakeFiles/sample.dir/WeatherVaneBase.cpp.o
 sample: CMakeFiles/sample.dir/VaneSwivel.cpp.o
+sample: CMakeFiles/sample.dir/Car.cpp.o
 sample: CMakeFiles/sample.dir/Shapes/Sphere.cpp.o
 sample: CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o
 sample: CMakeFiles/sample.dir/Shapes/Torus.cpp.o
@@ -362,6 +387,7 @@ CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/UFO.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Tire.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/WeatherVaneBase.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/VaneSwivel.cpp.o.requires
+CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Car.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Shapes/Sphere.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o.requires
 CMakeFiles/sample.dir/requires: CMakeFiles/sample.dir/Shapes/Torus.cpp.o.requires

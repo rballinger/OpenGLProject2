@@ -23,7 +23,7 @@ if (APPLE)
   find_library(COREVID_LIBRARY CoreVideo REQUIRED)
 endif (APPLE)
 include_directories("./Shapes")
-set(SOURCE_FILES animation.cc StreetLight.cpp StreetLight.h Island.cpp Island.h UFO.cpp UFO.h Tire.cpp Tire.h WeatherVaneBase.cpp WeatherVaneBase.h VaneSwivel.cpp VaneSwivel.h 
+set(SOURCE_FILES animation.cc StreetLight.cpp StreetLight.h Island.cpp Island.h UFO.cpp UFO.h Tire.cpp Tire.h WeatherVaneBase.cpp WeatherVaneBase.h VaneSwivel.cpp VaneSwivel.h Car.cpp Car.h  
         ../Shapes/Sphere.cpp ../Shapes/Cylinder.cpp ../Shapes/Torus.cpp ../Shapes/Fan.cpp)
 add_executable(sample ${SOURCE_FILES})
   target_link_libraries (sample ${GLFW3_LIBRARY} ${OPENGL_LIBRARIES} ${COCOA_LIBRARY}
