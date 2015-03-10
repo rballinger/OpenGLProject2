@@ -38,11 +38,13 @@ private:
     int chassis_top_count,
         side_count;
     Tire *tire_fr, *tire_fl, *tire_rr, *tire_rl;
-    glm::mat4 tire_fr_cf, tire_fl_cf, tire_rr_cf, tire_rl_cf;
-    GLint tire_list;
+    glm::mat4 tire_fr_cf, tire_fl_cf, tire_rr_cf, tire_rl_cf,
+        headlight_r_cf, headlight_l_cf, light4_cf;
+    Sphere headlight_r, headlight_l;
 public:
     ~Car();
     void build();
-    void render(bool outline) const;
+    void render(bool wireframe) const;
+    void rotate_wheels(float dis);
 };
 #endif /* CAR_H_ */

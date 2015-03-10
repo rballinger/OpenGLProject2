@@ -216,7 +216,7 @@ void updateCoordFrames()
 
 void myGLInit ()
 {
-    glClearColor (0.6f, 1.0f, 1.0f, 1.0f); /* black background */
+    glClearColor (0.0f, 0.0f, 0.0f, 1.0f); /* black background */
 
     /* fill front-facing polygon */
     glPolygonMode (GL_FRONT, GL_FILL);
@@ -245,6 +245,7 @@ void myGLInit ()
     glLightfv (GL_LIGHT2, GL_AMBIENT, light0_color);
     glLightfv (GL_LIGHT2, GL_DIFFUSE, light0_color);
     glLightfv (GL_LIGHT2, GL_SPECULAR, light0_color);
+    glLightf (GL_LIGHT2, GL_SPOT_CUTOFF, 80);
 
     glEnableClientState(GL_VERTEX_ARRAY);
 }
@@ -275,32 +276,35 @@ void displayCallback (GLFWwindow *win)
        (instead of glMaterial....)
      */
     glEnable (GL_COLOR_MATERIAL);
-    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-    glMaterialf(GL_FRONT, GL_SHININESS,100.0);
     glColor3ub (30, 30, 30);
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glColorMaterial(GL_FRONT, GL_SPECULAR);
 
-    glBegin (GL_QUADS);
-    const int GROUND_SIZE = 300;
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (GROUND_SIZE, GROUND_SIZE);
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (-GROUND_SIZE, GROUND_SIZE);
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (-GROUND_SIZE, -GROUND_SIZE);
-    glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
-    glVertex2i (GROUND_SIZE, -GROUND_SIZE);
-    glEnd();
+    const float GROUND_SIZE = 500.0;
+
+    glPushMatrix();
+    glTranslatef(-GROUND_SIZE / 1.5, -GROUND_SIZE / 1.5, 0);
+
+    for(float i = 0; i < GROUND_SIZE; i = i + 5){
+        glBegin (GL_QUAD_STRIP);
+        for(float j = 0; j < GROUND_SIZE; j = j + 5){
+            glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+            glVertex2f (i, j);
+            glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+            glVertex2f (i + 5, j);
+        }
+        glEnd();
+    }
+    glPopMatrix();
     glDisable (GL_COLOR_MATERIAL);
+
+    glLightfv (GL_LIGHT2, GL_POSITION, glm::value_ptr(glm::column(lamp_cf, 3)));
+    glLightfv (GL_LIGHT2, GL_SPOT_DIRECTION, glm::value_ptr(glm::vec3(0, 0, -1.0f)));
 
     /* place the light source in the scene. */
     glLightfv (GL_LIGHT0, GL_POSITION, glm::value_ptr(glm::column(light0_cf, 3)));
 
-    /* place the light source in the scene. */
-    glLightfv (GL_LIGHT2, GL_POSITION, glm::value_ptr(glm::column(lamp_cf, 3)));
-
-    /* we use the Z-axis of the light CF as the spotlight direction */
-    glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, glm::value_ptr(glm::column(lamp_cf, 2)));
-
+    glTranslatef(0, -30.0f, 0);
     /* the curly bracket pairs below are only for readability */
     glPushMatrix();
     {
@@ -327,7 +331,6 @@ void displayCallback (GLFWwindow *win)
         /* Render light-0 as an emmisive object */
         if (glIsEnabled(GL_LIGHT2))
             glMaterialfv(GL_FRONT, GL_EMISSION, light0_color);
-
         glPushMatrix();
         glTranslatef(0.0f,28.0f,22.0f);
         lamp.render(2.0f, 2.0f, 2.0f);
@@ -396,7 +399,6 @@ void displayCallback (GLFWwindow *win)
     }
     glPopMatrix();
 
-    tfan->render();
     /* to make smooth transition between frame */
     glfwSwapBuffers(win);
 }
@@ -407,9 +409,6 @@ void myModelInit ()
 
     fan = new Fan();
     fan->build(1,20.0);
-
-    tfan = new Fan();
-    tfan->build(1,20.0);
 
     swivel = new VaneSwivel();
     swivel->build();
@@ -554,6 +553,18 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                     glDisable(GL_LIGHT2);
                 else
                     glEnable(GL_LIGHT2);
+                break;
+            case GLFW_KEY_4:
+                if (glIsEnabled(GL_LIGHT4))
+                    glDisable(GL_LIGHT4);
+                else
+                    glEnable(GL_LIGHT4);
+                break;
+            case GLFW_KEY_5:
+                if (glIsEnabled(GL_LIGHT5))
+                    glDisable(GL_LIGHT5);
+                else
+                    glEnable(GL_LIGHT5);
                 break;
             case GLFW_KEY_SPACE: /* pause and restart the animation */
                 is_anim_running ^= true;
