@@ -42,21 +42,6 @@ void Fan::build (int numFans, float thickness) {
 	vector<float> smallEndPoints = {-2.0,-1.0, 0.0, 1.0, 2.0, 2.0, 1.0, 0.0, -1.0};
 	vector<float> largeEndPoints = {-4.0,-2.0, 0.0, 2.0, 4.0, 4.0, 2.0, 0.0, -2.0};
 
-	int subDiv = 30;
-
-	glm::vec3 frontCornerOne = {-2.0, 0.0, 0.0};
-	glm::vec3 frontCornerTwo = {2.0, 0.0, 0.0};
-	glm::vec3 frontCornerThree = {1.0, 0.0, -1.0};
-	glm::vec3 frontCornerFour = {-2.0, 0.0, -1.0};
-
-	glm::vec3 backCornerOne = {-4.0, 30.0, 0.0};
-	glm::vec3 backCornerTwo = {4.0, 30.0, 0.0};
-	glm::vec3 backCornerThree = {2.0, 30.0, -1.0};
-	glm::vec3 backCornerFour = {-4.0, 30.0, -1.0};
-
-	for(int i = 0; i < subDiv; i++){
-
-	}
 
 	for(int i = 0; i < smallEndPoints.size(); i++){
 		if(i == 5){
@@ -83,7 +68,6 @@ void Fan::build (int numFans, float thickness) {
 		indices.push_back(j + 1);
 		indices.push_back(j);
 		j++;
-
 	}
 
 	indices.push_back(8);
@@ -100,6 +84,70 @@ void Fan::build (int numFans, float thickness) {
 	indices.push_back(13);
 	indices.push_back(14);
 	indices.push_back(17);
+	/*float subDiv = 30;
+	float interpFact = 1/subDiv;
+
+	glm::vec3 frontCornerOne = {-2.0, 0.0, 0.0};
+	glm::vec3 frontCornerTwo = {2.0, 0.0, 0.0};
+	glm::vec3 frontCornerThree = {1.0, 0.0, -1.0};
+	glm::vec3 frontCornerFour = {-2.0, 0.0, -1.0};
+
+	glm::vec3 backCornerOne = {-4.0, 30.0, 0.0};
+	glm::vec3 backCornerTwo = {4.0, 30.0, 0.0};
+	glm::vec3 backCornerThree = {2.0, 30.0, -1.0};
+	glm::vec3 backCornerFour = {-4.0, 30.0, -1.0};
+
+	// lines between the back and front four corners
+	glm::vec3 interpCornerOne = (backCornerOne - frontCornerOne)*interpFact;
+	glm::vec3 interpCornerTwo = (backCornerTwo - frontCornerTwo)*interpFact;
+	glm::vec3 interpCornerThree = (backCornerThree - frontCornerThree)*interpFact;
+	glm::vec3 interpCornerFour = (backCornerFour - frontCornerFour)*interpFact;
+
+	float currY = 0.0;
+	float newXPoint = 0.0;
+
+	for(int i = 0; i < 30; i++){
+		for(int j = 0; j < smallEndPoints.size(); j++){
+			if(j > 0 && j % 5 == 0){
+				depth = -1.0;
+			}else if(j > 0 && j % smallEndPoints.size() == 0){
+				depth = 0.0;
+			}
+			newXPoint = smallEndPoints[j];
+			vertices.push_back(newXPoint);
+			vertices.push_back(currY);
+			vertices.push_back(depth);
+		}
+		currY += 1.0;  // Fan will be 30.0 units long
+		for(int k = 0; k < smallEndPoints.size(); k++){
+			smallEndPoints[k] = smallEndPoints[k]*(1.0 + interpFact);
+		}
+	}
+
+	int j = smallEndPoints.size();
+	for(i = 0; i < subDiv*2; i++){
+		indices.push_back(i);
+		indices.push_back(i + 1);
+		indices.push_back(j + 1);
+		indices.push_back(j);
+		j++;
+
+	}
+
+	indices.push_back(8);
+	indices.push_back(0);
+	indices.push_back(9);
+	indices.push_back(17);
+
+	indices.push_back(8);
+	indices.push_back(5);
+	indices.push_back(4);
+	indices.push_back(0);
+
+	indices.push_back(9);
+	indices.push_back(13);
+	indices.push_back(14);
+	indices.push_back(17);*/
 
 	// two normals for corner vertices of small end of fan blade
 	glm::vec3 smallFaceNorm = glm::normalize(glm::vec3{0.0,-1.0,0.0});

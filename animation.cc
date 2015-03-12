@@ -51,7 +51,6 @@ UFO *miniUFO2;
 Car car;
 
 Fan *fan;
-Fan *tfan;
 WeatherVaneBase vaneBase;
 VaneSwivel *swivel;
 
@@ -59,7 +58,7 @@ glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
 glm::mat4 ufo_cf, minUfo1_cf, minUfo2_cf;
 glm::mat4 car_cf;
-glm::mat4 vaneBase_cf, fan_cf, swivel_cf;
+glm::mat4 vaneBase_cf, fan_cf, swivel_cf, swivel_and_fan_cf;
 glm::mat4 frame_cf;
 glm::mat4 camera_cf, light0_cf;
 glm::mat4 *active;
@@ -86,8 +85,12 @@ const float INIT_SWING_ANGLE = 35.0f; /* degrees */
 const float GRAVITY = 9.8;   /* m/sec^2 */
 bool is_anim_running = true;
 
+// weathervane swivel speed
 float SWIVEL_SPEED = 0;
 float d_swiv_speed = 0.95;
+
+// weathvane fan speed
+float FAN_SPEED = 44; /* in degrees per second */
 
 float car_speed = 0;
 
@@ -126,7 +129,6 @@ void updateCoordFrames()
     static float swivel_angle = 0;
     static float fan_angle = 0;
     static int deg = 0;
-    const float FAN_SPEED = 44; /* in degrees per second */
     float delta, swivel_delta, current;
 
 
@@ -145,8 +147,10 @@ void updateCoordFrames()
         fan_angle = FAN_SPEED * delta;
         fan_cf *= glm::rotate(glm::radians(fan_angle), glm::vec3{0.0f, 1.0f, 0.0f});
 
-        if(SWIVEL_SPEED >= 100 || SWIVEL_SPEED <= -100){
-        	d_swiv_speed *= -1.0;
+        if(SWIVEL_SPEED >= 100){
+        	d_swiv_speed = -0.95;
+        }else if( SWIVEL_SPEED <= -100){
+        	d_swiv_speed = 0.95;
         }
 
         SWIVEL_SPEED += d_swiv_speed;
@@ -201,15 +205,6 @@ void updateCoordFrames()
 
         min_x2_prev = min2_x;
         min_y2_prev = min2_y;
-
-        /* use the pendulum equation to calculate its angle */
-        /*swing_time += delta * 3;
-        float angle = INIT_SWING_ANGLE * cos(swing_time * sqrt(GRAVITY / swingarm->length()));
-        swing_arm_cf *= glm::rotate(glm::radians(angle - swing_angle), glm::vec3{0.0f, 1.0f, 0.0f});
-        swing_angle = angle;*/
-
-        // move car forward
-        //car_cf *= glm::translate(glm::vec3(0, -0.1f, 0));
     }
     last_timestamp = current;
 }
@@ -340,7 +335,6 @@ void displayCallback (GLFWwindow *win)
     }
     glPopMatrix();
 
-
     /* render static objects: streetLight and island **/
     glPushMatrix();
     {
@@ -376,16 +370,21 @@ void displayCallback (GLFWwindow *win)
     	glMultMatrixf(glm::value_ptr(vaneBase_cf));
     	vaneBase.render();
 
-		glPushMatrix();
-		{
-	    	glMultMatrixf(glm::value_ptr(swivel_cf));
-			swivel->render();
+        glPushMatrix();
+        {
+			glMultMatrixf(glm::value_ptr(swivel_and_fan_cf));
 			glPushMatrix();
 			{
-		    	glMultMatrixf(glm::value_ptr(fan_cf));
-				fan->render();
-		    }
-		    glPopMatrix();
+				glMultMatrixf(glm::value_ptr(swivel_cf));
+				swivel->render();
+				glPushMatrix();
+				{
+					glMultMatrixf(glm::value_ptr(fan_cf));
+					fan->render();
+				}
+				glPopMatrix();
+			}
+			glPopMatrix();
 		}
 		glPopMatrix();
     }
@@ -433,6 +432,9 @@ void myModelInit ()
     fan_cf = glm::translate(glm::vec3{0.0f, 19.0f, 0.0f});
     fan_cf *= glm::rotate(glm::radians(5.0f), glm::vec3{1,0,0});
     swivel_cf = glm::translate(glm::vec3{10.0f, 10.5f, 42.0f});
+
+    swivel_and_fan_cf = glm::translate(glm::vec3{0.0f, 0.0f, 0.0f});
+
     vaneBase_cf = glm::translate(glm::vec3{0.0f, -260.0f, 39.5f});
 
     streetLight.build();
@@ -515,6 +517,26 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             		min2_ellipse_angle_change += 0.01;
             	}
                 break;
+            case GLFW_KEY_F:
+            	FAN_SPEED += 5;
+            	break;
+            case GLFW_KEY_G:
+            	FAN_SPEED -= 5;
+            	break;
+            case GLFW_KEY_S:
+            	if(d_swiv_speed <= 0){
+            		SWIVEL_SPEED += 20;
+            	}else{
+            		SWIVEL_SPEED -= 20;
+            	}
+            	break;
+            case GLFW_KEY_D:
+            	if(d_swiv_speed <= 0){
+            		SWIVEL_SPEED += 20;
+            	}else{
+            		SWIVEL_SPEED -= 20;
+            	}
+            	break;
             case GLFW_KEY_1:
             	if(*active == ufo_cf){  // mother-ship slower
             		ellipse_angle_change -= 0.01;
@@ -542,10 +564,7 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
                     glEnable(GL_LIGHT0);
                 break;
             case GLFW_KEY_1:
-                if (glIsEnabled(GL_LIGHT1))
-                    glDisable(GL_LIGHT1);
-                else
-                    glEnable(GL_LIGHT1);
+                // not used currently
                 break;
             case GLFW_KEY_2:
             	active = &lamp_cf;
@@ -581,6 +600,12 @@ void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods)
             case GLFW_KEY_O:
                 active = &minUfo2_cf;
                 break;
+            case GLFW_KEY_V:
+            	active = &fan_cf;
+            	break;
+            case GLFW_KEY_B:
+            	active = &swivel_cf;
+            	break;
             // car controls
             case GLFW_KEY_T:
                 active = &car_cf;

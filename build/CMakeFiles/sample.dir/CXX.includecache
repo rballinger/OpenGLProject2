@@ -47,8 +47,6 @@ Car.h
 /home/dan/workspace/367_p2_LightAndMovement/Car.h
 
 /home/dan/workspace/367_p2_LightAndMovement/Car.h
-GL/glew.h
--
 Shapes/Cylinder.h
 /home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
 Shapes/Torus.h
