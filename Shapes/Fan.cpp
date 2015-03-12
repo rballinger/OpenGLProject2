@@ -40,120 +40,6 @@ void Fan::build (int numFans, float thickness) {
 	float depth = 0.0;
 
 	vector<float> smallEndPoints = {-2.0,-1.0, 0.0, 1.0, 2.0, 2.0, 1.0, 0.0, -1.0};
-	vector<float> largeEndPoints = {-4.0,-2.0, 0.0, 2.0, 4.0, 4.0, 2.0, 0.0, -2.0};
-
-
-	for(int i = 0; i < smallEndPoints.size(); i++){
-		if(i == 5){
-			depth = -1.0;
-		}
-		vertices.push_back(smallEndPoints[i]);
-		vertices.push_back(0.0);
-		vertices.push_back(depth);
-	}
-	depth = 0.0;
-	for(int i = 0; i < largeEndPoints.size(); i++){
-		if(i == 5){
-			depth = -1.0;
-		}
-		vertices.push_back(largeEndPoints[i]);
-		vertices.push_back(30.0);
-		vertices.push_back(depth);
-	}
-
-	int j = largeEndPoints.size();
-	for(i = 0; i < 8; i++){
-		indices.push_back(i);
-		indices.push_back(i + 1);
-		indices.push_back(j + 1);
-		indices.push_back(j);
-		j++;
-	}
-
-	indices.push_back(8);
-	indices.push_back(0);
-	indices.push_back(9);
-	indices.push_back(17);
-
-	indices.push_back(8);
-	indices.push_back(5);
-	indices.push_back(4);
-	indices.push_back(0);
-
-	indices.push_back(9);
-	indices.push_back(13);
-	indices.push_back(14);
-	indices.push_back(17);
-	/*float subDiv = 30;
-	float interpFact = 1/subDiv;
-
-	glm::vec3 frontCornerOne = {-2.0, 0.0, 0.0};
-	glm::vec3 frontCornerTwo = {2.0, 0.0, 0.0};
-	glm::vec3 frontCornerThree = {1.0, 0.0, -1.0};
-	glm::vec3 frontCornerFour = {-2.0, 0.0, -1.0};
-
-	glm::vec3 backCornerOne = {-4.0, 30.0, 0.0};
-	glm::vec3 backCornerTwo = {4.0, 30.0, 0.0};
-	glm::vec3 backCornerThree = {2.0, 30.0, -1.0};
-	glm::vec3 backCornerFour = {-4.0, 30.0, -1.0};
-
-	// lines between the back and front four corners
-	glm::vec3 interpCornerOne = (backCornerOne - frontCornerOne)*interpFact;
-	glm::vec3 interpCornerTwo = (backCornerTwo - frontCornerTwo)*interpFact;
-	glm::vec3 interpCornerThree = (backCornerThree - frontCornerThree)*interpFact;
-	glm::vec3 interpCornerFour = (backCornerFour - frontCornerFour)*interpFact;
-
-	float currY = 0.0;
-	float newXPoint = 0.0;
-
-	for(int i = 0; i < 30; i++){
-		for(int j = 0; j < smallEndPoints.size(); j++){
-			if(j > 0 && j % 5 == 0){
-				depth = -1.0;
-			}else if(j > 0 && j % smallEndPoints.size() == 0){
-				depth = 0.0;
-			}
-			newXPoint = smallEndPoints[j];
-			vertices.push_back(newXPoint);
-			vertices.push_back(currY);
-			vertices.push_back(depth);
-		}
-		currY += 1.0;  // Fan will be 30.0 units long
-		for(int k = 0; k < smallEndPoints.size(); k++){
-			smallEndPoints[k] = smallEndPoints[k]*(1.0 + interpFact);
-		}
-	}
-
-	int j = smallEndPoints.size();
-	for(i = 0; i < subDiv*2; i++){
-		indices.push_back(i);
-		indices.push_back(i + 1);
-		indices.push_back(j + 1);
-		indices.push_back(j);
-		j++;
-
-	}
-
-	indices.push_back(8);
-	indices.push_back(0);
-	indices.push_back(9);
-	indices.push_back(17);
-
-	indices.push_back(8);
-	indices.push_back(5);
-	indices.push_back(4);
-	indices.push_back(0);
-
-	indices.push_back(9);
-	indices.push_back(13);
-	indices.push_back(14);
-	indices.push_back(17);*/
-
-	// two normals for corner vertices of small end of fan blade
-	glm::vec3 smallFaceNorm = glm::normalize(glm::vec3{0.0,-1.0,0.0});
-
-	// two normals for corner vertices of large end of fan blade
-	glm::vec3 largeFaceNorm = glm::normalize(glm::vec3{0.0,1.0,0.0});
 
 	// two normals for corner vertices of large end of fan blade
 	glm::vec3 bottomFaceNorm = glm::normalize(glm::vec3{0.0,0.0,-1.0});
@@ -161,108 +47,123 @@ void Fan::build (int numFans, float thickness) {
 	// two normals for corner vertices of large end of fan blade
 	glm::vec3 topFaceNorm = glm::normalize(glm::vec3{0.0,0.0,1.0});
 
+	// two normals for corner vertices of small end of fan blade
+	glm::vec3 smallFaceNorm = glm::normalize(glm::vec3{0.0,-1.0,0.0});
+
+	// two normals for corner vertices of large end of fan blade
+	glm::vec3 largeFaceNorm = glm::normalize(glm::vec3{0.0,1.0,0.0});
+
 	// two normals for  vertices of slanted face of fan blade
-	glm::vec3 sloped1 = glm::vec3{largeEndPoints[17], 30.0, -1.0} - glm::vec3{largeEndPoints[8], 0.0, -1.0};
-	glm::vec3 sloped2 = glm::vec3{largeEndPoints[8], 0.0, -1.0} - glm::vec3{largeEndPoints[0], 0.0, 0.0};
+	glm::vec3 sloped1 = glm::vec3{0.0, 0.0, 0.0} - glm::vec3{0.0, 0.0, 0.0};
+	glm::vec3 sloped2 = glm::vec3{0.0, 0.0, 0.0} - glm::vec3{0.0, 0.0, 0.0};
 	glm::vec3 gradientFaceNorm = glm::normalize(glm::cross(sloped1, sloped2));
 
 	// two normals for vertices of face opposite of slanted face of fan blade
-	glm::vec3 opposite1 = glm::vec3{largeEndPoints[14], 30.0, -1.0} - glm::vec3{largeEndPoints[5], 0.0, -1.0};
-	glm::vec3 opposite2 = glm::vec3{largeEndPoints[13], 30.0, -1.0} - glm::vec3{largeEndPoints[14], 30.0, -1.0};
+	glm::vec3 opposite1 = glm::vec3{0.0, 0.0, 0.0} - glm::vec3{0.0, 0.0, 0.0};
+	glm::vec3 opposite2 = glm::vec3{0.0, 0.0, 0.0} - glm::vec3{0.0, 0.0, 0.0};
 	glm::vec3 oppositeFaceNorm = glm::normalize(glm::cross(opposite1, opposite2));
 
-	// add to normal buffer
-	// point 0
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
+	float subDiv = 30;
+	float interpFact = 1/subDiv;
+	float currY = 0.0;
+	float newXPoint = 0.0;
 
-	// point 1
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
+	float prev_currY = 0.0;
+	float prev_newXPoint = 0.0;
 
-	// point 2
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
+	int j = 0;
 
-	// point 3
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
+	for(int i = 0; i < subDiv; i++){
+		for(j = 0; j < smallEndPoints.size(); j++){
+			if(j > 0 && j % 5 == 0){
+				depth = -2.0;
+			}else if(j > 0 && j % smallEndPoints.size() -1 == 0){
+				depth = 0.0;
+			}
+			newXPoint = smallEndPoints[j];
+			vertices.push_back(newXPoint);
+			vertices.push_back(currY);
+			vertices.push_back(depth);
 
-	// point 4
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
+			if(j == 4){
+				if(j == 4  || j == 5){
+					// thin face (not sloped)
+					// two normals for vertices of face opposite of slanted face of fan blade
+					opposite1 = glm::vec3{newXPoint, currY, depth} - glm::vec3{smallEndPoints[j + 1], currY, depth};
+					opposite2 = glm::vec3{newXPoint*(1.0+interpFact), currY + 1.0, depth} - glm::vec3{newXPoint, currY, depth};
+					oppositeFaceNorm = glm::normalize(glm::cross(opposite1, opposite2));
+				}
+				//normals.push_back(oppositeFaceNorm.x);
+				//normals.push_back(oppositeFaceNorm.y);
+				//normals.push_back(oppositeFaceNorm.z);
+			}
 
-	// point 5
-    normals.push_back(bottomFaceNorm.x);
-    normals.push_back(bottomFaceNorm.y);
-    normals.push_back(bottomFaceNorm.z);
+			// top face of fan blade
+			if(j >= 0 && j <= 4){
+				normals.push_back(topFaceNorm.x);
+				normals.push_back(topFaceNorm.y);
+				normals.push_back(topFaceNorm.z);
+			}else if (j >= 5){ // bottom face of fan blade
+				normals.push_back(bottomFaceNorm.x);
+				normals.push_back(bottomFaceNorm.y);
+				normals.push_back(bottomFaceNorm.z);
+			}
 
-	// point 6
-    normals.push_back(bottomFaceNorm.x);
-    normals.push_back(bottomFaceNorm.y);
-    normals.push_back(bottomFaceNorm.z);
+			//cout << "(" << newXPoint << ", " << currY << ", " << depth << ")";
+		}
+		prev_currY = currY;
+		prev_newXPoint = newXPoint;
+		//cout << endl;
+		currY += 1.0;  // Fan will be 190.0 units long
+		for(int k = 0; k < smallEndPoints.size(); k++){
+			smallEndPoints[k] = smallEndPoints[k]*(1.0 + interpFact);
+		}
+		depth = 0.0;
+	}
 
-	// point 7
-    normals.push_back(bottomFaceNorm.x);
-    normals.push_back(bottomFaceNorm.y);
-    normals.push_back(bottomFaceNorm.z);
+	j = smallEndPoints.size();
+	for(i = 0; i < subDiv*9 - smallEndPoints.size(); i++){
+		indices.push_back(i);
+		indices.push_back(i + 1);
+		indices.push_back(j + 1);
+		indices.push_back(j);
+		j++;
 
-	// point 8
-    normals.push_back(gradientFaceNorm.x);
-    normals.push_back(gradientFaceNorm.y);
-    normals.push_back(gradientFaceNorm.z);
+	}
 
+	int temp1 = 9;
+	int temp2 = 1;
+	// large end cap (4 squares)
+	for(int i = 0; i < 4; i++){
+		indices.push_back(j - temp1);
+		indices.push_back(j - temp1 + 1);
+		indices.push_back(j - temp2);
+		indices.push_back(j - temp2 + 1);
+		temp1--;
+		temp2++;
+		for(int j = 0; j < 4; j++){
+			normals.push_back(largeFaceNorm.x);
+			normals.push_back(largeFaceNorm.y);
+			normals.push_back(largeFaceNorm.z);
+		}
+	}
 
-	// point 9
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
-
-	// point 10
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
-
-	// point 11
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
-
-	// point 12
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
-
-	// point 13
-    normals.push_back(topFaceNorm.x);
-    normals.push_back(topFaceNorm.y);
-    normals.push_back(topFaceNorm.z);
-
-	// point 14
-    normals.push_back(bottomFaceNorm.x);
-    normals.push_back(bottomFaceNorm.y);
-    normals.push_back(bottomFaceNorm.z);
-
-	// point 15
-    normals.push_back(bottomFaceNorm.x);
-    normals.push_back(bottomFaceNorm.y);
-    normals.push_back(bottomFaceNorm.z);
-
-	// point 16
-    normals.push_back(bottomFaceNorm.x);
-    normals.push_back(bottomFaceNorm.y);
-    normals.push_back(bottomFaceNorm.z);
-
-	// point 17
-    normals.push_back(gradientFaceNorm.x);
-    normals.push_back(gradientFaceNorm.y);
-    normals.push_back(gradientFaceNorm.z);
-
+	temp1 = 8;
+	temp2 = 0;
+	// small end cap (4 squares)
+	for(int i = 0; i < 4; i++){
+		indices.push_back(temp1 + 1);
+		indices.push_back(temp1);
+		indices.push_back(temp2 + 1);
+		indices.push_back(temp2);
+		temp1--;
+		temp2++;
+		for(int j = 0; j < 4; j++){
+			normals.push_back(smallFaceNorm.x);
+			normals.push_back(smallFaceNorm.y);
+			normals.push_back(smallFaceNorm.z);
+		}
+	}
 
     glGenBuffers(1, &vertex_buffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
@@ -349,7 +250,7 @@ void Fan::render() const {
 		glRotatef(angle, 0,0,1);
 		glRotatef(15, 0,1,0);
 		glTranslatef(0.0f,5.0f,0.0f);
-		glDrawElements (GL_QUADS, 44, GL_UNSIGNED_SHORT, 0);		// goes by point in space!!!
+		glDrawElements (GL_QUADS, indices.size(), GL_UNSIGNED_SHORT, 0);		// goes by point in space!!!
 		glPopMatrix();
 		angle += d_angle;
     }
