@@ -63,6 +63,12 @@ void Fan::build (int numFans, float thickness) {
 	glm::vec3 opposite2 = glm::vec3{0.0, 0.0, 0.0} - glm::vec3{0.0, 0.0, 0.0};
 	glm::vec3 oppositeFaceNorm = glm::normalize(glm::cross(opposite1, opposite2));
 
+	// NORMALS AT 45 DEGREE ANGLE (4)
+	glm::vec3 one45 = glm::normalize(glm::vec3{-1.0, 0.0, 3.0} );
+	glm::vec3 two45 = glm::normalize(glm::vec3{1.0, 0.0, 3.0} );
+	glm::vec3 three45 = glm::normalize(glm::vec3{1.0, 0.0, -3.0} );
+	glm::vec3 four45 = glm::normalize(glm::vec3{-1.0, 0.0, -3.0} );
+
 	float subDiv = 30;
 	float interpFact = 1/subDiv;
 	float currY = 0.0;
@@ -85,7 +91,25 @@ void Fan::build (int numFans, float thickness) {
 			vertices.push_back(currY);
 			vertices.push_back(depth);
 
-			if(j == 4){
+			if(j == 0){
+				normals.push_back(one45.x);
+				normals.push_back(one45.y);
+				normals.push_back(one45.z);
+			}else if(j == 4){
+				normals.push_back(two45.x);
+				normals.push_back(two45.y);
+				normals.push_back(two45.z);
+			}else if(j == 5){
+				normals.push_back(three45.x);
+				normals.push_back(three45.y);
+				normals.push_back(three45.z);
+			}/*else if(j == 8){
+				normals.push_back(four45.x);
+				normals.push_back(four45.y);
+				normals.push_back(four45.z);
+			}*/
+
+			/*if(j == 4){
 				if(j == 4  || j == 5){
 					// thin face (not sloped)
 					// two normals for vertices of face opposite of slanted face of fan blade
@@ -96,14 +120,14 @@ void Fan::build (int numFans, float thickness) {
 				//normals.push_back(oppositeFaceNorm.x);
 				//normals.push_back(oppositeFaceNorm.y);
 				//normals.push_back(oppositeFaceNorm.z);
-			}
+			}*/
 
 			// top face of fan blade
-			if(j >= 0 && j <= 4){
+			if(j > 0 && j < 4){
 				normals.push_back(topFaceNorm.x);
 				normals.push_back(topFaceNorm.y);
 				normals.push_back(topFaceNorm.z);
-			}else if (j >= 5){ // bottom face of fan blade
+			}else if (j > 5 && j <= 8){ // bottom face of fan blade
 				normals.push_back(bottomFaceNorm.x);
 				normals.push_back(bottomFaceNorm.y);
 				normals.push_back(bottomFaceNorm.z);

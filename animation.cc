@@ -34,6 +34,7 @@
 #include "Car.h"
 #include "WeatherVaneBase.h"
 #include "VaneSwivel.h"
+#include "Ground.h"
 
 using namespace std;
 void displayCallback(GLFWwindow*);
@@ -53,6 +54,8 @@ Car car;
 Fan *fan;
 WeatherVaneBase vaneBase;
 VaneSwivel *swivel;
+
+Ground *ground;
 
 glm::mat4 wheel_cf;
 glm::mat4 lamp_cf;
@@ -258,13 +261,13 @@ void displayCallback (GLFWwindow *win)
     glBegin (GL_LINES);
     glColor3ub (255, 0, 0);
     glVertex3i (0, 0, 0);
-    glVertex3i (2, 0, 0);
+    glVertex3i (5, 0, 0);
     glColor3ub (0, 255, 0);
     glVertex3i (0, 0, 0);
-    glVertex3i (0, 2, 0);
+    glVertex3i (0, 25, 0);
     glColor3ub (0, 0, 255);
     glVertex3i (0, 0, 0);
-    glVertex3i (0, 0, 2);
+    glVertex3i (0, 0, 15);
     glEnd();
 
     /* Specify the reflectance property of the ground using glColor
@@ -277,20 +280,29 @@ void displayCallback (GLFWwindow *win)
 
     const float GROUND_SIZE = 500.0;
 
-    glPushMatrix();
+    /*glPushMatrix();
     glTranslatef(-GROUND_SIZE / 1.5, -GROUND_SIZE / 1.5, 0);
 
     for(float i = 0; i < GROUND_SIZE; i = i + 5){
         glBegin (GL_QUAD_STRIP);
         for(float j = 0; j < GROUND_SIZE; j = j + 5){
-            glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+            glNormal3f (0.0f, 0.0f, 1.0f); // normal vector for the ground
             glVertex2f (i, j);
-            glNormal3f (0.0f, 0.0f, 1.0f); /* normal vector for the ground */
+            glNormal3f (0.0f, 0.0f, 1.0f); // normal vector for the ground
             glVertex2f (i + 5, j);
         }
         glEnd();
     }
     glPopMatrix();
+    glDisable (GL_COLOR_MATERIAL);
+*/
+
+    // ground class
+    glPushMatrix();
+    glTranslatef(0, 0.0f,5.0);
+    ground->render();
+    glPopMatrix();
+
     glDisable (GL_COLOR_MATERIAL);
 
     glLightfv (GL_LIGHT2, GL_POSITION, glm::value_ptr(glm::column(lamp_cf, 3)));
@@ -450,6 +462,9 @@ void myModelInit ()
     light0_cf = glm::translate(glm::vec3{-450, -30, 106});
 
     lamp_cf = glm::translate(glm::vec3{0, 0, 10});
+
+    ground = new Ground();
+    ground->build();
 }
 
 void keyCallback (GLFWwindow *win, int key, int scan_code, int action, int mods) {

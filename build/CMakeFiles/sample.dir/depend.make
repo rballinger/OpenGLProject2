@@ -11,6 +11,9 @@ CMakeFiles/sample.dir/Car.cpp.o: ../Shapes/Sphere.h
 CMakeFiles/sample.dir/Car.cpp.o: ../Shapes/Torus.h
 CMakeFiles/sample.dir/Car.cpp.o: ../Tire.h
 
+CMakeFiles/sample.dir/Ground.cpp.o: ../Ground.cpp
+CMakeFiles/sample.dir/Ground.cpp.o: ../Ground.h
+
 CMakeFiles/sample.dir/Island.cpp.o: ../Island.cpp
 CMakeFiles/sample.dir/Island.cpp.o: ../Island.h
 
@@ -63,6 +66,7 @@ CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Fan.h
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Sphere.h
 CMakeFiles/sample.dir/animation.cc.o: .././Shapes/Torus.h
 CMakeFiles/sample.dir/animation.cc.o: ../Car.h
+CMakeFiles/sample.dir/animation.cc.o: ../Ground.h
 CMakeFiles/sample.dir/animation.cc.o: ../Island.h
 CMakeFiles/sample.dir/animation.cc.o: ../Shapes/Cylinder.h
 CMakeFiles/sample.dir/animation.cc.o: ../Shapes/Fan.h

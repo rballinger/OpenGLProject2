@@ -11,6 +11,9 @@ CMakeFiles/sample.dir/Car.cpp.o
  /home/dan/workspace/367_p2_LightAndMovement/Shapes/Sphere.h
  /home/dan/workspace/367_p2_LightAndMovement/Shapes/Torus.h
  /home/dan/workspace/367_p2_LightAndMovement/Tire.h
+CMakeFiles/sample.dir/Ground.cpp.o
+ /home/dan/workspace/367_p2_LightAndMovement/Ground.cpp
+ /home/dan/workspace/367_p2_LightAndMovement/Ground.h
 CMakeFiles/sample.dir/Island.cpp.o
  /home/dan/workspace/367_p2_LightAndMovement/Island.cpp
  /home/dan/workspace/367_p2_LightAndMovement/Island.h
@@ -64,6 +67,7 @@ CMakeFiles/sample.dir/animation.cc.o
  .././Shapes/Sphere.h
  .././Shapes/Torus.h
  /home/dan/workspace/367_p2_LightAndMovement/Car.h
+ /home/dan/workspace/367_p2_LightAndMovement/Ground.h
  /home/dan/workspace/367_p2_LightAndMovement/Island.h
  /home/dan/workspace/367_p2_LightAndMovement/Shapes/Cylinder.h
  /home/dan/workspace/367_p2_LightAndMovement/Shapes/Fan.h

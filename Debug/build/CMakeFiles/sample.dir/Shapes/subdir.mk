@@ -5,7 +5,6 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 O_SRCS += \
 ../build/CMakeFiles/sample.dir/Shapes/Cylinder.cpp.o \
-../build/CMakeFiles/sample.dir/Shapes/Fan.cpp.o \
 ../build/CMakeFiles/sample.dir/Shapes/Sphere.cpp.o \
 ../build/CMakeFiles/sample.dir/Shapes/Torus.cpp.o 
 

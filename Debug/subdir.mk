@@ -6,6 +6,7 @@
 CPP_SRCS += \
 ../Arm.cpp \
 ../Car.cpp \
+../Ground.cpp \
 ../Island.cpp \
 ../StreetLight.cpp \
 ../Tire.cpp \
@@ -19,6 +20,7 @@ CC_SRCS += \
 OBJS += \
 ./Arm.o \
 ./Car.o \
+./Ground.o \
 ./Island.o \
 ./StreetLight.o \
 ./Tire.o \
@@ -33,6 +35,7 @@ CC_DEPS += \
 CPP_DEPS += \
 ./Arm.d \
 ./Car.d \
+./Ground.d \
 ./Island.d \
 ./StreetLight.d \
 ./Tire.d \

@@ -86,7 +86,6 @@ void Car::build() {
         index.push_back(vertices.size());
         vertices.push_back(t1);
         normals.push_back(n1);
-        cout << "count:" << i << endl;
     }
 
     // sides

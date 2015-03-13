@@ -139,6 +139,30 @@ Car.cpp.s:
 	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Car.cpp.s
 .PHONY : Car.cpp.s
 
+Ground.o: Ground.cpp.o
+.PHONY : Ground.o
+
+# target to build an object file
+Ground.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Ground.cpp.o
+.PHONY : Ground.cpp.o
+
+Ground.i: Ground.cpp.i
+.PHONY : Ground.i
+
+# target to preprocess a source file
+Ground.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Ground.cpp.i
+.PHONY : Ground.cpp.i
+
+Ground.s: Ground.cpp.s
+.PHONY : Ground.s
+
+# target to generate assembly for a file
+Ground.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/Ground.cpp.s
+.PHONY : Ground.cpp.s
+
 Island.o: Island.cpp.o
 .PHONY : Island.o
 
@@ -415,6 +439,9 @@ help:
 	@echo "... Car.o"
 	@echo "... Car.i"
 	@echo "... Car.s"
+	@echo "... Ground.o"
+	@echo "... Ground.i"
+	@echo "... Ground.s"
 	@echo "... Island.o"
 	@echo "... Island.i"
 	@echo "... Island.s"
