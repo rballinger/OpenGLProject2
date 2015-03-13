@@ -80,9 +80,9 @@ float min1_ellipse_angle = 0.0;
 float min2_ellipse_angle = 2.0;
 
 // these are here to control the speed of ufos when selected
-float ellipse_angle_change = 0.03;
-float min1_ellipse_angle_change = 0.03;
-float min2_ellipse_angle_change = 0.03;
+float ellipse_angle_change = 1.0;
+float min1_ellipse_angle_change = 1.0;
+float min2_ellipse_angle_change = 1.0;
 
 const float INIT_SWING_ANGLE = 35.0f; /* degrees */
 const float GRAVITY = 9.8;   /* m/sec^2 */
@@ -90,7 +90,7 @@ bool is_anim_running = true;
 
 // weathervane swivel speed
 float SWIVEL_SPEED = 0;
-float d_swiv_speed = 0.95;
+float d_swiv_speed = 70.0;
 
 // weathvane fan speed
 float FAN_SPEED = 44; /* in degrees per second */
@@ -151,12 +151,12 @@ void updateCoordFrames()
         fan_cf *= glm::rotate(glm::radians(fan_angle), glm::vec3{0.0f, 1.0f, 0.0f});
 
         if(SWIVEL_SPEED >= 100){
-        	d_swiv_speed = -0.95;
+        	d_swiv_speed = -70.0;
         }else if( SWIVEL_SPEED <= -100){
-        	d_swiv_speed = 0.95;
+        	d_swiv_speed = 70.0;
         }
 
-        SWIVEL_SPEED += d_swiv_speed;
+        SWIVEL_SPEED += d_swiv_speed*delta;
 
         swivel_angle = SWIVEL_SPEED * swivel_delta;
         swivel_cf *= glm::rotate(glm::radians(swivel_angle),glm::vec3{0.0f, 0.0f, 1.0f});
@@ -168,7 +168,7 @@ void updateCoordFrames()
         	x = y = 0.0;
         }
 
-        ellipse_angle += ellipse_angle_change;
+        ellipse_angle += ellipse_angle_change*delta;
 
         ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{x - x_prev,0.0,0.0});
         ufo_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,y - y_prev,0.0});
@@ -185,7 +185,7 @@ void updateCoordFrames()
         	min1_x = min1_y = 0.0;
         }
 
-        min1_ellipse_angle += min1_ellipse_angle_change;
+        min1_ellipse_angle += min1_ellipse_angle_change*delta;
 
         minUfo1_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,min1_x - min_x1_prev,0.0});
         minUfo1_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,0.0, min1_y - min_y1_prev});
@@ -201,7 +201,7 @@ void updateCoordFrames()
         	min2_ellipse_angle= 0;
         }
 
-        min2_ellipse_angle += min2_ellipse_angle_change;
+        min2_ellipse_angle += min2_ellipse_angle_change*delta;
 
     	minUfo2_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{min2_x - min_x2_prev, 0.0,0.0});
     	minUfo2_cf *= glm::translate(glm::mat4(1.0f),glm::vec3{0.0,0.0, min2_y - min_y2_prev});
